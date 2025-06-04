@@ -10,6 +10,24 @@ interface RocketAnimationProps {
 
 export default function RocketAnimation({ trigger, onComplete }: RocketAnimationProps) {
   const [showRockets, setShowRockets] = useState(false)
+  const [screenDimensions, setScreenDimensions] = useState({ width: 1200, height: 800 })
+
+  useEffect(() => {
+    // Update screen dimensions on client
+    const updateDimensions = () => {
+      setScreenDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight
+      })
+    }
+    
+    updateDimensions()
+    window.addEventListener('resize', updateDimensions)
+    
+    return () => {
+      window.removeEventListener('resize', updateDimensions)
+    }
+  }, [])
 
   useEffect(() => {
     if (trigger) {
@@ -107,21 +125,21 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
           <motion.div
             initial={{ 
               x: -150, 
-              y: typeof window !== 'undefined' ? window.innerHeight - 100 : 700,
+              y: screenDimensions.height - 100,
               rotate: 45,
               scale: 0.8
             }}
             animate={{ 
               x: [
                 -150,
-                typeof window !== 'undefined' ? window.innerWidth * 0.3 : 400,
-                typeof window !== 'undefined' ? window.innerWidth * 0.7 : 800,
-                typeof window !== 'undefined' ? window.innerWidth + 150 : 1200
+                screenDimensions.width * 0.3,
+                screenDimensions.width * 0.7,
+                screenDimensions.width + 150
               ],
               y: [
-                typeof window !== 'undefined' ? window.innerHeight - 100 : 700,
-                typeof window !== 'undefined' ? window.innerHeight * 0.6 : 400,
-                typeof window !== 'undefined' ? window.innerHeight * 0.3 : 200,
+                screenDimensions.height - 100,
+                screenDimensions.height * 0.6,
+                screenDimensions.height * 0.3,
                 -200
               ],
               rotate: [45, 50, 55, 60],
@@ -233,22 +251,22 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
           {/* Second Rocket - Right to Left */}
           <motion.div
             initial={{ 
-              x: typeof window !== 'undefined' ? window.innerWidth + 150 : 1200, 
-              y: typeof window !== 'undefined' ? window.innerHeight - 100 : 700,
+              x: screenDimensions.width + 150, 
+              y: screenDimensions.height - 100,
               rotate: -45,
               scale: 0.8
             }}
             animate={{ 
               x: [
-                typeof window !== 'undefined' ? window.innerWidth + 150 : 1200,
-                typeof window !== 'undefined' ? window.innerWidth * 0.7 : 800,
-                typeof window !== 'undefined' ? window.innerWidth * 0.3 : 400,
+                screenDimensions.width + 150,
+                screenDimensions.width * 0.7,
+                screenDimensions.width * 0.3,
                 -150
               ],
               y: [
-                typeof window !== 'undefined' ? window.innerHeight - 100 : 700,
-                typeof window !== 'undefined' ? window.innerHeight * 0.6 : 400,
-                typeof window !== 'undefined' ? window.innerHeight * 0.3 : 200,
+                screenDimensions.height - 100,
+                screenDimensions.height * 0.6,
+                screenDimensions.height * 0.3,
                 -200
               ],
               rotate: [-45, -50, -55, -60],

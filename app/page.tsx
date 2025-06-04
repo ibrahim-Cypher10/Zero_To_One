@@ -15,6 +15,7 @@ import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { motion, AnimatePresence } from "framer-motion"
 import RocketAnimation from "@/components/RocketAnimation"
+import FloatingLogicElements from "@/components/FloatingLogicElements"
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -156,6 +157,9 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Floating Logic Elements */}
+      <FloatingLogicElements />
+      
       {/* Rocket Animation */}
       <RocketAnimation trigger={triggerRocket} onComplete={handleRocketComplete} />
       
