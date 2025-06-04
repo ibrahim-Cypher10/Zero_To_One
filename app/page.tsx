@@ -17,11 +17,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { motion, AnimatePresence } from "framer-motion"
 import RocketAnimation from "@/components/RocketAnimation"
 import FloatingLogicElements from "@/components/FloatingLogicElements"
+import LearningRoadmap from "@/components/LearningRoadmap"
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
-  const [activeTab, setActiveTab] = useState("week1-2")
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [triggerRocket, setTriggerRocket] = useState(false)
 
@@ -90,63 +90,6 @@ export default function LandingPage() {
       content: "This course gave me the confidence to apply for CS programs. The university prep focus was exactly what I needed.",
       rating: 5,
       image: "👩‍🎓"
-    }
-  ]
-
-  const curriculumData = [
-    {
-      id: "week1-2",
-      title: "Foundation Week",
-      subtitle: "Intro to CS & Problem Solving",
-      icon: <Lightbulb className="w-6 h-6" />,
-      sessions: ["Why Computer Science?", "Thinking Like a Computer Scientist"],
-      skills: ["Problem Decomposition", "Logical Thinking", "CS Career Awareness"],
-      color: "from-emerald-400 to-emerald-600"
-    },
-    {
-      id: "week3-4", 
-      title: "Visual Logic Week",
-      subtitle: "Scratch Programming",
-      icon: <Monitor className="w-6 h-6" />,
-      sessions: ["Introduction to Scratch", "Logic Building with Scratch"],
-      skills: ["Visual Programming", "Game Logic", "Interactive Projects"],
-      color: "from-blue-400 to-blue-600"
-    },
-    {
-      id: "week5-8",
-      title: "Text-Based Programming", 
-      subtitle: "Python Fundamentals",
-      icon: <Code className="w-6 h-6" />,
-      sessions: ["Python Essentials I & II", "Functions & Lists", "Final Python Project"],
-      skills: ["Syntax Mastery", "Data Structures", "Real Applications"],
-      color: "from-purple-400 to-purple-600"
-    },
-    {
-      id: "week9-12",
-      title: "Systems Programming",
-      subtitle: "C++ & University Prep", 
-      icon: <Cpu className="w-6 h-6" />,
-      sessions: ["C++ Essentials", "Functions & Arrays", "C++ Project"],
-      skills: ["Memory Management", "Compilation", "University Readiness"],
-      color: "from-orange-400 to-orange-600"
-    },
-    {
-      id: "week13-14",
-      title: "Advanced Concepts",
-      subtitle: "Algorithms & Learning Strategies",
-      icon: <GitBranch className="w-6 h-6" />,
-      sessions: ["Algorithms 101", "Debugging & Learning Strategies"],
-      skills: ["Algorithm Design", "Debugging Skills", "Self-Learning"],
-      color: "from-pink-400 to-pink-600"
-    },
-    {
-      id: "week15-16",
-      title: "Project Showcase",
-      subtitle: "Capstone & Career Prep",
-      icon: <Trophy className="w-6 h-6" />,
-      sessions: ["Final Project Showcase", "University Survival Guide"],
-      skills: ["Presentation Skills", "Portfolio Building", "Career Planning"],
-      color: "from-amber-400 to-amber-600"
     }
   ]
 
@@ -507,7 +450,7 @@ export default function LandingPage() {
                     <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
                     <div className="rounded-full bg-white/20 p-3 sm:p-4 relative z-10 backdrop-blur-sm">
                       {item.icon}
-                    </div>
+                  </div>
                   </div>
                   <CardContent className="pt-4 sm:pt-6 pb-6 sm:pb-8 px-4 sm:px-6">
                     <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-slate-800">{item.title}</h3>
@@ -529,112 +472,7 @@ export default function LandingPage() {
       </section>
 
       {/* Interactive Curriculum Showcase */}
-      <section id="curriculum" className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-white">
-        <div className="container mx-auto">
-          <div className="text-center mb-12 lg:mb-16">
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 sm:mb-6 px-2">16-Session Curriculum Deep Dive</h2>
-              <p className="text-lg sm:text-xl text-slate-600 mb-6 sm:mb-8 px-4">
-                Progressive learning from absolute zero to university readiness
-              </p>
-              <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
-            </motion.div>
-                  </div>
-
-          <div className="max-w-6xl mx-auto">
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 mb-6 sm:mb-8 bg-slate-100 p-1 rounded-2xl gap-1">
-                {curriculumData.map((module) => (
-                  <TabsTrigger 
-                    key={module.id} 
-                    value={module.id}
-                    className="data-[state=active]:bg-white data-[state=active]:shadow-md rounded-xl transition-all duration-300 text-xs sm:text-sm py-2 sm:py-3 px-1 sm:px-2"
-                  >
-                    <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2">
-                      <div className="flex-shrink-0">{module.icon}</div>
-                      <span className="hidden sm:inline text-center sm:text-left leading-tight">{module.title}</span>
-                      <span className="sm:hidden text-xs leading-tight text-center">{module.title.split(' ')[0]}</span>
-                    </div>
-                  </TabsTrigger>
-                ))}
-              </TabsList>
-
-              {curriculumData.map((module) => (
-                <TabsContent key={module.id} value={module.id} className="mt-0">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <Card className="overflow-hidden border-0 shadow-2xl">
-                      <div className={`bg-gradient-to-r ${module.color} p-6 sm:p-8 text-white relative overflow-hidden`}>
-                        <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-                        <div className="relative z-10">
-                          <div className="flex flex-col sm:flex-row sm:items-center mb-4">
-                            <div className="p-3 bg-white/20 rounded-2xl mr-0 sm:mr-4 mb-3 sm:mb-0 self-start backdrop-blur-sm">
-                              {module.icon}
-                            </div>
-                            <div>
-                              <h3 className="text-2xl sm:text-3xl font-bold mb-2">{module.title}</h3>
-                              <p className="text-white/90 text-base sm:text-lg">{module.subtitle}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <CardContent className="p-6 sm:p-8">
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
-                          <div>
-                            <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-slate-800">Sessions Included</h4>
-                            <ul className="space-y-3">
-                              {module.sessions.map((session, idx) => (
-                                <li key={idx} className="flex items-start">
-                                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-emerald-100 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                                    <span className="text-emerald-600 text-xs sm:text-sm font-medium">{idx + 1}</span>
-                                  </div>
-                                  <span className="text-slate-700 text-sm sm:text-base">{session}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                          
-                          <div>
-                            <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-slate-800">Skills You'll Master</h4>
-                            <ul className="space-y-3">
-                              {module.skills.map((skill, idx) => (
-                                <li key={idx} className="flex items-center">
-                                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-500 mr-3 flex-shrink-0" />
-                                  <span className="text-slate-700 text-sm sm:text-base">{skill}</span>
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-                </TabsContent>
-              ))}
-            </Tabs>
-
-            <div className="text-center mt-8 sm:mt-12">
-              <Button
-                variant="outline"
-                className="w-full sm:w-auto border-2 border-emerald-200 bg-white text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 rounded-full px-6 sm:px-8 py-3 sm:py-4 shadow-lg group"
-                onClick={handleDownload}
-              >
-                <Download className="mr-2 h-4 h-4 sm:h-5 sm:w-5 group-hover:animate-bounce" />
-                Download Complete Syllabus PDF
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <LearningRoadmap />
 
       {/* Enhanced Course Details */}
       <section className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-white">
@@ -749,7 +587,7 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-6xl mx-auto">
             {[
-               {
+              {
                 image: "/Zammad.jpeg",
                 name: "Zammad",
                 title: "Co-Founder, CodeKids PK",
@@ -775,7 +613,6 @@ export default function LandingPage() {
                 bgGradient: "from-emerald-400 to-emerald-600",
                 accentColor: "emerald"
               }
-             ,
             ].map((instructor, index) => (
               <motion.div
                 key={index}
@@ -804,27 +641,27 @@ export default function LandingPage() {
                             height={128}
                             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                           />
-                        </div>
+                      </div>
                         {/* Floating badge */}
                         <div className="absolute -bottom-2 -right-2 bg-white/20 backdrop-blur-sm rounded-full p-2 border border-white/30">
                           <Award className="w-4 h-4 text-white" />
-                        </div>
-                      </div>
+                    </div>
+                    </div>
                       
                       {/* Name and Title */}
                       <h3 className="text-xl sm:text-2xl font-bold mb-2">{instructor.name}</h3>
                       <p className="text-white/90 font-semibold mb-1 text-sm sm:text-base">{instructor.title}</p>
                       <p className="text-white/80 text-xs sm:text-sm">{instructor.company}</p>
-                    </div>
-                  </div>
-                  
+          </div>
+        </div>
+
                   {/* Content Area - Flexible Height */}
                   <CardContent className="p-6 sm:p-8 flex flex-col flex-grow">
                     {/* Bio Section - Flexible */}
                     <div className="flex-grow mb-6">
                       <p className="text-slate-600 leading-relaxed text-sm sm:text-base">{instructor.bio}</p>
-                    </div>
-                    
+          </div>
+
                     {/* Quote Section - Fixed at bottom */}
                     <div className="mt-auto space-y-4">
                       <blockquote className={`border-l-4 border-${instructor.accentColor}-500 pl-4 py-3 bg-${instructor.accentColor}-50/50 rounded-r-lg`}>
@@ -833,16 +670,16 @@ export default function LandingPage() {
 
                       {/* LinkedIn Button */}
                       <div>
-                        <Button
-                          variant="outline"
+              <Button
+                variant="outline"
                           className="w-full border-2 border-blue-200 bg-white text-blue-600 hover:bg-blue-50 hover:border-blue-300 hover:shadow-lg rounded-xl transition-all duration-300 group/btn font-semibold py-3"
                           onClick={() => window.open(instructor.linkedin, '_blank')}
-                        >
+              >
                           <Linkedin className="w-4 h-4 mr-2 group-hover/btn:scale-110 group-hover/btn:rotate-12 transition-transform duration-300" />
                           Connect on LinkedIn
                           <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                        </Button>
-                      </div>
+              </Button>
+            </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -1035,14 +872,14 @@ export default function LandingPage() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-16 px-4">
-              <Button
-                size="lg"
+            <Button
+              size="lg"
                 className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white px-8 lg:px-12 py-4 sm:py-6 text-lg sm:text-xl font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105"
                 onClick={handleStartJourney}
-              >
+            >
                 🚀 Register Now – Only PKR 5,000
                 <ArrowRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6" />
-              </Button>
+            </Button>
               <Button
                 variant="outline"
                 size="lg"
@@ -1131,7 +968,7 @@ export default function LandingPage() {
                           <p className="text-slate-600 leading-relaxed">
                             Need financial assistance? We offer payment plans, partial scholarships, and work-study opportunities. 
                             Simply select "Yes" for financial aid in the registration form.
-                          </p>
+                </p>
                         </div>
                       </div>
                       <div className="bg-white/70 rounded-xl p-4 border border-amber-200">
@@ -1174,8 +1011,8 @@ export default function LandingPage() {
                               <p className="text-sm text-slate-500 mb-1">Account Number</p>
                               <p className="font-mono font-semibold text-slate-800 bg-slate-100 px-3 py-2 rounded-lg">
                                 PK60ASCM0000400320230488
-                              </p>
-                            </div>
+                </p>
+              </div>
                           </div>
                         </div>
                       </div>
@@ -1205,7 +1042,7 @@ export default function LandingPage() {
                     📝 Open Registration Form
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Button>
-                </div>
+            </div>
               </motion.div>
 
             </motion.div>
