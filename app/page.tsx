@@ -124,7 +124,7 @@ export default function LandingPage() {
       title: "Systems Programming",
       subtitle: "C++ & University Prep", 
       icon: <Cpu className="w-6 h-6" />,
-      sessions: ["C++ Essentials", "Control Flow", "Functions & Arrays", "C++ Project"],
+      sessions: ["C++ Essentials", "Functions & Arrays", "C++ Project"],
       skills: ["Memory Management", "Compilation", "University Readiness"],
       color: "from-orange-400 to-orange-600"
     },
@@ -642,18 +642,18 @@ export default function LandingPage() {
       </section>
 
       {/* Student Testimonials */}
-      <section id="testimonials" className="py-20 px-4 bg-gradient-to-br from-emerald-50 to-blue-50">
+      <section id="testimonials" className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-gradient-to-br from-emerald-50 to-blue-50">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">What Our Students Say</h2>
-              <p className="text-xl text-slate-600 mb-8">Real stories from students who made the transition</p>
-              <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 mb-4 sm:mb-6 px-2">What Our Students Say</h2>
+              <p className="text-lg sm:text-xl text-slate-600 mb-6 sm:mb-8 px-2">Real stories from students who made the transition</p>
+              <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
             </motion.div>
           </div>
 
@@ -668,21 +668,21 @@ export default function LandingPage() {
                   transition={{ duration: 0.5 }}
                 >
                   <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-2xl overflow-hidden">
-                    <CardContent className="p-8 md:p-12 text-center">
-                      <div className="text-6xl mb-6">{testimonials[currentTestimonial].image}</div>
-                      <div className="flex justify-center mb-6">
+                    <CardContent className="p-6 sm:p-8 lg:p-12 text-center">
+                      <div className="text-4xl sm:text-5xl lg:text-6xl mb-4 sm:mb-6">{testimonials[currentTestimonial].image}</div>
+                      <div className="flex justify-center mb-4 sm:mb-6">
                         {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                          <Star key={i} className="w-6 h-6 text-amber-400 fill-current" />
+                          <Star key={i} className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 fill-current" />
                         ))}
                       </div>
-                      <blockquote className="text-xl md:text-2xl text-slate-700 italic leading-relaxed mb-6">
+                      <blockquote className="text-lg sm:text-xl lg:text-2xl text-slate-700 italic leading-relaxed mb-4 sm:mb-6 px-2">
                         "{testimonials[currentTestimonial].content}"
                       </blockquote>
                       <div>
-                        <div className="font-semibold text-slate-800 text-lg">
+                        <div className="font-semibold text-slate-800 text-base sm:text-lg">
                           {testimonials[currentTestimonial].name}
                         </div>
-                        <div className="text-emerald-600 font-medium">
+                        <div className="text-emerald-600 font-medium text-sm sm:text-base">
                           {testimonials[currentTestimonial].role}
                         </div>
                       </div>
@@ -692,15 +692,15 @@ export default function LandingPage() {
               </AnimatePresence>
 
               {/* Testimonial indicators */}
-              <div className="flex justify-center mt-8 space-x-2">
+              <div className="flex justify-center mt-6 sm:mt-8 space-x-2">
                 {testimonials.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentTestimonial(index)}
-                    className={`w-3 h-3 rounded-full transition-all ${
+                    className={`h-3 rounded-full transition-all ${
                       index === currentTestimonial 
-                        ? "bg-emerald-500 w-8" 
-                        : "bg-slate-300 hover:bg-slate-400"
+                        ? "bg-emerald-500 w-6 sm:w-8" 
+                        : "bg-slate-300 hover:bg-slate-400 w-3"
                     }`}
                   />
                 ))}
@@ -711,55 +711,55 @@ export default function LandingPage() {
       </section>
 
       {/* Enhanced Course Details */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Course Details & Investment</h2>
-              <p className="text-xl text-slate-600">Everything you need to know to get started</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 mb-4 sm:mb-6 px-2">Course Details & Investment</h2>
+              <p className="text-lg sm:text-xl text-slate-600 px-2">Everything you need to know to get started</p>
             </motion.div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 max-w-6xl mx-auto">
             {[
               {
-                icon: <Clock className="w-8 h-8 text-emerald-600" />,
+                icon: <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600" />,
                 title: "16 Live Sessions",
                 description: "Interactive learning with real-time Q&A and hands-on coding",
                 details: ["2 sessions per week", "1.5 hours each", "Recorded for review"],
               },
               {
-                icon: <DollarSign className="w-8 h-8 text-amber-500" />,
+                icon: <DollarSign className="w-6 h-6 sm:w-8 sm:h-8 text-amber-500" />,
                 title: "Early Bird: PKR 5,000",
                 description: "Limited time pricing until June 15",
                 details: ["Regular: PKR 12,000", "Save 58%", "Payment plans available"],
                 highlight: true,
               },
               {
-                icon: <Shield className="w-8 h-8 text-emerald-600" />,
+                icon: <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600" />,
                 title: "100% Money-back Guarantee",
                 description: "Full refund if not satisfied after first week",
                 details: ["No questions asked", "Risk-free trial", "Full confidence"],
               },
               {
-                icon: <Users className="w-8 h-8 text-emerald-600" />,
+                icon: <Users className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600" />,
                 title: "Financial Aid Available",
                 description: "Don't let cost be a barrier to learning",
                 details: ["Need-based assistance", "Flexible payment", "Merit scholarships"],
               },
               {
-                icon: <Calendar className="w-8 h-8 text-emerald-600" />,
+                icon: <Calendar className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600" />,
                 title: "Two Cohorts Available",
                 description: "Choose the timing that works for you",
                 details: ["July 1 start", "August 1 start", "Same curriculum"],
               },
               {
-                icon: <Award className="w-8 h-8 text-emerald-600" />,
+                icon: <Award className="w-6 h-6 sm:w-8 sm:h-8 text-emerald-600" />,
                 title: "Certificate & Portfolio",
                 description: "Professional credentials and project showcase",
                 details: ["Completion certificate", "GitHub portfolio", "LinkedIn ready"],
@@ -772,22 +772,23 @@ export default function LandingPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                className={`${index === 1 || index === 4 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
               >
                 <Card
-                  className={`p-6 h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 ${
+                  className={`p-4 sm:p-6 h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 ${
                     item.highlight
                       ? "bg-gradient-to-br from-amber-50 to-amber-100 border-l-4 border-amber-500 ring-2 ring-amber-200"
                       : "bg-white hover:bg-slate-50"
                   }`}
                 >
-                  <CardContent className="pt-6">
-                    <div className="mb-4">{item.icon}</div>
-                    <h3 className="font-bold text-xl mb-3 text-slate-800">{item.title}</h3>
-                    <p className="text-slate-600 mb-4 leading-relaxed">{item.description}</p>
-                    <ul className="space-y-2">
+                  <CardContent className="pt-4 sm:pt-6">
+                    <div className="mb-3 sm:mb-4">{item.icon}</div>
+                    <h3 className="font-bold text-lg sm:text-xl mb-2 sm:mb-3 text-slate-800">{item.title}</h3>
+                    <p className="text-slate-600 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">{item.description}</p>
+                    <ul className="space-y-1.5 sm:space-y-2">
                       {item.details.map((detail, idx) => (
-                        <li key={idx} className="flex items-center text-sm text-slate-600">
-                          <Check className="w-4 h-4 mr-2 text-emerald-500 flex-shrink-0" />
+                        <li key={idx} className="flex items-center text-xs sm:text-sm text-slate-600">
+                          <Check className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-emerald-500 flex-shrink-0" />
                           {detail}
                         </li>
                       ))}
@@ -801,26 +802,26 @@ export default function LandingPage() {
       </section>
 
       {/* Enhanced Instructors */}
-      <section id="instructors" className="py-20 px-4 bg-gradient-to-br from-slate-50 to-emerald-50">
+      <section id="instructors" className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-gradient-to-br from-slate-50 to-emerald-50">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Meet Your Expert Instructors</h2>
-              <p className="text-xl text-slate-600 mb-4">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 mb-4 sm:mb-6 px-2">Meet Your Expert Instructors</h2>
+              <p className="text-lg sm:text-xl text-slate-600 mb-3 sm:mb-4 px-2">
                 Learn from those who've walked your path and succeeded
               </p>
-              <p className="text-lg text-slate-500 italic">
+              <p className="text-base sm:text-lg text-slate-500 italic px-2">
                 "We've been exactly where you are. That's why we built this course."
               </p>
             </motion.div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-5xl mx-auto">
             {[
               {
                 emoji: "👩‍⚕️",
@@ -852,42 +853,42 @@ export default function LandingPage() {
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
               >
                 <Card className="overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-300 bg-white/90 backdrop-blur-sm">
-                  <div className="bg-gradient-to-r from-emerald-400 to-emerald-600 h-32 relative overflow-hidden">
+                  <div className="bg-gradient-to-r from-emerald-400 to-emerald-600 h-24 sm:h-28 lg:h-32 relative overflow-hidden">
                     <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
                   </div>
-                  <CardContent className="pt-0 pb-8 px-8 relative">
-                    <div className="flex justify-center -mt-16 mb-6">
-                      <div className="w-32 h-32 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-white ring-4 ring-emerald-100">
-                        <span className="text-6xl">{instructor.emoji}</span>
+                  <CardContent className="pt-0 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 relative">
+                    <div className="flex justify-center -mt-12 sm:-mt-14 lg:-mt-16 mb-4 sm:mb-6">
+                      <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-white ring-4 ring-emerald-100">
+                        <span className="text-4xl sm:text-5xl lg:text-6xl">{instructor.emoji}</span>
                       </div>
                     </div>
                     
-                    <div className="text-center mb-6">
-                      <h3 className="text-2xl font-bold mb-2 text-slate-800">{instructor.name}</h3>
-                      <p className="text-emerald-600 font-semibold mb-1">{instructor.title}</p>
-                      <p className="text-slate-500 text-sm mb-3">{instructor.company}</p>
+                    <div className="text-center mb-4 sm:mb-6">
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2 text-slate-800">{instructor.name}</h3>
+                      <p className="text-emerald-600 font-semibold mb-1 text-sm sm:text-base">{instructor.title}</p>
+                      <p className="text-slate-500 text-xs sm:text-sm mb-3">{instructor.company}</p>
                       
-                      <div className="flex flex-wrap justify-center gap-2 mb-4">
+                      <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mb-3 sm:mb-4">
                         {instructor.specialties.map((specialty, idx) => (
-                          <Badge key={idx} variant="secondary" className="bg-emerald-100 text-emerald-700">
+                          <Badge key={idx} variant="secondary" className="bg-emerald-100 text-emerald-700 text-xs sm:text-sm px-2 py-1">
                             {specialty}
                           </Badge>
                         ))}
                       </div>
                     </div>
 
-                    <div className="space-y-4">
-                      <p className="text-slate-600 leading-relaxed">{instructor.bio}</p>
+                    <div className="space-y-3 sm:space-y-4">
+                      <p className="text-slate-600 leading-relaxed text-sm sm:text-base">{instructor.bio}</p>
                       
-                      <div className="bg-slate-50 p-4 rounded-xl">
-                        <div className="flex items-center mb-2">
-                          <Award className="w-4 h-4 text-emerald-600 mr-2" />
-                          <span className="text-sm font-medium text-slate-700">{instructor.experience}</span>
+                      <div className="bg-slate-50 p-3 sm:p-4 rounded-xl">
+                        <div className="flex items-center mb-1 sm:mb-2">
+                          <Award className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600 mr-2" />
+                          <span className="text-xs sm:text-sm font-medium text-slate-700">{instructor.experience}</span>
                         </div>
                       </div>
 
-                      <blockquote className="border-l-4 border-emerald-500 pl-4 py-2 bg-emerald-50/50 rounded-r-lg">
-                        <p className="text-slate-700 italic">"{instructor.quote}"</p>
+                      <blockquote className="border-l-4 border-emerald-500 pl-3 sm:pl-4 py-2 bg-emerald-50/50 rounded-r-lg">
+                        <p className="text-slate-700 italic text-sm sm:text-base">"{instructor.quote}"</p>
                       </blockquote>
                     </div>
                   </CardContent>
@@ -899,7 +900,7 @@ export default function LandingPage() {
       </section>
 
       {/* Why This Works Statistics */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-white">
         <div className="container mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -907,33 +908,33 @@ export default function LandingPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-16">Why This Course Works</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 mb-8 sm:mb-12 lg:mb-16 px-2">Why This Course Works</h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 max-w-6xl mx-auto">
             {[
               {
                 number: "90%+",
                 text: "Students feel prepared for CS101",
-                icon: <TrendingUp className="w-12 h-12" />,
+                icon: <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
                 color: "from-emerald-400 to-emerald-600",
               },
               {
                 number: "100+",
                 text: "Hours of mentorship offered",
-                icon: <Clock className="w-12 h-12" />,
+                icon: <Clock className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
                 color: "from-blue-400 to-blue-600",
               },
               {
                 number: "4+",
                 text: "Complete projects in portfolio",
-                icon: <Trophy className="w-12 h-12" />,
+                icon: <Trophy className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
                 color: "from-purple-400 to-purple-600",
               },
               {
                 number: "100%",
                 text: "Built for absolute beginners",
-                icon: <Target className="w-12 h-12" />,
+                icon: <Target className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
                 color: "from-amber-400 to-amber-600",
               },
             ].map((stat, index) => (
@@ -944,15 +945,16 @@ export default function LandingPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+                className={`${index >= 2 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
               >
-                <Card className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all border-0 h-full">
-                  <div className={`bg-gradient-to-r ${stat.color} w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white shadow-lg`}>
+                <Card className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl hover:shadow-2xl transition-all border-0 h-full">
+                  <div className={`bg-gradient-to-r ${stat.color} w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20 rounded-xl sm:rounded-2xl flex items-center justify-center mx-auto mb-4 sm:mb-6 text-white shadow-lg`}>
                     {stat.icon}
                   </div>
-                  <div className={`text-6xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-4`}>
+                  <div className={`text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-3 sm:mb-4`}>
                     {stat.number}
                   </div>
-                  <p className="text-slate-600 text-lg leading-relaxed">{stat.text}</p>
+                  <p className="text-slate-600 text-base sm:text-lg leading-relaxed">{stat.text}</p>
                 </Card>
               </motion.div>
             ))}
@@ -961,17 +963,17 @@ export default function LandingPage() {
       </section>
 
       {/* Enhanced FAQ */}
-      <section id="faq" className="py-20 px-4 bg-slate-50">
+      <section id="faq" className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-slate-50">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Frequently Asked Questions</h2>
-              <p className="text-xl text-slate-600">Everything you need to know before starting your journey</p>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 mb-4 sm:mb-6 px-2">Frequently Asked Questions</h2>
+              <p className="text-lg sm:text-xl text-slate-600 px-2">Everything you need to know before starting your journey</p>
             </motion.div>
           </div>
 
@@ -979,7 +981,7 @@ export default function LandingPage() {
             <Accordion
               type="single"
               collapsible
-              className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden"
+              className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-slate-100 overflow-hidden"
             >
               {[
                 {
@@ -1018,28 +1020,28 @@ export default function LandingPage() {
                   value={`item-${index + 1}`}
                   className="border-b border-slate-100 last:border-0"
                 >
-                  <AccordionTrigger className="py-6 px-8 hover:no-underline hover:bg-slate-50 text-left text-slate-800 font-semibold text-lg group">
+                  <AccordionTrigger className="py-4 sm:py-6 px-4 sm:px-6 lg:px-8 hover:no-underline hover:bg-slate-50 text-left text-slate-800 font-semibold text-base sm:text-lg group">
                     <div className="flex items-center">
-                      <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-4 text-emerald-600 font-bold text-sm group-hover:bg-emerald-200 transition-colors">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-3 sm:mr-4 text-emerald-600 font-bold text-xs sm:text-sm group-hover:bg-emerald-200 transition-colors flex-shrink-0">
                         {index + 1}
                       </div>
-                      {faq.question}
+                      <span className="text-sm sm:text-base lg:text-lg">{faq.question}</span>
                     </div>
                   </AccordionTrigger>
-                  <AccordionContent className="px-8 pb-6 pt-2 text-slate-600 leading-relaxed pl-20">
+                  <AccordionContent className="px-4 sm:px-6 lg:px-8 pb-4 sm:pb-6 pt-2 text-slate-600 leading-relaxed pl-10 sm:pl-16 lg:pl-20 text-sm sm:text-base">
                     {faq.answer}
                   </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
 
-            <div className="text-center mt-12">
-              <p className="text-slate-600 mb-6">Still have questions? We're here to help!</p>
+            <div className="text-center mt-8 sm:mt-12">
+              <p className="text-slate-600 mb-4 sm:mb-6 text-sm sm:text-base">Still have questions? We're here to help!</p>
               <Button
                 variant="outline"
-                className="border-2 border-emerald-200 bg-white text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 rounded-full px-8 py-4"
+                className="w-full sm:w-auto border-2 border-emerald-200 bg-white text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 rounded-full px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base"
               >
-                <MessageCircle className="mr-2 h-5 w-5" />
+                <MessageCircle className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 Contact Us Directly
               </Button>
             </div>
@@ -1050,14 +1052,14 @@ export default function LandingPage() {
       {/* Enhanced Final CTA */}
       <section
         id="register"
-        className="py-20 px-4 bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 text-white relative overflow-hidden"
+        className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 text-white relative overflow-hidden"
       >
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-20 h-20 border border-white/30 rounded-full"></div>
-          <div className="absolute top-20 right-20 w-16 h-16 border border-white/20 rounded-full"></div>
-          <div className="absolute bottom-20 left-1/4 w-12 h-12 border border-white/25 rounded-full"></div>
-          <div className="absolute bottom-10 right-10 w-24 h-24 border border-white/15 rounded-full"></div>
+          <div className="absolute top-10 left-10 w-16 h-16 sm:w-20 sm:h-20 border border-white/30 rounded-full"></div>
+          <div className="absolute top-20 right-20 w-12 h-12 sm:w-16 sm:h-16 border border-white/20 rounded-full"></div>
+          <div className="absolute bottom-20 left-1/4 w-10 h-10 sm:w-12 sm:h-12 border border-white/25 rounded-full"></div>
+          <div className="absolute bottom-10 right-10 w-20 h-20 sm:w-24 sm:h-24 border border-white/15 rounded-full"></div>
         </div>
 
         <div className="container mx-auto text-center relative z-10">
@@ -1067,78 +1069,78 @@ export default function LandingPage() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-4xl md:text-6xl font-bold mb-6">Ready to Start Your CS Journey?</h2>
-            <p className="text-xl md:text-2xl mb-4 text-emerald-100">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-2">Ready to Start Your CS Journey?</h2>
+            <p className="text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 text-emerald-100 px-2">
               From confused beginner to confident programmer in just 8 weeks
             </p>
-            <p className="text-lg mb-12 text-emerald-100 max-w-3xl mx-auto">
+            <p className="text-base sm:text-lg mb-8 sm:mb-12 text-emerald-100 max-w-3xl mx-auto px-4">
               Join <span className="font-semibold">Edvance x CodeKids</span> and hundreds of students who've successfully transitioned to CS. 
               No jargon, no pressure – just expert guidance from people who've been exactly where you are.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-12 sm:mb-16 px-4">
               <Button
                 size="lg"
-                className="w-full sm:w-auto bg-white text-emerald-600 hover:bg-emerald-50 px-10 py-6 text-xl font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105"
+                className="w-full sm:w-auto bg-white text-emerald-600 hover:bg-emerald-50 px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 text-lg sm:text-xl font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105"
                 onClick={handleStartJourney}
               >
                 Register Now – Only PKR 5,000
-                <ArrowRight className="ml-2 h-6 w-6" />
+                <ArrowRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6" />
               </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="border-2 border-white/30 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm px-10 py-6 text-xl rounded-full"
+                className="w-full sm:w-auto border-2 border-white/30 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 text-lg sm:text-xl rounded-full"
                 onClick={handleDownload}
               >
-                <Download className="mr-2 h-6 w-6" />
+                <Download className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
                 Download Syllabus
               </Button>
             </div>
 
-            <div className="max-w-4xl mx-auto bg-white/15 rounded-3xl p-8 backdrop-blur-sm border border-white/20 shadow-2xl">
-              <h3 className="text-2xl font-bold mb-6">How to Register</h3>
+            <div className="max-w-4xl mx-auto bg-white/15 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 backdrop-blur-sm border border-white/20 shadow-2xl">
+              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">How to Register</h3>
               
-              <div className="grid md:grid-cols-3 gap-8 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
-                    <DollarSign className="w-8 h-8" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 backdrop-blur-sm">
+                    <DollarSign className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
                   </div>
-                  <h4 className="font-semibold mb-2">1. Make Payment</h4>
-                  <p className="text-emerald-100 text-sm">Transfer PKR 5,000 to our bank account</p>
+                  <h4 className="font-semibold mb-2 text-sm sm:text-base">1. Make Payment</h4>
+                  <p className="text-emerald-100 text-xs sm:text-sm">Transfer PKR 5,000 to our bank account</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
-                    <CheckCircle className="w-8 h-8" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 backdrop-blur-sm">
+                    <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
                   </div>
-                  <h4 className="font-semibold mb-2">2. Confirm Registration</h4>
-                  <p className="text-emerald-100 text-sm">Fill our Google Form with payment details</p>
+                  <h4 className="font-semibold mb-2 text-sm sm:text-base">2. Confirm Registration</h4>
+                  <p className="text-emerald-100 text-xs sm:text-sm">Fill our Google Form with payment details</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
-                    <GraduationCap className="w-8 h-8" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 backdrop-blur-sm">
+                    <GraduationCap className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
                   </div>
-                  <h4 className="font-semibold mb-2">3. Start Learning</h4>
-                  <p className="text-emerald-100 text-sm">Receive welcome materials and join the course</p>
+                  <h4 className="font-semibold mb-2 text-sm sm:text-base">3. Start Learning</h4>
+                  <p className="text-emerald-100 text-xs sm:text-sm">Receive welcome materials and join the course</p>
                 </div>
               </div>
 
-              <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm border border-white/20">
-                <h4 className="text-xl font-semibold mb-4">Bank Transfer Details</h4>
-                <div className="grid md:grid-cols-2 gap-4 text-left text-emerald-50">
+              <div className="bg-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 backdrop-blur-sm border border-white/20">
+                <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Bank Transfer Details</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-left text-emerald-50 text-sm sm:text-base">
                   <div>
                     <strong className="font-medium">Bank:</strong> [Your Bank Name]
                   </div>
                   <div>
                     <strong className="font-medium">Account:</strong> [Account Number]
                   </div>
-                  <div className="md:col-span-2">
+                  <div className="sm:col-span-2">
                     <strong className="font-medium">Account Title:</strong> [Account Title]
                   </div>
                 </div>
               </div>
 
-              <p className="text-emerald-100 mt-6">
+              <p className="text-emerald-100 mt-4 sm:mt-6 text-sm sm:text-base">
                 Once payment is complete, fill our{" "}
                 <a
                   href="#"
@@ -1151,18 +1153,18 @@ export default function LandingPage() {
             </div>
 
             {/* Trust badges */}
-            <div className="flex flex-wrap justify-center gap-8 mt-12 text-emerald-100">
-              <div className="flex items-center">
-                <Shield className="w-5 h-5 mr-2" />
-                <span>100% Money-back Guarantee</span>
+            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 mt-8 sm:mt-12 text-emerald-100 px-4">
+              <div className="flex items-center justify-center">
+                <Shield className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                <span className="text-sm sm:text-base">100% Money-back Guarantee</span>
               </div>
-              <div className="flex items-center">
-                <Heart className="w-5 h-5 mr-2" />
-                <span>Loved by 90%+ Students</span>
+              <div className="flex items-center justify-center">
+                <Heart className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                <span className="text-sm sm:text-base">Loved by 90%+ Students</span>
               </div>
-              <div className="flex items-center">
-                <Users className="w-5 h-5 mr-2" />
-                <span>Expert Instructor Support</span>
+              <div className="flex items-center justify-center">
+                <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
+                <span className="text-sm sm:text-base">Expert Instructor Support</span>
               </div>
             </div>
           </motion.div>

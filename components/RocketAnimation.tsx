@@ -11,14 +11,15 @@ interface RocketAnimationProps {
 export default function RocketAnimation({ trigger, onComplete }: RocketAnimationProps) {
   const [showRockets, setShowRockets] = useState(false)
   const [screenDimensions, setScreenDimensions] = useState({ width: 1200, height: 800 })
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     // Update screen dimensions on client
     const updateDimensions = () => {
-      setScreenDimensions({
-        width: window.innerWidth,
-        height: window.innerHeight
-      })
+      const width = window.innerWidth
+      const height = window.innerHeight
+      setScreenDimensions({ width, height })
+      setIsMobile(width < 768) // md breakpoint
     }
     
     updateDimensions()
@@ -45,8 +46,12 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
     }
   }, [trigger, onComplete])
 
+  // Responsive rocket size
+  const rocketScale = isMobile ? 0.6 : 1
+  const rocketSize = isMobile ? { width: 72, height: 54 } : { width: 120, height: 90 }
+
   const RocketSVG = ({ direction = "left" }: { direction?: "left" | "right" }) => (
-    <svg width="120" height="90" viewBox="0 0 120 90" className="relative z-10">
+    <svg width={rocketSize.width} height={rocketSize.height} viewBox="0 0 120 90" className="relative z-10">
       {/* Main rocket body - sleeker design */}
       <path 
         d="M30 65 L30 25 Q30 15 35 15 L55 15 Q60 15 60 25 L60 65 Q60 70 55 75 L35 75 Q30 70 30 65 Z" 
@@ -153,40 +158,56 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
     </svg>
   )
 
+  // Responsive animation values
+  const getAnimationProps = (isLeftRocket: boolean) => {
+    const baseScale = isMobile ? 0.6 : 0.8
+    const maxScale = isMobile ? 1.0 : 1.2
+    const endScale = isMobile ? 0.4 : 0.6
+    
+    return {
+      initial: {
+        x: isLeftRocket ? -150 : screenDimensions.width + 150,
+        y: screenDimensions.height - (isMobile ? 80 : 100),
+        rotate: isLeftRocket ? 45 : -45,
+        scale: baseScale
+      },
+      animate: {
+        x: isLeftRocket ? [
+          -150,
+          screenDimensions.width * 0.3,
+          screenDimensions.width * 0.7,
+          screenDimensions.width + 150
+        ] : [
+          screenDimensions.width + 150,
+          screenDimensions.width * 0.7,
+          screenDimensions.width * 0.3,
+          -150
+        ],
+        y: [
+          screenDimensions.height - (isMobile ? 80 : 100),
+          screenDimensions.height * (isMobile ? 0.7 : 0.6),
+          screenDimensions.height * (isMobile ? 0.4 : 0.3),
+          -200
+        ],
+        rotate: isLeftRocket ? [45, 50, 55, 60] : [-45, -50, -55, -60],
+        scale: [baseScale, maxScale, 1.0, endScale]
+      }
+    }
+  }
+
   return (
     <AnimatePresence>
       {showRockets && (
         <>
           {/* First Rocket - Left to Right */}
           <motion.div
-            initial={{ 
-              x: -150, 
-              y: screenDimensions.height - 100,
-              rotate: 45,
-              scale: 0.8
-            }}
-            animate={{ 
-              x: [
-                -150,
-                screenDimensions.width * 0.3,
-                screenDimensions.width * 0.7,
-                screenDimensions.width + 150
-              ],
-              y: [
-                screenDimensions.height - 100,
-                screenDimensions.height * 0.6,
-                screenDimensions.height * 0.3,
-                -200
-              ],
-              rotate: [45, 50, 55, 60],
-              scale: [0.8, 1.2, 1.0, 0.6]
-            }}
+            {...getAnimationProps(true)}
             exit={{ 
               opacity: 0,
               scale: 0.2
             }}
             transition={{ 
-              duration: 2.5,
+              duration: isMobile ? 2.0 : 2.5,
               ease: "easeOut",
               times: [0, 0.3, 0.7, 1]
             }}
@@ -198,11 +219,11 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
             <div className="relative">
               <RocketSVG direction="left" />
 
-              {/* Sparkle effects */}
+              {/* Sparkle effects - responsive sizing */}
               <motion.div
                 animate={{
                   opacity: [0, 1, 0],
-                  scale: [0, 1.2, 0],
+                  scale: [0, isMobile ? 1.0 : 1.2, 0],
                   rotate: [0, 180, 360]
                 }}
                 transition={{
@@ -211,7 +232,7 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
                   ease: "easeInOut",
                   delay: 0.1
                 }}
-                className="absolute -top-3 -right-3 w-4 h-4 bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full shadow-lg"
+                className={`absolute -top-3 -right-3 ${isMobile ? 'w-3 h-3' : 'w-4 h-4'} bg-gradient-to-r from-yellow-400 to-orange-400 rounded-full shadow-lg`}
               ></motion.div>
               
               <motion.div
@@ -226,41 +247,20 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
                   ease: "easeInOut",
                   delay: 0.3
                 }}
-                className="absolute -bottom-2 -left-4 w-3 h-3 bg-gradient-to-r from-emerald-400 to-blue-400 rounded-full shadow-lg"
+                className={`absolute -bottom-2 -left-4 ${isMobile ? 'w-2.5 h-2.5' : 'w-3 h-3'} bg-gradient-to-r from-emerald-400 to-blue-400 rounded-full shadow-lg`}
               ></motion.div>
             </div>
           </motion.div>
 
           {/* Second Rocket - Right to Left */}
           <motion.div
-            initial={{ 
-              x: screenDimensions.width + 150, 
-              y: screenDimensions.height - 100,
-              rotate: -45,
-              scale: 0.8
-            }}
-            animate={{ 
-              x: [
-                screenDimensions.width + 150,
-                screenDimensions.width * 0.7,
-                screenDimensions.width * 0.3,
-                -150
-              ],
-              y: [
-                screenDimensions.height - 100,
-                screenDimensions.height * 0.6,
-                screenDimensions.height * 0.3,
-                -200
-              ],
-              rotate: [-45, -50, -55, -60],
-              scale: [0.8, 1.2, 1.0, 0.6]
-            }}
+            {...getAnimationProps(false)}
             exit={{ 
               opacity: 0,
               scale: 0.2
             }}
             transition={{ 
-              duration: 2.5,
+              duration: isMobile ? 2.0 : 2.5,
               ease: "easeOut",
               times: [0, 0.3, 0.7, 1],
               delay: 0.1 // Slight delay for staggered launch
@@ -273,11 +273,11 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
             <div className="relative">
               <RocketSVG direction="right" />
 
-              {/* Sparkle effects with blue theme */}
+              {/* Sparkle effects with blue theme - responsive sizing */}
               <motion.div
                 animate={{
                   opacity: [0, 1, 0],
-                  scale: [0, 1.2, 0],
+                  scale: [0, isMobile ? 1.0 : 1.2, 0],
                   rotate: [0, 180, 360]
                 }}
                 transition={{
@@ -286,7 +286,7 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
                   ease: "easeInOut",
                   delay: 0.2
                 }}
-                className="absolute -top-3 -right-3 w-4 h-4 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full shadow-lg"
+                className={`absolute -top-3 -right-3 ${isMobile ? 'w-3 h-3' : 'w-4 h-4'} bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full shadow-lg`}
               ></motion.div>
               
               <motion.div
@@ -301,7 +301,7 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
                   ease: "easeInOut",
                   delay: 0.4
                 }}
-                className="absolute -bottom-2 -left-4 w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full shadow-lg"
+                className={`absolute -bottom-2 -left-4 ${isMobile ? 'w-2.5 h-2.5' : 'w-3 h-3'} bg-gradient-to-r from-blue-400 to-purple-400 rounded-full shadow-lg`}
               ></motion.div>
             </div>
           </motion.div>
