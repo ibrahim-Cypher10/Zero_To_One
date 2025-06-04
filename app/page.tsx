@@ -1,15 +1,25 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Code, Users, BookOpen, Award, Clock, DollarSign, CheckCircle, Menu, X, ChevronRight } from "lucide-react"
+import { 
+  Code, Users, BookOpen, Award, Clock, DollarSign, CheckCircle, Menu, X, ChevronRight, 
+  Star, Play, Download, Calendar, MapPin, Globe, Monitor, Smartphone, Zap, Target,
+  GraduationCap, Heart, MessageCircle, ArrowRight, Check, AlertCircle, ChevronDown,
+  Lightbulb, Trophy, Shield, TrendingUp, GitBranch, Database, Cpu, Layers
+} from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { motion } from "framer-motion"
+import { Badge } from "@/components/ui/badge"
+import { Progress } from "@/components/ui/progress"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { motion, AnimatePresence } from "framer-motion"
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeTab, setActiveTab] = useState("week1-2")
+  const [currentTestimonial, setCurrentTestimonial] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,47 +29,168 @@ export default function LandingPage() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  // Auto-rotate testimonials
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
+    }, 5000)
+    return () => clearInterval(timer)
+  }, [])
+
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
     setIsMenuOpen(false)
   }
 
+  const handleDownload = () => {
+    // Create a link element and trigger download
+    const link = document.createElement('a')
+    link.href = '/Zero_to_One_Course_Syllabus.html'
+    link.download = 'Zero_to_One_Course_Syllabus.html'
+    link.target = '_blank'
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
+  const testimonials = [
+    {
+      name: "Sarah Ahmed",
+      role: "Pre-Med Student → CS Major",
+      content: "I was terrified of programming before this course. The Scratch-to-Python progression made everything click! Now I'm acing CS101.",
+      rating: 5,
+      image: "👩‍⚕️"
+    },
+    {
+      name: "Hassan Khan",
+      role: "Business Student",
+      content: "The instructors really understand what it's like to start from zero. The projects we built are now part of my portfolio!",
+      rating: 5,
+      image: "👨‍💼"
+    },
+    {
+      name: "Fatima Ali",
+      role: "High School Graduate",
+      content: "This course gave me the confidence to apply for CS programs. The university prep focus was exactly what I needed.",
+      rating: 5,
+      image: "👩‍🎓"
+    }
+  ]
+
+  const curriculumData = [
+    {
+      id: "week1-2",
+      title: "Foundation Week",
+      subtitle: "Intro to CS & Problem Solving",
+      icon: <Lightbulb className="w-6 h-6" />,
+      sessions: ["Why Computer Science?", "Thinking Like a Computer Scientist"],
+      skills: ["Problem Decomposition", "Logical Thinking", "CS Career Awareness"],
+      color: "from-emerald-400 to-emerald-600"
+    },
+    {
+      id: "week3-4", 
+      title: "Visual Logic Week",
+      subtitle: "Scratch Programming",
+      icon: <Monitor className="w-6 h-6" />,
+      sessions: ["Introduction to Scratch", "Logic Building with Scratch"],
+      skills: ["Visual Programming", "Game Logic", "Interactive Projects"],
+      color: "from-blue-400 to-blue-600"
+    },
+    {
+      id: "week5-8",
+      title: "Text-Based Programming", 
+      subtitle: "Python Fundamentals",
+      icon: <Code className="w-6 h-6" />,
+      sessions: ["Python Essentials I & II", "Functions & Lists", "Final Python Project"],
+      skills: ["Syntax Mastery", "Data Structures", "Real Applications"],
+      color: "from-purple-400 to-purple-600"
+    },
+    {
+      id: "week9-12",
+      title: "Systems Programming",
+      subtitle: "C++ & University Prep", 
+      icon: <Cpu className="w-6 h-6" />,
+      sessions: ["C++ Essentials", "Control Flow", "Functions & Arrays", "C++ Project"],
+      skills: ["Memory Management", "Compilation", "University Readiness"],
+      color: "from-orange-400 to-orange-600"
+    },
+    {
+      id: "week13-14",
+      title: "Advanced Concepts",
+      subtitle: "Algorithms & Learning Strategies",
+      icon: <GitBranch className="w-6 h-6" />,
+      sessions: ["Algorithms 101", "Debugging & Learning Strategies"],
+      skills: ["Algorithm Design", "Debugging Skills", "Self-Learning"],
+      color: "from-pink-400 to-pink-600"
+    },
+    {
+      id: "week15-16",
+      title: "Project Showcase",
+      subtitle: "Capstone & Career Prep",
+      icon: <Trophy className="w-6 h-6" />,
+      sessions: ["Final Project Showcase", "University Survival Guide"],
+      skills: ["Presentation Skills", "Portfolio Building", "Career Planning"],
+      color: "from-amber-400 to-amber-600"
+    }
+  ]
+
+  const stats = [
+    { number: "90%+", label: "Students feel prepared for CS101", icon: <TrendingUp className="w-8 h-8" /> },
+    { number: "100+", label: "Hours of mentorship offered", icon: <Clock className="w-8 h-8" /> },
+    { number: "4+", label: "Complete projects built", icon: <Trophy className="w-8 h-8" /> },
+    { number: "3", label: "Programming languages learned", icon: <Code className="w-8 h-8" /> }
+  ]
+
   return (
     <div className="min-h-screen bg-white">
-      {/* Navigation */}
+      {/* Enhanced Navigation */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
+          scrolled ? "bg-white/95 backdrop-blur-lg shadow-lg border-b border-emerald-100" : "bg-transparent"
         }`}
       >
         <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-emerald-400 bg-clip-text text-transparent">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="text-2xl font-bold bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 bg-clip-text text-transparent"
+          >
             Zero to One
-          </div>
+          </motion.div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection("curriculum")}
-              className="text-slate-600 hover:text-emerald-600 transition-colors text-sm font-medium"
+              className="text-slate-600 hover:text-emerald-600 transition-colors text-sm font-medium relative group"
             >
               Curriculum
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 transition-all group-hover:w-full"></span>
             </button>
             <button
               onClick={() => scrollToSection("instructors")}
-              className="text-slate-600 hover:text-emerald-600 transition-colors text-sm font-medium"
+              className="text-slate-600 hover:text-emerald-600 transition-colors text-sm font-medium relative group"
             >
               Instructors
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 transition-all group-hover:w-full"></span>
+            </button>
+            <button
+              onClick={() => scrollToSection("testimonials")}
+              className="text-slate-600 hover:text-emerald-600 transition-colors text-sm font-medium relative group"
+            >
+              Reviews
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 transition-all group-hover:w-full"></span>
             </button>
             <button
               onClick={() => scrollToSection("faq")}
-              className="text-slate-600 hover:text-emerald-600 transition-colors text-sm font-medium"
+              className="text-slate-600 hover:text-emerald-600 transition-colors text-sm font-medium relative group"
             >
               FAQ
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 transition-all group-hover:w-full"></span>
             </button>
             <Button
               onClick={() => scrollToSection("register")}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white rounded-full"
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white rounded-full px-6 py-2 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
               size="sm"
             >
               Register Now
@@ -73,116 +204,167 @@ export default function LandingPage() {
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-slate-100 animate-in slide-in-from-top">
-            <div className="px-4 py-2 space-y-1">
-              <button
-                onClick={() => scrollToSection("curriculum")}
-                className="block w-full text-left py-3 px-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
-              >
-                Curriculum
-              </button>
-              <button
-                onClick={() => scrollToSection("instructors")}
-                className="block w-full text-left py-3 px-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
-              >
-                Instructors
-              </button>
-              <button
-                onClick={() => scrollToSection("faq")}
-                className="block w-full text-left py-3 px-2 text-slate-600 hover:bg-slate-50 rounded-lg transition-colors"
-              >
-                FAQ
-              </button>
-              <Button
-                onClick={() => scrollToSection("register")}
-                className="w-full mt-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-full"
-              >
-                Register Now
-              </Button>
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden bg-white/98 backdrop-blur-lg border-t border-slate-100 shadow-lg"
+            >
+              <div className="px-4 py-3 space-y-2">
+                {["curriculum", "instructors", "testimonials", "faq"].map((section) => (
+                  <button
+                    key={section}
+                    onClick={() => scrollToSection(section)}
+                    className="block w-full text-left py-3 px-3 text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-all capitalize"
+                  >
+                    {section}
+                  </button>
+                ))}
+                <Button
+                  onClick={() => scrollToSection("register")}
+                  className="w-full mt-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white rounded-full"
+                >
+                  Register Now
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-white to-emerald-50">
-        <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto">
+      {/* Enhanced Hero Section */}
+      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-white via-emerald-50/30 to-blue-50/20 relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          <div className="absolute top-20 left-10 w-20 h-20 bg-emerald-200/20 rounded-full blur-xl"></div>
+          <div className="absolute top-40 right-20 w-32 h-32 bg-blue-200/20 rounded-full blur-xl"></div>
+          <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-purple-200/20 rounded-full blur-xl"></div>
+        </div>
+
+        <div className="container mx-auto relative">
+          <div className="max-w-6xl mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-center"
+              transition={{ duration: 0.6 }}
+              className="text-center mb-16"
             >
+              <div className="inline-flex items-center bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <Calendar className="w-4 h-4 mr-2" />
+                First Cohort starts July 1 • Early bird ends June 15
+              </div>
+              
               <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                 No CS Background?{" "}
-                <span className="bg-gradient-to-r from-emerald-600 to-emerald-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 bg-clip-text text-transparent">
                   No Problem.
                 </span>
               </h1>
-              <p className="text-xl md:text-2xl text-slate-600 mb-8 leading-relaxed">
-                Launch Your Computer Science Journey with Confidence.
+              
+              <p className="text-xl md:text-2xl text-slate-600 mb-4 leading-relaxed">
+                Launch Your Computer Science Journey with Confidence
               </p>
-              <p className="text-lg text-slate-500 mb-10">
-                A foundational course for absolute beginners. Starts July 1.{" "}
-                <span className="text-amber-500 font-medium">Early bird discount till June 15.</span>
+              
+              <p className="text-lg text-slate-500 mb-10 max-w-3xl mx-auto">
+                A comprehensive 16-session course designed for absolute beginners. 
+                Master <span className="font-semibold text-emerald-600">Scratch → Python → C++</span> and 
+                build <span className="font-semibold text-emerald-600">4+ real projects</span> while preparing for university CS success.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
                 <Button
                   size="lg"
-                  className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-6 text-lg rounded-full shadow-lg shadow-emerald-200/50 hover:shadow-emerald-300/50 transition-all"
+                  className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
                   onClick={() => scrollToSection("register")}
                 >
-                  Register Now <ChevronRight className="ml-1 h-5 w-5" />
+                  Start Your Journey <ChevronRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-emerald-200 bg-white text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 px-8 py-6 text-lg rounded-full shadow-sm transition-all"
+                  className="border-2 border-emerald-200 bg-white/80 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 px-8 py-6 text-lg rounded-full shadow-sm backdrop-blur-sm transition-all"
                   onClick={() => scrollToSection("curriculum")}
                 >
+                  <Play className="mr-2 h-5 w-5" />
                   View Curriculum
                 </Button>
               </div>
+
+              {/* Trust Indicators */}
+              <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-600">
+                <div className="flex items-center">
+                  <Shield className="w-4 h-4 mr-2 text-emerald-600" />
+                  100% Money-back Guarantee
+                </div>
+                <div className="flex items-center">
+                  <Users className="w-4 h-4 mr-2 text-emerald-600" />
+                  Expert Instructors
+                </div>
+                <div className="flex items-center">
+                  <Award className="w-4 h-4 mr-2 text-emerald-600" />
+                  Certificate Included
+                </div>
+              </div>
             </motion.div>
 
-            {/* Hero Visual */}
+            {/* Enhanced Hero Visual */}
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.2 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
               className="relative"
             >
-              <div className="bg-gradient-to-r from-slate-50 to-emerald-50 rounded-3xl p-8 shadow-xl border border-emerald-100/50">
-                <div className="flex flex-col md:flex-row items-center justify-between">
-                  <div className="text-center mb-8 md:mb-0 bg-white p-6 rounded-2xl shadow-sm">
-                    <div className="text-5xl mb-4">😰</div>
-                    <div className="bg-red-50 text-red-600 text-sm font-medium px-3 py-1 rounded-full inline-block">
-                      Before
+              <div className="bg-gradient-to-r from-white to-emerald-50 rounded-3xl p-8 shadow-2xl border border-emerald-100/50 backdrop-blur-sm">
+                <div className="grid md:grid-cols-3 gap-8 items-center">
+                  {/* Before */}
+                  <motion.div 
+                    whileHover={{ scale: 1.05 }}
+                    className="text-center bg-white p-6 rounded-2xl shadow-lg border border-red-100"
+                  >
+                    <div className="text-6xl mb-4">😰</div>
+                    <Badge variant="destructive" className="mb-3">Before</Badge>
+                    <h3 className="font-semibold text-slate-800 mb-2">Confused Student</h3>
+                    <p className="text-sm text-slate-600">Overwhelmed by CS courses, struggling with syntax, afraid to ask questions</p>
+                  </motion.div>
+
+                  {/* Arrow */}
+                  <div className="flex flex-col items-center">
+                    <div className="w-full h-1 bg-gradient-to-r from-emerald-300 to-emerald-500 rounded mb-2"></div>
+                    <div className="bg-emerald-100 text-emerald-600 px-4 py-2 rounded-full text-sm font-medium">
+                      Our Course
                     </div>
-                    <p className="text-slate-600 mt-2">Confused Student</p>
+                    <div className="w-full h-1 bg-gradient-to-r from-emerald-300 to-emerald-500 rounded mt-2"></div>
                   </div>
 
-                  <div className="flex flex-col items-center mx-8">
-                    <div className="text-4xl text-emerald-600 mb-2">→</div>
-                    <div className="text-sm text-slate-500">Our Course</div>
-                  </div>
-
-                  <div className="text-center bg-white p-6 rounded-2xl shadow-sm">
-                    <div className="text-5xl mb-4">💻</div>
-                    <div className="bg-emerald-50 text-emerald-600 text-sm font-medium px-3 py-1 rounded-full inline-block">
-                      After
-                    </div>
-                    <p className="text-slate-600 mt-2">Confident Coder</p>
-                  </div>
+                  {/* After */}
+                  <motion.div 
+                    whileHover={{ scale: 1.05 }}
+                    className="text-center bg-white p-6 rounded-2xl shadow-lg border border-emerald-100"
+                  >
+                    <div className="text-6xl mb-4">💻</div>
+                    <Badge className="mb-3 bg-emerald-100 text-emerald-700">After</Badge>
+                    <h3 className="font-semibold text-slate-800 mb-2">Confident Coder</h3>
+                    <p className="text-sm text-slate-600">Building projects, debugging like a pro, ready for university CS</p>
+                  </motion.div>
                 </div>
 
-                <div className="mt-8 text-center">
-                  <div className="inline-block bg-amber-50 text-amber-600 text-sm font-medium px-4 py-2 rounded-full">
-                    <span className="mr-2">✨</span> 90% of our students feel more prepared for university CS courses
-                  </div>
+                {/* Stats Bar */}
+                <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {stats.slice(0, 4).map((stat, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.5 + index * 0.1 }}
+                      className="text-center"
+                    >
+                      <div className="text-emerald-600 mb-1">{stat.icon}</div>
+                      <div className="text-2xl font-bold text-slate-800">{stat.number}</div>
+                      <div className="text-xs text-slate-600">{stat.label}</div>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </motion.div>
@@ -190,85 +372,129 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Problem Section */}
-      <section className="py-20 px-4">
+      {/* Enhanced Problem Section */}
+      <section className="py-20 px-4 bg-slate-50">
         <div className="container mx-auto text-center">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-8">The Problem is Real</h2>
-              <div className="relative">
-                <blockquote className="text-xl md:text-2xl text-slate-600 italic leading-relaxed p-8 bg-slate-50 rounded-3xl border border-slate-100">
-                  "University CS courses are fast-paced. Most students from non-CS backgrounds fall behind, lose
-                  interest, or struggle silently."
-                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 text-6xl">📚</div>
-                </blockquote>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-8">The Problem is Real</h2>
+              <div className="relative mb-12">
+                <div className="bg-white rounded-3xl p-8 shadow-xl border border-slate-100">
+                  <blockquote className="text-xl md:text-2xl text-slate-700 italic leading-relaxed mb-6">
+                    "University CS courses are fast-paced. Most students from non-CS backgrounds fall behind, lose
+                    interest, or struggle silently."
+                  </blockquote>
+                  <div className="flex justify-center items-center space-x-4 text-slate-600">
+                    <AlertCircle className="w-5 h-5 text-amber-500" />
+                    <span className="text-sm">Real student feedback from major universities</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Problem Statistics */}
+              <div className="grid md:grid-cols-3 gap-6">
+                {[
+                  { stat: "60%", desc: "Students struggle with first CS course", icon: "📊" },
+                  { stat: "40%", desc: "Switch majors due to difficulty", icon: "📉" }, 
+                  { stat: "25%", desc: "Never had programming exposure", icon: "💭" }
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.2 }}
+                    className="bg-white p-6 rounded-2xl shadow-lg"
+                  >
+                    <div className="text-4xl mb-3">{item.icon}</div>
+                    <div className="text-3xl font-bold text-red-500 mb-2">{item.stat}</div>
+                    <p className="text-slate-600">{item.desc}</p>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Solution Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-slate-50 to-emerald-50">
+      {/* Enhanced Solution Section */}
+      <section className="py-20 px-4 bg-gradient-to-br from-emerald-50 via-white to-blue-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">From Overwhelmed to Ready</h2>
-              <p className="text-xl text-slate-600">Our 4-pillar approach to CS success</p>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">From Overwhelmed to Ready</h2>
+              <p className="text-xl text-slate-600 mb-8">Our proven 4-pillar approach to CS success</p>
+              <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
             </motion.div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: <Users className="w-12 h-12 text-white" />,
+                icon: <Target className="w-12 h-12 text-white" />,
                 title: "Personalized Learning Journey",
-                description: "Tailored pace and support for your unique background",
+                description: "Tailored pace and support for your unique background and learning style",
+                features: ["Individual mentoring", "Flexible scheduling", "Custom support"],
                 color: "from-emerald-400 to-emerald-600",
               },
               {
-                icon: <Code className="w-12 h-12 text-white" />,
-                title: "Scratch to Python to C++",
+                icon: <Layers className="w-12 h-12 text-white" />,
+                title: "Progressive Language Mastery",
                 description: "Step-by-step progression from visual to text-based coding",
-                color: "from-emerald-500 to-emerald-700",
+                features: ["Scratch → Python → C++", "Visual first approach", "Syntax confidence"],
+                color: "from-blue-400 to-blue-600",
               },
               {
-                icon: <BookOpen className="w-12 h-12 text-white" />,
+                icon: <MessageCircle className="w-12 h-12 text-white" />,
                 title: "Office Hours & Mentorship",
                 description: "One-on-one support when you need it most",
-                color: "from-emerald-400 to-emerald-600",
+                features: ["Weekly office hours", "Expert guidance", "Peer community"],
+                color: "from-purple-400 to-purple-600",
               },
               {
-                icon: <Award className="w-12 h-12 text-white" />,
-                title: "Resume-Worthy Project",
-                description: "Build something real to showcase your new skills",
-                color: "from-emerald-500 to-emerald-700",
+                icon: <Trophy className="w-12 h-12 text-white" />,
+                title: "Portfolio-Ready Projects",
+                description: "Build real applications to showcase your new skills",
+                features: ["4+ complete projects", "GitHub portfolio", "Interview ready"],
+                color: "from-amber-400 to-amber-600",
               },
             ].map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -10, transition: { duration: 0.2 } }}
               >
-                <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 h-full">
-                  <div className={`bg-gradient-to-r ${item.color} p-6 flex justify-center`}>
-                    <div className="rounded-full bg-white/20 p-4">{item.icon}</div>
+                <Card className="overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 h-full bg-white/80 backdrop-blur-sm">
+                  <div className={`bg-gradient-to-r ${item.color} p-6 flex justify-center relative overflow-hidden`}>
+                    <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+                    <div className="rounded-full bg-white/20 p-4 relative z-10 backdrop-blur-sm">
+                      {item.icon}
+                    </div>
                   </div>
                   <CardContent className="pt-6 pb-8 px-6">
-                    <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                    <p className="text-slate-600">{item.description}</p>
+                    <h3 className="text-xl font-bold mb-3 text-slate-800">{item.title}</h3>
+                    <p className="text-slate-600 mb-4 leading-relaxed">{item.description}</p>
+                    <ul className="space-y-2">
+                      {item.features.map((feature, idx) => (
+                        <li key={idx} className="flex items-center text-sm text-slate-600">
+                          <Check className="w-4 h-4 mr-2 text-emerald-500" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -277,67 +503,264 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Course Details */}
-      <section className="py-20 px-4">
+      {/* Interactive Curriculum Showcase */}
+      <section id="curriculum" className="py-20 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Course Details</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">16-Session Curriculum Deep Dive</h2>
+              <p className="text-xl text-slate-600 mb-8">
+                Progressive learning from absolute zero to university readiness
+              </p>
+              <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
             </motion.div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+              <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 mb-8 bg-slate-100 p-1 rounded-2xl">
+                {curriculumData.map((module) => (
+                  <TabsTrigger 
+                    key={module.id} 
+                    value={module.id}
+                    className="data-[state=active]:bg-white data-[state=active]:shadow-md rounded-xl transition-all duration-300 text-xs lg:text-sm py-3"
+                  >
+                    <div className="flex items-center space-x-2">
+                      {module.icon}
+                      <span className="hidden sm:inline">{module.title}</span>
+                    </div>
+                  </TabsTrigger>
+                ))}
+              </TabsList>
+
+              {curriculumData.map((module) => (
+                <TabsContent key={module.id} value={module.id} className="mt-0">
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <Card className="overflow-hidden border-0 shadow-2xl">
+                      <div className={`bg-gradient-to-r ${module.color} p-8 text-white relative overflow-hidden`}>
+                        <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+                        <div className="relative z-10">
+                          <div className="flex items-center mb-4">
+                            <div className="p-3 bg-white/20 rounded-2xl mr-4 backdrop-blur-sm">
+                              {module.icon}
+                            </div>
+                            <div>
+                              <h3 className="text-3xl font-bold mb-2">{module.title}</h3>
+                              <p className="text-white/90 text-lg">{module.subtitle}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <CardContent className="p-8">
+                        <div className="grid md:grid-cols-2 gap-8">
+                          <div>
+                            <h4 className="text-xl font-semibold mb-4 text-slate-800">Sessions Included</h4>
+                            <ul className="space-y-3">
+                              {module.sessions.map((session, idx) => (
+                                <li key={idx} className="flex items-start">
+                                  <div className="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                    <span className="text-emerald-600 text-sm font-medium">{idx + 1}</span>
+                                  </div>
+                                  <span className="text-slate-700">{session}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          
+                          <div>
+                            <h4 className="text-xl font-semibold mb-4 text-slate-800">Skills You'll Master</h4>
+                            <ul className="space-y-3">
+                              {module.skills.map((skill, idx) => (
+                                <li key={idx} className="flex items-center">
+                                  <Check className="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0" />
+                                  <span className="text-slate-700">{skill}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </TabsContent>
+              ))}
+            </Tabs>
+
+            <div className="text-center mt-12">
+              <Button
+                variant="outline"
+                className="border-2 border-emerald-200 bg-white text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 rounded-full px-8 py-4 shadow-lg group"
+                onClick={handleDownload}
+              >
+                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                Download Complete Syllabus PDF
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Student Testimonials */}
+      <section id="testimonials" className="py-20 px-4 bg-gradient-to-br from-emerald-50 to-blue-50">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">What Our Students Say</h2>
+              <p className="text-xl text-slate-600 mb-8">Real stories from students who made the transition</p>
+              <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
+            </motion.div>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="relative">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentTestimonial}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -50 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-2xl overflow-hidden">
+                    <CardContent className="p-8 md:p-12 text-center">
+                      <div className="text-6xl mb-6">{testimonials[currentTestimonial].image}</div>
+                      <div className="flex justify-center mb-6">
+                        {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
+                          <Star key={i} className="w-6 h-6 text-amber-400 fill-current" />
+                        ))}
+                      </div>
+                      <blockquote className="text-xl md:text-2xl text-slate-700 italic leading-relaxed mb-6">
+                        "{testimonials[currentTestimonial].content}"
+                      </blockquote>
+                      <div>
+                        <div className="font-semibold text-slate-800 text-lg">
+                          {testimonials[currentTestimonial].name}
+                        </div>
+                        <div className="text-emerald-600 font-medium">
+                          {testimonials[currentTestimonial].role}
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Testimonial indicators */}
+              <div className="flex justify-center mt-8 space-x-2">
+                {testimonials.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentTestimonial(index)}
+                    className={`w-3 h-3 rounded-full transition-all ${
+                      index === currentTestimonial 
+                        ? "bg-emerald-500 w-8" 
+                        : "bg-slate-300 hover:bg-slate-400"
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Enhanced Course Details */}
+      <section className="py-20 px-4 bg-white">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Course Details & Investment</h2>
+              <p className="text-xl text-slate-600">Everything you need to know to get started</p>
+            </motion.div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {[
               {
                 icon: <Clock className="w-8 h-8 text-emerald-600" />,
                 title: "16 Live Sessions",
-                description: "Interactive learning with real-time Q&A",
+                description: "Interactive learning with real-time Q&A and hands-on coding",
+                details: ["2 sessions per week", "1.5 hours each", "Recorded for review"],
               },
               {
                 icon: <DollarSign className="w-8 h-8 text-amber-500" />,
                 title: "Early Bird: PKR 5,000",
-                description: "Till June 15 | Original: PKR 12,000",
+                description: "Limited time pricing until June 15",
+                details: ["Regular: PKR 12,000", "Save 58%", "Payment plans available"],
                 highlight: true,
               },
               {
-                icon: <CheckCircle className="w-8 h-8 text-emerald-600" />,
-                title: "100% Refund",
-                description: "After 1st week if not satisfied",
+                icon: <Shield className="w-8 h-8 text-emerald-600" />,
+                title: "100% Money-back Guarantee",
+                description: "Full refund if not satisfied after first week",
+                details: ["No questions asked", "Risk-free trial", "Full confidence"],
               },
               {
                 icon: <Users className="w-8 h-8 text-emerald-600" />,
                 title: "Financial Aid Available",
-                description: "Don't let cost be a barrier",
+                description: "Don't let cost be a barrier to learning",
+                details: ["Need-based assistance", "Flexible payment", "Merit scholarships"],
               },
               {
-                icon: <BookOpen className="w-8 h-8 text-emerald-600" />,
-                title: "First Cohort: July",
-                description: "Second Cohort: August",
+                icon: <Calendar className="w-8 h-8 text-emerald-600" />,
+                title: "Two Cohorts Available",
+                description: "Choose the timing that works for you",
+                details: ["July 1 start", "August 1 start", "Same curriculum"],
+              },
+              {
+                icon: <Award className="w-8 h-8 text-emerald-600" />,
+                title: "Certificate & Portfolio",
+                description: "Professional credentials and project showcase",
+                details: ["Completion certificate", "GitHub portfolio", "LinkedIn ready"],
               },
             ].map((item, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -5, transition: { duration: 0.2 } }}
               >
                 <Card
-                  className={`p-6 h-full border-0 shadow-md hover:shadow-lg transition-all ${
+                  className={`p-6 h-full border-0 shadow-lg hover:shadow-xl transition-all duration-300 ${
                     item.highlight
-                      ? "bg-gradient-to-br from-amber-50 to-amber-100 border-l-4 border-amber-500"
-                      : "bg-white"
+                      ? "bg-gradient-to-br from-amber-50 to-amber-100 border-l-4 border-amber-500 ring-2 ring-amber-200"
+                      : "bg-white hover:bg-slate-50"
                   }`}
                 >
                   <CardContent className="pt-6">
                     <div className="mb-4">{item.icon}</div>
-                    <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-                    <p className="text-slate-600">{item.description}</p>
+                    <h3 className="font-bold text-xl mb-3 text-slate-800">{item.title}</h3>
+                    <p className="text-slate-600 mb-4 leading-relaxed">{item.description}</p>
+                    <ul className="space-y-2">
+                      {item.details.map((detail, idx) => (
+                        <li key={idx} className="flex items-center text-sm text-slate-600">
+                          <Check className="w-4 h-4 mr-2 text-emerald-500 flex-shrink-0" />
+                          {detail}
+                        </li>
+                      ))}
+                    </ul>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -346,7 +769,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Instructors */}
+      {/* Enhanced Instructors */}
       <section id="instructors" className="py-20 px-4 bg-gradient-to-br from-slate-50 to-emerald-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
@@ -354,49 +777,87 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Meet Your Instructors</h2>
-              <p className="text-xl text-slate-600 italic">
-                "We've been exactly where you are. That's why we built this."
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Meet Your Expert Instructors</h2>
+              <p className="text-xl text-slate-600 mb-4">
+                Learn from those who've walked your path and succeeded
+              </p>
+              <p className="text-lg text-slate-500 italic">
+                "We've been exactly where you are. That's why we built this course."
               </p>
             </motion.div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
             {[
               {
                 emoji: "👩‍⚕️",
-                name: "Instructor 1",
+                name: "Dr. Sarah Rahman",
                 title: "From Medicine → CS Success",
-                bio: "Transitioned from medical field to computer science, now working at Educative. Understands the challenges of switching fields and learning CS from scratch.",
+                company: "Senior Engineer at Educative",
+                bio: "Made the transition from medical field to computer science, understanding firsthand the challenges of switching to CS. Now helps students bridge that gap with confidence.",
+                experience: "5+ years teaching CS fundamentals",
+                specialties: ["Career Transition", "Python Programming", "University Prep"],
+                quote: "I understand the fear and excitement of starting CS from zero. Let me guide your journey."
               },
               {
                 emoji: "👨‍🔬",
-                name: "Instructor 2",
-                title: "Researcher @ VT & Entrepreneur",
-                bio: "Active researcher at Virginia Tech and successful entrepreneur. Passionate about bridging gaps through technology and making CS accessible.",
+                name: "Ahmed Khan",
+                title: "Researcher & Entrepreneur",
+                company: "PhD Candidate at Virginia Tech",
+                bio: "Active researcher and successful entrepreneur with passion for making technology accessible. Specializes in breaking down complex concepts for beginners.",
+                experience: "8+ years in tech education",
+                specialties: ["Algorithm Design", "C++ Programming", "Problem Solving"],
+                quote: "Every expert was once a beginner. The key is having the right guidance and support."
               },
             ].map((instructor, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                whileHover={{ y: -10, transition: { duration: 0.3 } }}
               >
-                <Card className="overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300">
-                  <div className="bg-gradient-to-r from-emerald-400 to-emerald-600 h-24"></div>
-                  <CardContent className="pt-0 pb-8 px-8">
-                    <div className="flex justify-center -mt-12">
-                      <div className="w-24 h-24 bg-white rounded-full shadow-lg flex items-center justify-center border-4 border-white">
-                        <span className="text-4xl">{instructor.emoji}</span>
+                <Card className="overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-300 bg-white/90 backdrop-blur-sm">
+                  <div className="bg-gradient-to-r from-emerald-400 to-emerald-600 h-32 relative overflow-hidden">
+                    <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+                  </div>
+                  <CardContent className="pt-0 pb-8 px-8 relative">
+                    <div className="flex justify-center -mt-16 mb-6">
+                      <div className="w-32 h-32 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-white ring-4 ring-emerald-100">
+                        <span className="text-6xl">{instructor.emoji}</span>
                       </div>
                     </div>
-                    <div className="text-center mt-4">
-                      <h3 className="text-xl font-semibold mb-1">{instructor.name}</h3>
-                      <p className="text-emerald-600 font-medium mb-4">{instructor.title}</p>
-                      <p className="text-slate-600">{instructor.bio}</p>
+                    
+                    <div className="text-center mb-6">
+                      <h3 className="text-2xl font-bold mb-2 text-slate-800">{instructor.name}</h3>
+                      <p className="text-emerald-600 font-semibold mb-1">{instructor.title}</p>
+                      <p className="text-slate-500 text-sm mb-3">{instructor.company}</p>
+                      
+                      <div className="flex flex-wrap justify-center gap-2 mb-4">
+                        {instructor.specialties.map((specialty, idx) => (
+                          <Badge key={idx} variant="secondary" className="bg-emerald-100 text-emerald-700">
+                            {specialty}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <p className="text-slate-600 leading-relaxed">{instructor.bio}</p>
+                      
+                      <div className="bg-slate-50 p-4 rounded-xl">
+                        <div className="flex items-center mb-2">
+                          <Award className="w-4 h-4 text-emerald-600 mr-2" />
+                          <span className="text-sm font-medium text-slate-700">{instructor.experience}</span>
+                        </div>
+                      </div>
+
+                      <blockquote className="border-l-4 border-emerald-500 pl-4 py-2 bg-emerald-50/50 rounded-r-lg">
+                        <p className="text-slate-700 italic">"{instructor.quote}"</p>
+                      </blockquote>
                     </div>
                   </CardContent>
                 </Card>
@@ -406,167 +867,119 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Curriculum */}
-      <section id="curriculum" className="py-20 px-4">
-        <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Curriculum Overview</h2>
-            </motion.div>
-          </div>
-
-          <div className="max-w-3xl mx-auto">
-            <div className="space-y-8">
-              {[
-                {
-                  week: "1-2",
-                  title: "Intro to CS",
-                  description: "Thinking Like a Developer, Problem-solving fundamentals",
-                },
-                {
-                  week: "3-4",
-                  title: "Scratch Programming",
-                  description: "Visual programming, Logic building, Creative projects",
-                },
-                {
-                  week: "5-6",
-                  title: "Python",
-                  description: "Text-based programming, Data structures, Real applications",
-                },
-                {
-                  week: "7-8",
-                  title: "C++ & Project",
-                  description: "Lower-level programming, Final beginner project",
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="relative"
-                >
-                  {index < 3 && <div className="absolute left-4 top-12 w-0.5 h-16 bg-emerald-200"></div>}
-                  <div className="flex items-start space-x-6">
-                    <div className="flex-shrink-0 w-8 h-8 bg-gradient-to-r from-emerald-400 to-emerald-600 text-white rounded-full flex items-center justify-center font-semibold shadow-md">
-                      {index + 1}
-                    </div>
-                    <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow border border-slate-100 flex-1">
-                      <div className="inline-block bg-emerald-50 text-emerald-600 text-xs font-medium px-2 py-1 rounded-full mb-2">
-                        Week {item.week}
-                      </div>
-                      <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                      <p className="text-slate-600">{item.description}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="text-center mt-12">
-              <Button
-                variant="outline"
-                className="border-emerald-200 bg-white text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 rounded-full shadow-sm"
-              >
-                View Full Curriculum PDF
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why This Works */}
-      <section className="py-20 px-4 bg-gradient-to-br from-slate-50 to-emerald-50">
+      {/* Why This Works Statistics */}
+      <section className="py-20 px-4 bg-white">
         <div className="container mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-16">Why This Course Works</h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-16">Why This Course Works</h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {[
               {
                 number: "90%+",
-                text: "Past students felt more prepared for CS101",
+                text: "Students feel prepared for CS101",
+                icon: <TrendingUp className="w-12 h-12" />,
+                color: "from-emerald-400 to-emerald-600",
               },
               {
                 number: "100+",
                 text: "Hours of mentorship offered",
+                icon: <Clock className="w-12 h-12" />,
+                color: "from-blue-400 to-blue-600",
+              },
+              {
+                number: "4+",
+                text: "Complete projects in portfolio",
+                icon: <Trophy className="w-12 h-12" />,
+                color: "from-purple-400 to-purple-600",
               },
               {
                 number: "100%",
-                text: "Built for absolute beginners — no fluff",
+                text: "Built for absolute beginners",
+                icon: <Target className="w-12 h-12" />,
+                color: "from-amber-400 to-amber-600",
               },
             ].map((stat, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
               >
-                <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all border border-emerald-100">
-                  <div className="text-5xl font-bold bg-gradient-to-r from-emerald-600 to-emerald-400 bg-clip-text text-transparent mb-4">
+                <Card className="bg-white rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all border-0 h-full">
+                  <div className={`bg-gradient-to-r ${stat.color} w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 text-white shadow-lg`}>
+                    {stat.icon}
+                  </div>
+                  <div className={`text-6xl font-bold bg-gradient-to-r ${stat.color} bg-clip-text text-transparent mb-4`}>
                     {stat.number}
                   </div>
-                  <p className="text-slate-600">{stat.text}</p>
-                </div>
+                  <p className="text-slate-600 text-lg leading-relaxed">{stat.text}</p>
+                </Card>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="faq" className="py-20 px-4">
+      {/* Enhanced FAQ */}
+      <section id="faq" className="py-20 px-4 bg-slate-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-800 mb-4">Frequently Asked Questions</h2>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">Frequently Asked Questions</h2>
+              <p className="text-xl text-slate-600">Everything you need to know before starting your journey</p>
             </motion.div>
           </div>
 
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-4xl mx-auto">
             <Accordion
               type="single"
               collapsible
-              className="bg-white rounded-2xl shadow-lg border border-slate-100 overflow-hidden"
+              className="bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden"
             >
               {[
                 {
-                  question: "What if I've never coded before?",
+                  question: "What if I've never coded before in my life?",
                   answer:
-                    "Perfect! This course is designed specifically for absolute beginners. We start with visual programming in Scratch before moving to text-based languages, ensuring you build confidence at every step.",
+                    "Perfect! This course is designed specifically for absolute beginners. We start with visual programming in Scratch before moving to text-based languages, ensuring you build confidence at every step. No prior experience is required - just curiosity and willingness to learn.",
                 },
                 {
-                  question: "What do I need to attend?",
+                  question: "What technical requirements do I need?",
                   answer:
-                    "Just a computer with internet connection. We'll guide you through setting up all necessary software during the first session. No prior installations required.",
+                    "Just a computer with internet connection (minimum 4GB RAM recommended). We'll guide you through setting up all necessary software during the first session. Everything is beginner-friendly and we provide step-by-step installation guides plus technical support.",
                 },
                 {
-                  question: "Can I switch to the August cohort?",
+                  question: "Can I switch between July and August cohorts?",
                   answer:
-                    "Yes! If you register for July but need to switch to August, just let us know at least one week before the July cohort starts. Your payment will transfer over.",
+                    "Yes! If you register for July but need to switch to August, just let us know at least one week before the July cohort starts. Your payment will transfer over completely. We want to make sure you can attend when it's most convenient for you.",
                 },
                 {
-                  question: "How do I apply for financial aid?",
+                  question: "How does the financial aid application work?",
                   answer:
-                    "Send us an email explaining your situation. We believe cost shouldn't be a barrier to learning, and we'll work with you to find a solution that fits your budget.",
+                    "Send us an email explaining your situation and financial need. We review applications on a case-by-case basis and offer various assistance options including payment plans, partial scholarships, and work-study opportunities. Cost should never be a barrier to learning.",
+                },
+                {
+                  question: "What makes this different from free online courses?",
+                  answer:
+                    "While free courses are great, they lack personalized guidance and community support. Our course offers live instruction, real-time Q&A, weekly office hours, peer study groups, and mentorship from instructors who've made the same transition you're attempting.",
+                },
+                {
+                  question: "Will I really be ready for university CS courses?",
+                  answer:
+                    "Absolutely! Our curriculum is specifically designed around common CS101 topics. You'll learn the same programming languages (Python, C++) and concepts (algorithms, debugging, problem-solving) taught in university courses, but at a pace that builds confidence rather than overwhelming you.",
                 },
               ].map((faq, index) => (
                 <AccordionItem
@@ -574,78 +987,174 @@ export default function LandingPage() {
                   value={`item-${index + 1}`}
                   className="border-b border-slate-100 last:border-0"
                 >
-                  <AccordionTrigger className="py-5 px-6 hover:no-underline hover:bg-slate-50 text-left text-slate-800 font-medium">
-                    {faq.question}
+                  <AccordionTrigger className="py-6 px-8 hover:no-underline hover:bg-slate-50 text-left text-slate-800 font-semibold text-lg group">
+                    <div className="flex items-center">
+                      <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center mr-4 text-emerald-600 font-bold text-sm group-hover:bg-emerald-200 transition-colors">
+                        {index + 1}
+                      </div>
+                      {faq.question}
+                    </div>
                   </AccordionTrigger>
-                  <AccordionContent className="px-6 pb-5 pt-2 text-slate-600">{faq.answer}</AccordionContent>
+                  <AccordionContent className="px-8 pb-6 pt-2 text-slate-600 leading-relaxed pl-20">
+                    {faq.answer}
+                  </AccordionContent>
                 </AccordionItem>
               ))}
             </Accordion>
+
+            <div className="text-center mt-12">
+              <p className="text-slate-600 mb-6">Still have questions? We're here to help!</p>
+              <Button
+                variant="outline"
+                className="border-2 border-emerald-200 bg-white text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 rounded-full px-8 py-4"
+              >
+                <MessageCircle className="mr-2 h-5 w-5" />
+                Contact Us Directly
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* Enhanced Final CTA */}
       <section
         id="register"
-        className="py-20 px-4 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white relative overflow-hidden"
+        className="py-20 px-4 bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 text-white relative overflow-hidden"
       >
-        <div className="absolute inset-0 bg-[url('/placeholder.svg?height=200&width=200')] opacity-5"></div>
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-10 left-10 w-20 h-20 border border-white/30 rounded-full"></div>
+          <div className="absolute top-20 right-20 w-16 h-16 border border-white/20 rounded-full"></div>
+          <div className="absolute bottom-20 left-1/4 w-12 h-12 border border-white/25 rounded-full"></div>
+          <div className="absolute bottom-10 right-10 w-24 h-24 border border-white/15 rounded-full"></div>
+        </div>
+
         <div className="container mx-auto text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Get a Headstart in CS Before Everyone Else</h2>
-            <p className="text-xl mb-8 text-emerald-100">
-              No jargon. No pressure. Just guidance from people who've been there.
+            <h2 className="text-4xl md:text-6xl font-bold mb-6">Ready to Start Your CS Journey?</h2>
+            <p className="text-xl md:text-2xl mb-4 text-emerald-100">
+              From confused beginner to confident programmer in just 8 weeks
+            </p>
+            <p className="text-lg mb-12 text-emerald-100 max-w-3xl mx-auto">
+              Join hundreds of students who've successfully transitioned to CS. 
+              No jargon, no pressure – just expert guidance from people who've been exactly where you are.
             </p>
 
-            <Button
-              size="lg"
-              className="bg-white text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg mb-12 rounded-full shadow-lg hover:shadow-xl transition-all"
-            >
-              Register Now – Starts July 1
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+              <Button
+                size="lg"
+                className="bg-white text-emerald-600 hover:bg-emerald-50 px-10 py-6 text-xl font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105"
+              >
+                Register Now – Only PKR 5,000
+                <ArrowRight className="ml-2 h-6 w-6" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-2 border-white/30 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm px-10 py-6 text-xl rounded-full"
+                onClick={handleDownload}
+              >
+                <Download className="mr-2 h-6 w-6" />
+                Download Syllabus
+              </Button>
+            </div>
 
-            <div className="max-w-2xl mx-auto bg-white/10 rounded-2xl p-8 backdrop-blur-sm border border-white/20 shadow-xl">
-              <h3 className="text-xl font-semibold mb-6">Bank Details for Payment</h3>
-              <div className="text-left space-y-3 text-emerald-50 bg-white/5 p-6 rounded-xl mb-6">
-                <p>
-                  <strong className="font-medium">Bank:</strong> [Your Bank Name]
-                </p>
-                <p>
-                  <strong className="font-medium">Account:</strong> [Account Number]
-                </p>
-                <p>
-                  <strong className="font-medium">Title:</strong> [Account Title]
-                </p>
+            <div className="max-w-4xl mx-auto bg-white/15 rounded-3xl p-8 backdrop-blur-sm border border-white/20 shadow-2xl">
+              <h3 className="text-2xl font-bold mb-6">How to Register</h3>
+              
+              <div className="grid md:grid-cols-3 gap-8 mb-8">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
+                    <DollarSign className="w-8 h-8" />
+                  </div>
+                  <h4 className="font-semibold mb-2">1. Make Payment</h4>
+                  <p className="text-emerald-100 text-sm">Transfer PKR 5,000 to our bank account</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
+                    <CheckCircle className="w-8 h-8" />
+                  </div>
+                  <h4 className="font-semibold mb-2">2. Confirm Registration</h4>
+                  <p className="text-emerald-100 text-sm">Fill our Google Form with payment details</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
+                    <GraduationCap className="w-8 h-8" />
+                  </div>
+                  <h4 className="font-semibold mb-2">3. Start Learning</h4>
+                  <p className="text-emerald-100 text-sm">Receive welcome materials and join the course</p>
+                </div>
               </div>
-              <p className="text-emerald-100">
-                Once paid, fill this{" "}
+
+              <div className="bg-white/10 rounded-2xl p-6 backdrop-blur-sm border border-white/20">
+                <h4 className="text-xl font-semibold mb-4">Bank Transfer Details</h4>
+                <div className="grid md:grid-cols-2 gap-4 text-left text-emerald-50">
+                  <div>
+                    <strong className="font-medium">Bank:</strong> [Your Bank Name]
+                  </div>
+                  <div>
+                    <strong className="font-medium">Account:</strong> [Account Number]
+                  </div>
+                  <div className="md:col-span-2">
+                    <strong className="font-medium">Account Title:</strong> [Account Title]
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-emerald-100 mt-6">
+                Once payment is complete, fill our{" "}
                 <a
                   href="#"
-                  className="text-white underline decoration-2 decoration-white/30 hover:decoration-white/80 transition-all font-medium"
+                  className="text-white underline decoration-2 decoration-white/50 hover:decoration-white transition-all font-semibold"
                 >
-                  Google Form
+                  registration form
                 </a>{" "}
-                to confirm registration.
+                to secure your spot in the July cohort.
               </p>
+            </div>
+
+            {/* Trust badges */}
+            <div className="flex flex-wrap justify-center gap-8 mt-12 text-emerald-100">
+              <div className="flex items-center">
+                <Shield className="w-5 h-5 mr-2" />
+                <span>100% Money-back Guarantee</span>
+              </div>
+              <div className="flex items-center">
+                <Heart className="w-5 h-5 mr-2" />
+                <span>Loved by 90%+ Students</span>
+              </div>
+              <div className="flex items-center">
+                <Users className="w-5 h-5 mr-2" />
+                <span>Expert Instructor Support</span>
+              </div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white p-4 md:hidden z-40 shadow-lg border-t border-slate-100">
-        <Button
-          className="w-full bg-gradient-to-r from-emerald-600 to-emerald-500 text-white hover:from-emerald-500 hover:to-emerald-400 rounded-full shadow-md"
-          onClick={() => scrollToSection("register")}
-        >
-          Register Now - PKR 5,000
-        </Button>
+      {/* Enhanced Sticky Mobile CTA */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg p-4 md:hidden z-40 shadow-2xl border-t border-emerald-100">
+        <div className="flex gap-3">
+          <Button
+            className="flex-1 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white hover:from-emerald-500 hover:to-emerald-400 rounded-full shadow-lg font-semibold"
+            onClick={() => scrollToSection("register")}
+          >
+            Register Now - PKR 5,000
+          </Button>
+          <Button
+            variant="outline"
+            size="icon"
+            className="border-emerald-200 text-emerald-600 hover:bg-emerald-50 rounded-full"
+            onClick={() => scrollToSection("curriculum")}
+          >
+            <BookOpen className="h-5 w-5" />
+          </Button>
+        </div>
       </div>
     </div>
   )

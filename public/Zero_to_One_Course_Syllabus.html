@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero to One: CS Foundations - Complete Course Syllabus</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #fff;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #10b981;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #10b981;
+            margin-bottom: 10px;
+        }
+        
+        .header h2 {
+            font-size: 1.5rem;
+            color: #64748b;
+            font-weight: normal;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            font-size: 2rem;
+            color: #1e293b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .section h3 {
+            font-size: 1.5rem;
+            color: #10b981;
+            margin-bottom: 15px;
+            margin-top: 30px;
+        }
+        
+        .section h4 {
+            font-size: 1.2rem;
+            color: #475569;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+        
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .overview-item {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #10b981;
+        }
+        
+        .overview-item strong {
+            color: #1e293b;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .objectives {
+            background: #ecfdf5;
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+        }
+        
+        .objectives ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .objectives li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .objectives li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+        
+        .module {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            margin: 20px 0;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .module-header {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 20px;
+        }
+        
+        .module-content {
+            padding: 20px;
+        }
+        
+        .module-content ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .module-content li {
+            margin: 8px 0;
+        }
+        
+        .session-list {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .skills-list {
+            background: #ecfdf5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .highlight-box {
+            background: #fef3c7;
+            border: 1px solid #f59e0b;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: #f8fafc;
+            padding: 30px 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #10b981;
+            display: block;
+        }
+        
+        .contact-info {
+            background: #1e293b;
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            body {
+                padding: 20px 10px;
+            }
+        }
+        
+        @media print {
+            body {
+                padding: 20px;
+            }
+            
+            .section {
+                page-break-inside: avoid;
+                margin-bottom: 30px;
+            }
+            
+            .module {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Zero to One: CS Foundations</h1>
+        <h2>Complete Course Syllabus</h2>
+    </div>
+
+    <div class="section">
+        <h2>📚 Course Overview</h2>
+        <div class="overview-grid">
+            <div class="overview-item">
+                <strong>Duration:</strong> 16 Interactive Sessions (8 Weeks)
+            </div>
+            <div class="overview-item">
+                <strong>Format:</strong> Live Online Sessions + Office Hours
+            </div>
+            <div class="overview-item">
+                <strong>Target:</strong> Absolute Beginners with No CS Background
+            </div>
+            <div class="overview-item">
+                <strong>Goal:</strong> University CS Readiness & Programming Confidence
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎯 Learning Objectives</h2>
+        <div class="objectives">
+            <p style="margin-bottom: 20px; font-size: 1.1rem;">Upon completion of this course, students will be able to:</p>
+            <ul>
+                <li><strong>Think algorithmically</strong> and break down complex problems</li>
+                <li><strong>Code confidently</strong> in Scratch, Python, and C++</li>
+                <li><strong>Debug effectively</strong> and troubleshoot programming issues</li>
+                <li><strong>Build projects</strong> that demonstrate core CS concepts</li>
+                <li><strong>Succeed in university CS101</strong> courses with confidence</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📋 Course Structure</h2>
+        <p style="margin-bottom: 30px; font-size: 1.1rem;">The course is divided into <strong>6 progressive modules</strong>, each building upon the previous:</p>
+        
+        <div class="module">
+            <div class="module-header">
+                <h3>🔹 Module 1: Introduction to Computer Science & Problem Solving</h3>
+                <p><em>Sessions 1-2 | Foundation Week</em></p>
+            </div>
+            <div class="module-content">
+                <div class="two-column">
+                    <div class="session-list">
+                        <h4>Sessions Included:</h4>
+                        <ul>
+                            <li>Why Computer Science?</li>
+                            <li>Thinking Like a Computer Scientist</li>
+                        </ul>
+                    </div>
+                    <div class="skills-list">
+                        <h4>Skills You'll Master:</h4>
+                        <ul>
+                            <li>Problem Decomposition</li>
+                            <li>Logical Thinking</li>
+                            <li>CS Career Awareness</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <h3>🔹 Module 2: Scratch Programming (Visual Problem Solving)</h3>
+                <p><em>Sessions 3-4 | Visual Logic Week</em></p>
+            </div>
+            <div class="module-content">
+                <div class="two-column">
+                    <div class="session-list">
+                        <h4>Sessions Included:</h4>
+                        <ul>
+                            <li>Introduction to Scratch</li>
+                            <li>Logic Building with Scratch</li>
+                        </ul>
+                    </div>
+                    <div class="skills-list">
+                        <h4>Skills You'll Master:</h4>
+                        <ul>
+                            <li>Visual Programming</li>
+                            <li>Game Logic</li>
+                            <li>Interactive Projects</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <h3>🔹 Module 3: Python Basics</h3>
+                <p><em>Sessions 5-8 | Text-Based Programming</em></p>
+            </div>
+            <div class="module-content">
+                <div class="two-column">
+                    <div class="session-list">
+                        <h4>Sessions Included:</h4>
+                        <ul>
+                            <li>Python Essentials I & II</li>
+                            <li>Functions & Lists</li>
+                            <li>Final Python Project</li>
+                        </ul>
+                    </div>
+                    <div class="skills-list">
+                        <h4>Skills You'll Master:</h4>
+                        <ul>
+                            <li>Syntax Mastery</li>
+                            <li>Data Structures</li>
+                            <li>Real Applications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <h3>🔹 Module 4: Introduction to C++ (University Prep Focus)</h3>
+                <p><em>Sessions 9-12 | Systems Programming</em></p>
+            </div>
+            <div class="module-content">
+                <div class="two-column">
+                    <div class="session-list">
+                        <h4>Sessions Included:</h4>
+                        <ul>
+                            <li>C++ Essentials</li>
+                            <li>Control Flow</li>
+                            <li>Functions & Arrays</li>
+                            <li>C++ Project</li>
+                        </ul>
+                    </div>
+                    <div class="skills-list">
+                        <h4>Skills You'll Master:</h4>
+                        <ul>
+                            <li>Memory Management</li>
+                            <li>Compilation</li>
+                            <li>University Readiness</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <h3>🔹 Module 5: Bridging Logic & Problem Solving</h3>
+                <p><em>Sessions 13-14 | Advanced Concepts</em></p>
+            </div>
+            <div class="module-content">
+                <div class="two-column">
+                    <div class="session-list">
+                        <h4>Sessions Included:</h4>
+                        <ul>
+                            <li>Algorithms 101</li>
+                            <li>Debugging & Learning Strategies</li>
+                        </ul>
+                    </div>
+                    <div class="skills-list">
+                        <h4>Skills You'll Master:</h4>
+                        <ul>
+                            <li>Algorithm Design</li>
+                            <li>Debugging Skills</li>
+                            <li>Self-Learning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="module">
+            <div class="module-header">
+                <h3>🔹 Module 6: Capstone & Career Prep</h3>
+                <p><em>Sessions 15-16 | Project Showcase & Next Steps</em></p>
+            </div>
+            <div class="module-content">
+                <div class="two-column">
+                    <div class="session-list">
+                        <h4>Sessions Included:</h4>
+                        <ul>
+                            <li>Final Project Showcase</li>
+                            <li>University Survival Guide</li>
+                        </ul>
+                    </div>
+                    <div class="skills-list">
+                        <h4>Skills You'll Master:</h4>
+                        <ul>
+                            <li>Presentation Skills</li>
+                            <li>Portfolio Building</li>
+                            <li>Career Planning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎁 Bonus Features Throughout</h2>
+        <div class="two-column">
+            <div>
+                <h4>📞 Weekly Office Hours</h4>
+                <ul>
+                    <li>Every week, 1 hour per session</li>
+                    <li>Instructor-led Q&A and individual help</li>
+                    <li>First-come, first-served slots</li>
+                </ul>
+
+                <h4>📝 Optional Progress Assessments</h4>
+                <ul>
+                    <li>After every 2 sessions (8 total)</li>
+                    <li>Short quizzes and practical exercises</li>
+                    <li>Track progress and identify areas for extra support</li>
+                </ul>
+
+                <h4>⚡ Live Mini Coding Sprints</h4>
+                <ul>
+                    <li>15-minute focused coding challenges</li>
+                    <li>Interactive coding environment</li>
+                    <li>Build speed and confidence</li>
+                </ul>
+            </div>
+            <div>
+                <h4>🎮 Interactive Learning Games</h4>
+                <ul>
+                    <li>Kahoot Sessions: Concept review games</li>
+                    <li>Code Golf: Write shortest possible solutions</li>
+                    <li>Debug Races: Find and fix errors quickly</li>
+                </ul>
+
+                <h4>👥 Peer Study Groups</h4>
+                <ul>
+                    <li>Self-organized study pods (3-4 students)</li>
+                    <li>Instructor guidance for group formation</li>
+                    <li>Accountability and collaborative learning</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🛠️ Technical Requirements</h2>
+        <div class="highlight-box">
+            <h4>Hardware</h4>
+            <ul>
+                <li>Computer with internet connection</li>
+                <li><strong>Minimum:</strong> 4GB RAM, modern web browser</li>
+                <li><strong>Recommended:</strong> 8GB RAM for smoother experience</li>
+            </ul>
+        </div>
+
+        <h4>Software (We'll Help You Install)</h4>
+        <ul>
+            <li><strong>Scratch:</strong> Web-based, no installation needed</li>
+            <li><strong>Python:</strong> Latest version with IDLE/VS Code</li>
+            <li><strong>C++:</strong> Code::Blocks or similar beginner-friendly IDE</li>
+            <li><strong>Communication:</strong> Zoom, Discord, or similar</li>
+        </ul>
+
+        <div style="background: #ecfdf5; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h4>No Prior Experience Required</h4>
+            <ul>
+                <li>All software installation guided in Session 1</li>
+                <li>Step-by-step setup documentation provided</li>
+                <li>Technical support available during office hours</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>🎯 Expected Outcomes</h2>
+        <div style="background: #ecfdf5; padding: 30px; border-radius: 12px;">
+            <h3 style="margin-top: 0; color: #10b981;">By Course Completion, You Will:</h3>
+            <div class="objectives">
+                <ul>
+                    <li><strong>Have Built 4+ Complete Projects</strong> ready for your portfolio</li>
+                    <li><strong>Understand 3 Programming Languages</strong> (Scratch, Python, C++)</li>
+                    <li><strong>Think Algorithmically</strong> and approach problems systematically</li>
+                    <li><strong>Debug Code Confidently</strong> using proven strategies</li>
+                    <li><strong>Be University CS Ready</strong> with reduced anxiety about CS101</li>
+                    <li><strong>Have a Learning Roadmap</strong> for continued growth</li>
+                    <li><strong>Join a Supportive Community</strong> of fellow learners</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>💡 Why This Course Works</h2>
+        <div class="stats-grid">
+            <div class="stat-item">
+                <span class="stat-number">90%+</span>
+                <p>Students feel prepared for CS101</p>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100+</span>
+                <p>Hours of mentorship offered</p>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">4+</span>
+                <p>Complete projects built</p>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <p>Built for absolute beginners</p>
+            </div>
+        </div>
+
+        <div class="two-column">
+            <div>
+                <h4>🎯 Designed for Absolute Beginners</h4>
+                <ul>
+                    <li>No assumptions about prior knowledge</li>
+                    <li>Gentle progression from visual to text-based coding</li>
+                    <li>Multiple learning styles accommodated</li>
+                </ul>
+
+                <h4>🏆 Proven Methodology</h4>
+                <ul>
+                    <li>Visual-first approach reduces intimidation</li>
+                    <li>Project-based learning ensures practical skills</li>
+                    <li>University preparation based on real CS101 curricula</li>
+                </ul>
+            </div>
+            <div>
+                <h4>👨‍🏫 Expert Instruction</h4>
+                <ul>
+                    <li>Instructors who made the transition themselves</li>
+                    <li>Industry experience combined with teaching passion</li>
+                    <li>Understanding of beginner challenges and solutions</li>
+                </ul>
+
+                <h4>🤝 Community-Centered</h4>
+                <ul>
+                    <li>Peer support and collaboration encouraged</li>
+                    <li>Study groups and accountability partners</li>
+                    <li>Alumni network for ongoing support</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="contact-info">
+        <h2 style="color: white; margin-bottom: 20px;">Ready to Start Your CS Journey?</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 30px;">
+            This course transforms absolute beginners into confident programmers ready for university CS success. 
+            Join us and discover that the transition from Zero to One is not just possible – it's exciting!
+        </p>
+        
+        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 12px; margin: 30px 0;">
+            <h3 style="color: white; margin-bottom: 20px;">Course Information</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; text-align: left;">
+                <div>
+                    <strong>Duration:</strong> 8 Weeks (16 Sessions)<br>
+                    <strong>Start Date:</strong> July 1, 2024 (Cohort 1)<br>
+                    <strong>Alternative:</strong> August 1, 2024 (Cohort 2)
+                </div>
+                <div>
+                    <strong>Investment:</strong> Early Bird PKR 5,000 (until June 15)<br>
+                    <strong>Regular:</strong> PKR 12,000<br>
+                    <strong>Guarantee:</strong> 100% refund if not satisfied after first week
+                </div>
+            </div>
+        </div>
+        
+        <p style="margin-top: 30px; font-style: italic;">
+            For questions about the curriculum or enrollment, please contact us during office hours or via email.
+        </p>
+        
+        <div style="margin-top: 40px; font-size: 0.9rem; opacity: 0.8;">
+            <strong>Last Updated:</strong> June 2024 | <strong>Version:</strong> 1.0 | <strong>Status:</strong> Production Ready
+        </div>
+    </div>
+</body>
+</html> 
