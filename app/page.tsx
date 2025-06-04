@@ -200,13 +200,6 @@ export default function LandingPage() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 transition-all group-hover:w-full"></span>
             </button>
             <button
-              onClick={() => scrollToSection("testimonials")}
-              className="text-slate-600 hover:text-emerald-600 transition-colors text-sm font-medium relative group"
-            >
-              Reviews
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 transition-all group-hover:w-full"></span>
-            </button>
-            <button
               onClick={() => scrollToSection("faq")}
               className="text-slate-600 hover:text-emerald-600 transition-colors text-sm font-medium relative group"
             >
@@ -238,7 +231,7 @@ export default function LandingPage() {
               className="lg:hidden bg-white/98 backdrop-blur-lg border-t border-slate-100 shadow-lg"
             >
               <div className="px-4 py-3 space-y-1">
-                {["curriculum", "instructors", "testimonials", "faq"].map((section) => (
+                {["curriculum", "instructors", "faq"].map((section) => (
               <button
                     key={section}
                     onClick={() => scrollToSection(section)}
@@ -643,75 +636,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Student Testimonials */}
-      <section id="testimonials" className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-gradient-to-br from-emerald-50 to-blue-50">
-        <div className="container mx-auto">
-          <div className="text-center mb-8 sm:mb-12 lg:mb-16">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 mb-4 sm:mb-6 px-2">What Our Students Say</h2>
-              <p className="text-lg sm:text-xl text-slate-600 mb-6 sm:mb-8 px-2">Real stories from students who made the transition</p>
-              <div className="w-16 sm:w-20 lg:w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
-            </motion.div>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <div className="relative">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentTestimonial}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.5 }}
-            >
-                  <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-2xl overflow-hidden">
-                    <CardContent className="p-6 sm:p-8 lg:p-12 text-center">
-                      <div className="text-4xl sm:text-5xl lg:text-6xl mb-4 sm:mb-6">{testimonials[currentTestimonial].image}</div>
-                      <div className="flex justify-center mb-4 sm:mb-6">
-                        {[...Array(testimonials[currentTestimonial].rating)].map((_, i) => (
-                          <Star key={i} className="w-5 h-5 sm:w-6 sm:h-6 text-amber-400 fill-current" />
-                        ))}
-                      </div>
-                      <blockquote className="text-lg sm:text-xl lg:text-2xl text-slate-700 italic leading-relaxed mb-4 sm:mb-6 px-2">
-                        "{testimonials[currentTestimonial].content}"
-                      </blockquote>
-                      <div>
-                        <div className="font-semibold text-slate-800 text-base sm:text-lg">
-                          {testimonials[currentTestimonial].name}
-                        </div>
-                        <div className="text-emerald-600 font-medium text-sm sm:text-base">
-                          {testimonials[currentTestimonial].role}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-            </motion.div>
-              </AnimatePresence>
-
-              {/* Testimonial indicators */}
-              <div className="flex justify-center mt-6 sm:mt-8 space-x-2">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentTestimonial(index)}
-                    className={`h-3 rounded-full transition-all ${
-                      index === currentTestimonial 
-                        ? "bg-emerald-500 w-6 sm:w-8" 
-                        : "bg-slate-300 hover:bg-slate-400 w-3"
-                    }`}
-                  />
-                ))}
-          </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Enhanced Course Details */}
       <section className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-white">
         <div className="container mx-auto">
@@ -1078,126 +1002,233 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Enhanced Final CTA */}
+      {/* Redesigned Final CTA */}
       <section
         id="register"
-        className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 text-white relative overflow-hidden"
+        className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-gradient-to-br from-slate-50 via-white to-emerald-50 relative overflow-hidden"
       >
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-10 left-10 w-16 h-16 sm:w-20 sm:h-20 border border-white/30 rounded-full"></div>
-          <div className="absolute top-20 right-20 w-12 h-12 sm:w-16 sm:h-16 border border-white/20 rounded-full"></div>
-          <div className="absolute bottom-20 left-1/4 w-10 h-10 sm:w-12 sm:h-12 border border-white/25 rounded-full"></div>
-          <div className="absolute bottom-10 right-10 w-20 h-20 sm:w-24 sm:h-24 border border-white/15 rounded-full"></div>
+        {/* Background Elements */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-10 left-10 w-32 h-32 bg-emerald-500 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-40 h-40 bg-blue-500 rounded-full blur-3xl"></div>
+          <div className="absolute top-1/2 left-1/3 w-24 h-24 bg-purple-500 rounded-full blur-2xl"></div>
         </div>
 
-        <div className="container mx-auto text-center relative z-10">
+        <div className="container mx-auto relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            className="text-center mb-12 lg:mb-16"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-2">Ready to Start Your CS Journey?</h2>
-            <p className="text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 text-emerald-100 px-2">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 px-2 bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 bg-clip-text text-transparent">
+              Ready to Start Your CS Journey?
+            </h2>
+            <p className="text-lg sm:text-xl md:text-2xl mb-3 sm:mb-4 text-slate-600 px-2">
               From confused beginner to confident programmer in just 8 weeks
             </p>
-            <p className="text-base sm:text-lg mb-8 sm:mb-12 text-emerald-100 max-w-3xl mx-auto px-4">
-              Join <span className="font-semibold">Edvance x CodeKids</span> and hundreds of students who've successfully transitioned to CS. 
+            <p className="text-base sm:text-lg mb-8 sm:mb-12 text-slate-500 max-w-3xl mx-auto px-4">
+              Join <span className="font-semibold text-emerald-600">Edvance x CodeKids</span> and hundreds of students who've successfully transitioned to CS. 
               No jargon, no pressure – just expert guidance from people who've been exactly where you are.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-12 sm:mb-16 px-4">
-            <Button
-              size="lg"
-                className="w-full sm:w-auto bg-white text-emerald-600 hover:bg-emerald-50 px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 text-lg sm:text-xl font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105"
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-16 px-4">
+              <Button
+                size="lg"
+                className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white px-8 lg:px-12 py-4 sm:py-6 text-lg sm:text-xl font-semibold rounded-2xl shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105"
                 onClick={handleStartJourney}
-            >
-                Register Now – Only PKR 5,000
+              >
+                🚀 Register Now – Only PKR 5,000
                 <ArrowRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6" />
-            </Button>
+              </Button>
               <Button
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto border-2 border-white/30 bg-white/10 text-white hover:bg-white/20 backdrop-blur-sm px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 text-lg sm:text-xl rounded-full"
+                className="w-full sm:w-auto border-2 border-emerald-200 bg-white text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 hover:shadow-lg px-8 lg:px-12 py-4 sm:py-6 text-lg sm:text-xl rounded-2xl backdrop-blur-sm transition-all"
                 onClick={handleDownload}
               >
                 <Download className="mr-2 h-5 w-5 sm:h-6 sm:w-6" />
                 Download Syllabus
               </Button>
             </div>
+          </motion.div>
 
-            <div className="max-w-4xl mx-auto bg-white/15 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 backdrop-blur-sm border border-white/20 shadow-2xl">
-              <h3 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">How to Register</h3>
+          {/* Registration Process Cards */}
+          <div className="max-w-7xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h3 className="text-2xl sm:text-3xl font-bold text-center mb-8 sm:mb-12 text-slate-800">How to Join the Course</h3>
               
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mb-6 sm:mb-8">
-                <div className="text-center">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 backdrop-blur-sm">
-                    <DollarSign className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
-                  </div>
-                  <h4 className="font-semibold mb-2 text-sm sm:text-base">1. Make Payment</h4>
-                  <p className="text-emerald-100 text-xs sm:text-sm">Transfer PKR 5,000 to our bank account</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 backdrop-blur-sm">
-                    <CheckCircle className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
-                  </div>
-                  <h4 className="font-semibold mb-2 text-sm sm:text-base">2. Confirm Registration</h4>
-                  <p className="text-emerald-100 text-xs sm:text-sm">Fill our Google Form with payment details</p>
-                </div>
-                <div className="text-center">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4 backdrop-blur-sm">
-                    <GraduationCap className="w-6 h-6 sm:w-7 sm:h-7 lg:w-8 lg:h-8" />
-                  </div>
-                  <h4 className="font-semibold mb-2 text-sm sm:text-base">3. Start Learning</h4>
-                  <p className="text-emerald-100 text-xs sm:text-sm">Receive welcome materials and join the course</p>
-                </div>
+              {/* Process Steps */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-12">
+                {[
+                  {
+                    icon: <DollarSign className="w-8 h-8" />,
+                    title: "1. Make Payment",
+                    description: "Transfer PKR 5,000 to our Askari Bank account",
+                    color: "from-emerald-400 to-emerald-600",
+                    bgColor: "bg-emerald-50"
+                  },
+                  {
+                    icon: <CheckCircle className="w-8 h-8" />,
+                    title: "2. Fill Registration Form",
+                    description: "Complete our Google Form with payment details & financial aid request if needed",
+                    color: "from-blue-400 to-blue-600",
+                    bgColor: "bg-blue-50"
+                  },
+                  {
+                    icon: <GraduationCap className="w-8 h-8" />,
+                    title: "3. Start Learning",
+                    description: "Receive welcome materials and join your cohort",
+                    color: "from-purple-400 to-purple-600",
+                    bgColor: "bg-purple-50"
+                  }
+                ].map((step, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                    whileHover={{ y: -10, transition: { duration: 0.2 } }}
+                  >
+                    <Card className={`${step.bgColor} border-0 shadow-xl hover:shadow-2xl transition-all duration-300 h-full`}>
+                      <CardContent className="p-6 sm:p-8 text-center">
+                        <div className={`w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-r ${step.color} rounded-2xl flex items-center justify-center mx-auto mb-6 text-white shadow-lg`}>
+                          {step.icon}
+                        </div>
+                        <h4 className="text-xl sm:text-2xl font-bold mb-4 text-slate-800">{step.title}</h4>
+                        <p className="text-slate-600 leading-relaxed">{step.description}</p>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
               </div>
 
-              <div className="bg-white/10 rounded-xl sm:rounded-2xl p-4 sm:p-6 backdrop-blur-sm border border-white/20">
-                <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Bank Transfer Details</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-left text-emerald-50 text-sm sm:text-base">
-                  <div>
-                  <strong className="font-medium">Bank:</strong> [Your Bank Name]
-                  </div>
-                  <div>
-                  <strong className="font-medium">Account:</strong> [Account Number]
-              </div>
-                  <div className="sm:col-span-2">
-                    <strong className="font-medium">Account Title:</strong> [Account Title]
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-emerald-100 mt-4 sm:mt-6 text-sm sm:text-base">
-                Once payment is complete, fill our{" "}
-                <a
-                  href="https://forms.gle/iAkcXkQSi2koJzBN6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-white underline decoration-2 decoration-white/50 hover:decoration-white transition-all font-semibold"
+              {/* Financial Aid & Bank Details */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+                {/* Financial Aid Card */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  registration form
-                </a>{" "}
-                to secure your spot in the July cohort.
-              </p>
-            </div>
+                  <Card className="bg-gradient-to-br from-amber-50 to-orange-50 border-0 shadow-xl h-full">
+                    <CardContent className="p-6 sm:p-8">
+                      <div className="flex items-start space-x-3 mb-4">
+                        <div className="w-12 h-12 bg-gradient-to-r from-amber-400 to-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                          <Heart className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="text-xl sm:text-2xl font-bold mb-2 text-slate-800">💰 Financial Aid Available</h4>
+                          <p className="text-slate-600 leading-relaxed">
+                            Need financial assistance? We offer payment plans, partial scholarships, and work-study opportunities. 
+                            Simply select "Yes" for financial aid in the registration form.
+                          </p>
+                        </div>
+                      </div>
+                      <div className="bg-white/70 rounded-xl p-4 border border-amber-200">
+                        <p className="text-amber-800 font-semibold text-center">
+                          "Cost should never be a barrier to learning"
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
 
-            {/* Trust badges */}
-            <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 lg:gap-8 mt-8 sm:mt-12 text-emerald-100 px-4">
-              <div className="flex items-center justify-center">
-                <Shield className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                <span className="text-sm sm:text-base">100% Money-back Guarantee</span>
+                {/* Bank Details Card */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.5 }}
+                >
+                  <Card className="bg-gradient-to-br from-emerald-50 to-emerald-100 border-0 shadow-xl h-full">
+                    <CardContent className="p-6 sm:p-8">
+                      <div className="flex items-center space-x-4 mb-6">
+                        <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center">
+                          <DollarSign className="w-6 h-6 text-white" />
+                        </div>
+                        <h4 className="text-xl sm:text-2xl font-bold text-slate-800">Bank Transfer Details</h4>
+                      </div>
+                      
+                      <div className="space-y-4">
+                        <div className="bg-white/70 rounded-xl p-4 border border-emerald-200">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                              <p className="text-sm text-slate-500 mb-1">Bank</p>
+                              <p className="font-semibold text-slate-800">Askari Bank</p>
+                            </div>
+                            <div>
+                              <p className="text-sm text-slate-500 mb-1">Account Name</p>
+                              <p className="font-semibold text-slate-800">Ibrahim Ahmed Khan</p>
+                            </div>
+                            <div className="sm:col-span-2">
+                              <p className="text-sm text-slate-500 mb-1">Account Number</p>
+                              <p className="font-mono font-semibold text-slate-800 bg-slate-100 px-3 py-2 rounded-lg">
+                                PK60ASCM0000400320230488
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               </div>
-              <div className="flex items-center justify-center">
-                <Heart className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                <span className="text-sm sm:text-base">Loved by 90%+ Students</span>
+
+              {/* Final Action */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="text-center"
+              >
+                <div className="bg-white rounded-2xl shadow-xl border border-slate-100 p-6 sm:p-8 max-w-2xl mx-auto">
+                  <h4 className="text-xl sm:text-2xl font-bold mb-4 text-slate-800">Ready to Begin?</h4>
+                  <p className="text-slate-600 mb-6">
+                    Once payment is complete, fill out our registration form to secure your spot in the July cohort.
+                  </p>
+                  <Button
+                    size="lg"
+                    className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white px-8 py-4 text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                    onClick={() => window.open('https://forms.gle/iAkcXkQSi2koJzBN6', '_blank')}
+                  >
+                    📝 Open Registration Form
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </div>
+              </motion.div>
+
+            </motion.div>
+          </div>
+
+          {/* Trust badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="flex flex-col sm:flex-row flex-wrap justify-center gap-6 sm:gap-8 lg:gap-12 mt-16 px-4"
+          >
+            {[
+              { icon: <Shield className="w-5 h-5" />, text: "100% Money-back Guarantee" },
+              { icon: <Heart className="w-5 h-5" />, text: "Loved by 90%+ Students" },
+              { icon: <Users className="w-5 h-5" />, text: "Expert Instructor Support" }
+            ].map((badge, index) => (
+              <div key={index} className="flex items-center justify-center bg-white rounded-full px-6 py-3 shadow-lg border border-slate-100">
+                <span className="text-emerald-600 mr-2">{badge.icon}</span>
+                <span className="text-slate-700 font-medium">{badge.text}</span>
               </div>
-              <div className="flex items-center justify-center">
-                <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                <span className="text-sm sm:text-base">Expert Instructor Support</span>
-              </div>
-            </div>
+            ))}
           </motion.div>
         </div>
       </section>
