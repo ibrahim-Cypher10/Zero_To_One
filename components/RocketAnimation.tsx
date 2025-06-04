@@ -46,51 +46,58 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
   }, [trigger, onComplete])
 
   const RocketSVG = ({ direction = "left" }: { direction?: "left" | "right" }) => (
-    <svg width="120" height="80" viewBox="0 0 120 80" className="relative z-10">
-      {/* Main rocket body */}
+    <svg width="120" height="90" viewBox="0 0 120 90" className="relative z-10">
+      {/* Main rocket body - sleeker design */}
       <path 
-        d="M20 50 L20 20 Q20 10 30 10 L40 10 Q50 10 50 20 L50 50 Q50 55 45 60 L25 60 Q20 55 20 50 Z" 
+        d="M30 65 L30 25 Q30 15 35 15 L55 15 Q60 15 60 25 L60 65 Q60 70 55 75 L35 75 Q30 70 30 65 Z" 
         fill="#4ade80" 
         stroke="#065f46" 
         strokeWidth="2"
       />
       
-      {/* Rocket nose cone */}
+      {/* Rocket nose cone - more pointed */}
       <path 
-        d="M30 10 L35 0 L40 10 Z" 
+        d="M35 15 L45 0 L55 15 Z" 
         fill="#10b981" 
         stroke="#065f46" 
         strokeWidth="2"
       />
       
-      {/* Window */}
-      <circle cx="35" cy="25" r="6" fill="#1e293b" stroke="#065f46" strokeWidth="1"/>
-      <circle cx="35" cy="25" r="4" fill="#334155"/>
-      <circle cx="35" cy="25" r="2" fill="#64748b" opacity="0.8"/>
+      {/* Main window */}
+      <circle cx="45" cy="30" r="8" fill="#1e293b" stroke="#065f46" strokeWidth="2"/>
+      <circle cx="45" cy="30" r="6" fill="#334155"/>
+      <circle cx="45" cy="30" r="3" fill="#64748b" opacity="0.8"/>
+      <circle cx="42" cy="27" r="1.5" fill="#94a3b8" opacity="0.9"/>
       
-      {/* Rocket fins */}
+      {/* Side stabilizer fins - smaller and more aerodynamic */}
       <path 
-        d="M20 50 L10 60 L20 60 Z" 
+        d="M30 55 L20 65 L25 70 L30 65 Z" 
         fill="#059669" 
         stroke="#065f46" 
-        strokeWidth="1"
+        strokeWidth="1.5"
       />
       <path 
-        d="M50 50 L60 60 L50 60 Z" 
+        d="M60 55 L70 65 L65 70 L60 65 Z" 
         fill="#059669" 
         stroke="#065f46" 
-        strokeWidth="1"
+        strokeWidth="1.5"
       />
       
-      {/* Body details */}
-      <rect x="22" y="35" width="26" height="3" fill="#059669" rx="1" opacity="0.7"/>
-      <rect x="22" y="42" width="26" height="3" fill="#059669" rx="1" opacity="0.7"/>
+      {/* Body panels and details */}
+      <rect x="32" y="40" width="26" height="2" fill="#059669" rx="1" opacity="0.7"/>
+      <rect x="32" y="45" width="26" height="2" fill="#059669" rx="1" opacity="0.7"/>
+      <rect x="32" y="50" width="26" height="2" fill="#059669" rx="1" opacity="0.7"/>
       
-      {/* Main flame from rocket nozzle */}
+      {/* Rocket nozzle */}
+      <rect x="35" y="75" width="20" height="5" fill="#374151" stroke="#065f46" strokeWidth="1" rx="2"/>
+      <rect x="37" y="77" width="16" height="3" fill="#4b5563" rx="1"/>
+      
+      {/* Main flame - ONLY from bottom nozzle */}
       <motion.g
         animate={{
-          scaleY: [1, 1.4, 1.1],
-          opacity: [0.9, 1, 0.9]
+          scaleY: [1, 1.5, 1.2],
+          opacity: [0.9, 1, 0.9],
+          scaleX: [1, 1.1, 1]
         }}
         transition={{
           duration: 0.1,
@@ -99,21 +106,50 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
         }}
         style={{ transformOrigin: "center top" }}
       >
+        {/* Outer flame */}
         <path 
-          d="M25 60 L28 72 L30 68 L35 78 L40 68 L42 72 L45 60" 
+          d="M35 80 L38 90 L41 85 L45 95 L49 85 L52 90 L55 80" 
           fill={direction === "left" ? "#f97316" : "#3b82f6"}
           stroke={direction === "left" ? "#ea580c" : "#1d4ed8"}
           strokeWidth="1"
         />
+        {/* Middle flame */}
         <path 
-          d="M28 60 L30 70 L33 65 L35 74 L37 65 L40 70 L42 60" 
+          d="M37 80 L40 88 L43 83 L45 92 L47 83 L50 88 L53 80" 
           fill={direction === "left" ? "#fbbf24" : "#60a5fa"}
         />
+        {/* Inner flame core */}
         <path 
-          d="M30 60 L32 68 L35 63 L35 72 L35 63 L38 68 L40 60" 
+          d="M39 80 L41 86 L43 82 L45 89 L47 82 L49 86 L51 80" 
           fill={direction === "left" ? "#fef3c7" : "#dbeafe"}
         />
+        {/* Hot core */}
+        <path 
+          d="M41 80 L42 84 L44 81 L45 87 L46 81 L48 84 L49 80" 
+          fill={direction === "left" ? "#ffffff" : "#e0f2fe"}
+          opacity="0.8"
+        />
       </motion.g>
+      
+      {/* Rocket exhaust glow effect */}
+      <motion.ellipse
+        cx="45"
+        cy="82"
+        rx="8"
+        ry="3"
+        fill={direction === "left" ? "#f97316" : "#3b82f6"}
+        opacity="0.3"
+        animate={{
+          opacity: [0.2, 0.4, 0.2],
+          rx: [6, 10, 6],
+          ry: [2, 4, 2]
+        }}
+        transition={{
+          duration: 0.15,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
     </svg>
   )
 
@@ -160,43 +196,6 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
             }}
           >
             <div className="relative">
-              {/* Enhanced flame trail */}
-              <motion.div
-                animate={{
-                  opacity: [0.6, 1, 0.6],
-                  scale: [1, 1.4, 1],
-                  scaleY: [1, 1.8, 1.4]
-                }}
-                transition={{
-                  duration: 0.15,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                style={{ transformOrigin: "center top" }}
-                className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 rotate-180"
-              >
-                <div className="w-10 h-16 bg-gradient-to-t from-orange-600 via-yellow-400 to-red-500 rounded-full opacity-90 blur-sm"></div>
-                <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-6 h-12 bg-gradient-to-t from-blue-400 via-white to-yellow-300 rounded-full opacity-70 blur-sm"></div>
-              </motion.div>
-
-              {/* Secondary flame trail */}
-              <motion.div
-                animate={{
-                  opacity: [0.3, 0.7, 0.3],
-                  scale: [0.6, 1.2, 0.9],
-                  scaleY: [0.8, 1.5, 1.2]
-                }}
-                transition={{
-                  duration: 0.12,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.1
-                }}
-                className="absolute -bottom-12 left-1/2 transform -translate-x-1/2"
-              >
-                <div className="w-12 h-20 bg-gradient-to-t from-red-600 via-orange-500 to-yellow-300 rounded-full opacity-60 blur-md"></div>
-              </motion.div>
-              
               <RocketSVG direction="left" />
 
               {/* Sparkle effects */}
@@ -228,22 +227,6 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
                   delay: 0.3
                 }}
                 className="absolute -bottom-2 -left-4 w-3 h-3 bg-gradient-to-r from-emerald-400 to-blue-400 rounded-full shadow-lg"
-              ></motion.div>
-
-              {/* Launch smoke effect */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ 
-                  opacity: [0, 0.6, 0.3, 0],
-                  scale: [0, 1, 2, 3],
-                  y: [0, 20, 40, 60]
-                }}
-                transition={{
-                  duration: 1.5,
-                  ease: "easeOut",
-                  delay: 0.3
-                }}
-                className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-to-t from-gray-400 to-transparent rounded-full blur-md"
               ></motion.div>
             </div>
           </motion.div>
@@ -288,43 +271,6 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
             }}
           >
             <div className="relative">
-              {/* Enhanced flame trail - positioned correctly for right-to-left trajectory */}
-              <motion.div
-                animate={{
-                  opacity: [0.6, 1, 0.6],
-                  scale: [1, 1.4, 1],
-                  scaleY: [1, 1.8, 1.4]
-                }}
-                transition={{
-                  duration: 0.15,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-                style={{ transformOrigin: "center top" }}
-                className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 rotate-180"
-              >
-                <div className="w-10 h-16 bg-gradient-to-t from-blue-600 via-cyan-400 to-blue-500 rounded-full opacity-90 blur-sm"></div>
-                <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-6 h-12 bg-gradient-to-t from-purple-400 via-white to-cyan-300 rounded-full opacity-70 blur-sm"></div>
-              </motion.div>
-
-              {/* Secondary flame trail - positioned for right-to-left */}
-              <motion.div
-                animate={{
-                  opacity: [0.3, 0.7, 0.3],
-                  scale: [0.6, 1.2, 0.9],
-                  scaleY: [0.8, 1.5, 1.2]
-                }}
-                transition={{
-                  duration: 0.12,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: 0.1
-                }}
-                className="absolute -bottom-12 left-1/2 transform -translate-x-1/2"
-              >
-                <div className="w-12 h-20 bg-gradient-to-t from-blue-600 via-cyan-500 to-blue-300 rounded-full opacity-60 blur-md"></div>
-              </motion.div>
-              
               <RocketSVG direction="right" />
 
               {/* Sparkle effects with blue theme */}
@@ -356,22 +302,6 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
                   delay: 0.4
                 }}
                 className="absolute -bottom-2 -left-4 w-3 h-3 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full shadow-lg"
-              ></motion.div>
-
-              {/* Launch smoke effect */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ 
-                  opacity: [0, 0.6, 0.3, 0],
-                  scale: [0, 1, 2, 3],
-                  y: [0, 20, 40, 60]
-                }}
-                transition={{
-                  duration: 1.5,
-                  ease: "easeOut",
-                  delay: 0.4
-                }}
-                className="absolute -bottom-16 left-1/2 transform -translate-x-1/2 w-16 h-16 bg-gradient-to-t from-gray-400 to-transparent rounded-full blur-md"
               ></motion.div>
             </div>
           </motion.div>
