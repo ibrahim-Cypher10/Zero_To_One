@@ -1,11 +1,12 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { 
   Code, Users, BookOpen, Award, Clock, DollarSign, CheckCircle, Menu, X, ChevronRight, 
   Star, Play, Download, Calendar, MapPin, Globe, Monitor, Smartphone, Zap, Target,
   GraduationCap, Heart, MessageCircle, ArrowRight, Check, AlertCircle, ChevronDown,
-  Lightbulb, Trophy, Shield, TrendingUp, GitBranch, Database, Cpu, Layers
+  Lightbulb, Trophy, Shield, TrendingUp, GitBranch, Database, Cpu, Layers, Linkedin
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -48,8 +49,9 @@ export default function LandingPage() {
   const handleStartJourney = () => {
     setTriggerRocket(true)
     setTimeout(() => {
-      scrollToSection("register")
-    }, 1000) // Delay scroll so user can see rocket launch
+      // Open registration form in new tab
+      window.open('https://forms.gle/iAkcXkQSi2koJzBN6', '_blank')
+    }, 1000) // Delay to show rocket launch
   }
 
   const handleRocketComplete = () => {
@@ -178,7 +180,7 @@ export default function LandingPage() {
             <div className="flex flex-col leading-tight">
               <span className="text-xs sm:text-sm font-medium text-slate-600">Edvance x CodeKids</span>
               <span>Zero to One</span>
-            </div>
+          </div>
           </motion.div>
 
           {/* Desktop Menu */}
@@ -228,7 +230,7 @@ export default function LandingPage() {
 
         {/* Mobile Menu */}
         <AnimatePresence>
-          {isMenuOpen && (
+        {isMenuOpen && (
             <motion.div
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
@@ -237,23 +239,23 @@ export default function LandingPage() {
             >
               <div className="px-4 py-3 space-y-1">
                 {["curriculum", "instructors", "testimonials", "faq"].map((section) => (
-                  <button
+              <button
                     key={section}
                     onClick={() => scrollToSection(section)}
                     className="block w-full text-left py-3 px-3 text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-all capitalize text-sm"
-                  >
+              >
                     {section}
-                  </button>
+              </button>
                 ))}
-                <Button
-                  onClick={() => scrollToSection("register")}
+              <Button
+                onClick={() => scrollToSection("register")}
                   className="w-full mt-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white rounded-full py-3"
-                >
-                  Register Now
-                </Button>
-              </div>
+              >
+                Register Now
+              </Button>
+            </div>
             </motion.div>
-          )}
+        )}
         </AnimatePresence>
       </nav>
 
@@ -467,7 +469,7 @@ export default function LandingPage() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-6xl mx-auto">
             {[
               {
                 icon: <Target className="w-10 h-10 sm:w-12 sm:h-12 text-white" />,
@@ -538,9 +540,9 @@ export default function LandingPage() {
         <div className="container mx-auto">
           <div className="text-center mb-12 lg:mb-16">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 sm:mb-6 px-2">16-Session Curriculum Deep Dive</h2>
@@ -549,7 +551,7 @@ export default function LandingPage() {
               </p>
               <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
             </motion.div>
-          </div>
+                  </div>
 
           <div className="max-w-6xl mx-auto">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -620,9 +622,9 @@ export default function LandingPage() {
                             </ul>
                           </div>
                         </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
+                  </CardContent>
+                </Card>
+              </motion.div>
                 </TabsContent>
               ))}
             </Tabs>
@@ -665,8 +667,8 @@ export default function LandingPage() {
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -50 }}
-                  transition={{ duration: 0.5 }}
-                >
+              transition={{ duration: 0.5 }}
+            >
                   <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-2xl overflow-hidden">
                     <CardContent className="p-6 sm:p-8 lg:p-12 text-center">
                       <div className="text-4xl sm:text-5xl lg:text-6xl mb-4 sm:mb-6">{testimonials[currentTestimonial].image}</div>
@@ -688,7 +690,7 @@ export default function LandingPage() {
                       </div>
                     </CardContent>
                   </Card>
-                </motion.div>
+            </motion.div>
               </AnimatePresence>
 
               {/* Testimonial indicators */}
@@ -704,7 +706,7 @@ export default function LandingPage() {
                     }`}
                   />
                 ))}
-              </div>
+          </div>
             </div>
           </div>
         </div>
@@ -821,28 +823,35 @@ export default function LandingPage() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 max-w-6xl mx-auto">
             {[
-              {
-                emoji: "👩‍⚕️",
-                name: "Dr. Sarah Rahman",
-                title: "From Medicine → CS Success",
-                company: "Senior Engineer at Educative",
-                bio: "Made the transition from medical field to computer science, understanding firsthand the challenges of switching to CS. Now helps students bridge that gap with confidence.",
-                experience: "5+ years teaching CS fundamentals",
-                specialties: ["Career Transition", "Python Programming", "University Prep"],
-                quote: "I understand the fear and excitement of starting CS from zero. Let me guide your journey."
+               {
+                image: "/Zammad.jpeg",
+                name: "Zammad",
+                title: "Co-Founder, CodeKids PK",
+                company: "CS Graduate from LUMS",
+                bio: "Zammad is an experienced educator with a Bachelors in CS from LUMS and has taught over 500 students between the ages of 7 and 21, specializing in coding and tech education. He has served as a Teaching Assistant for four undergraduate and graduate-level courses at LUMS, contributing to both instruction and overall student development.",
+                experience: "500+ students taught across all age groups",
+                specialties: ["CS Education", "Teaching Assistant", "Youth Development"],
+                quote: "Making high-quality, future-focused education accessible to students across age groups, blending academic rigor with real-world application.",
+                linkedin: "https://www.linkedin.com/in/iamzammad/",
+                bgGradient: "from-blue-400 to-blue-600",
+                accentColor: "blue"
               },
               {
-                emoji: "👨‍🔬",
-                name: "Ahmed Khan",
-                title: "Researcher & Entrepreneur",
-                company: "PhD Candidate at Virginia Tech",
-                bio: "Active researcher and successful entrepreneur with passion for making technology accessible. Specializes in breaking down complex concepts for beginners.",
-                experience: "8+ years in tech education",
-                specialties: ["Algorithm Design", "C++ Programming", "Problem Solving"],
-                quote: "Every expert was once a beginner. The key is having the right guidance and support."
-              },
+                image: "/Ibrahim.jpeg",
+                name: "Ibrahim Ahmed Khan",
+                title: "Co-founder, Edvance",
+                company: "Computer Science Graduate from LUMS",
+                bio: "Ibrahim is a Computer Science graduate from LUMS who began coding in 8th grade. He has since built products, launched startups, and contributed to cutting edge research. Now he is on a mission to make Computer Science exciting, accessible, and understandable for anyone ready to begin.",	
+                experience: "Self-taught developer turned entrepreneur",
+                specialties: ["AI Products", "Startup Building", "Self-Learning Strategies"],
+                quote: "Computer Science is today's literacy and every student deserves a way in, no matter where they start",
+                linkedin: "https://www.linkedin.com/in/ibrahim-ahmed-khan-752100233/",
+                bgGradient: "from-emerald-400 to-emerald-600",
+                accentColor: "emerald"
+              }
+             ,
             ].map((instructor, index) => (
               <motion.div
                 key={index}
@@ -851,45 +860,65 @@ export default function LandingPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                className="group h-full"
               >
-                <Card className="overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-300 bg-white/90 backdrop-blur-sm">
-                  <div className="bg-gradient-to-r from-emerald-400 to-emerald-600 h-24 sm:h-28 lg:h-32 relative overflow-hidden">
+                <Card className="overflow-hidden border-0 shadow-2xl hover:shadow-3xl transition-all duration-500 bg-white/95 backdrop-blur-sm h-full flex flex-col">
+                  {/* Header with gradient background - Fixed Height */}
+                  <div className={`bg-gradient-to-br ${instructor.bgGradient} p-6 sm:p-8 text-white relative overflow-hidden flex-shrink-0`}>
                     <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-                  </div>
-                  <CardContent className="pt-0 pb-6 sm:pb-8 px-4 sm:px-6 lg:px-8 relative">
-                    <div className="flex justify-center -mt-12 sm:-mt-14 lg:-mt-16 mb-4 sm:mb-6">
-                      <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 bg-white rounded-full shadow-2xl flex items-center justify-center border-4 border-white ring-4 ring-emerald-100">
-                        <span className="text-4xl sm:text-5xl lg:text-6xl">{instructor.emoji}</span>
-                      </div>
-                    </div>
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -translate-y-16 translate-x-16"></div>
+                    <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full translate-y-12 -translate-x-12"></div>
                     
-                    <div className="text-center mb-4 sm:mb-6">
-                      <h3 className="text-xl sm:text-2xl font-bold mb-2 text-slate-800">{instructor.name}</h3>
-                      <p className="text-emerald-600 font-semibold mb-1 text-sm sm:text-base">{instructor.title}</p>
-                      <p className="text-slate-500 text-xs sm:text-sm mb-3">{instructor.company}</p>
-                      
-                      <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mb-3 sm:mb-4">
-                        {instructor.specialties.map((specialty, idx) => (
-                          <Badge key={idx} variant="secondary" className="bg-emerald-100 text-emerald-700 text-xs sm:text-sm px-2 py-1">
-                            {specialty}
-                          </Badge>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="space-y-3 sm:space-y-4">
-                      <p className="text-slate-600 leading-relaxed text-sm sm:text-base">{instructor.bio}</p>
-                      
-                      <div className="bg-slate-50 p-3 sm:p-4 rounded-xl">
-                        <div className="flex items-center mb-1 sm:mb-2">
-                          <Award className="w-3 h-3 sm:w-4 sm:h-4 text-emerald-600 mr-2" />
-                          <span className="text-xs sm:text-sm font-medium text-slate-700">{instructor.experience}</span>
+                    <div className="relative z-10 text-center">
+                      {/* Profile Image */}
+                      <div className="w-28 h-28 sm:w-32 sm:h-32 mx-auto mb-4 relative">
+                        <div className="w-full h-full rounded-full overflow-hidden border-4 border-white/30 shadow-2xl backdrop-blur-sm">
+                          <Image
+                            src={instructor.image}
+                            alt={instructor.name}
+                            width={128}
+                            height={128}
+                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                          />
+                        </div>
+                        {/* Floating badge */}
+                        <div className="absolute -bottom-2 -right-2 bg-white/20 backdrop-blur-sm rounded-full p-2 border border-white/30">
+                          <Award className="w-4 h-4 text-white" />
                         </div>
                       </div>
-
-                      <blockquote className="border-l-4 border-emerald-500 pl-3 sm:pl-4 py-2 bg-emerald-50/50 rounded-r-lg">
-                        <p className="text-slate-700 italic text-sm sm:text-base">"{instructor.quote}"</p>
+                      
+                      {/* Name and Title */}
+                      <h3 className="text-xl sm:text-2xl font-bold mb-2">{instructor.name}</h3>
+                      <p className="text-white/90 font-semibold mb-1 text-sm sm:text-base">{instructor.title}</p>
+                      <p className="text-white/80 text-xs sm:text-sm">{instructor.company}</p>
+                    </div>
+                  </div>
+                  
+                  {/* Content Area - Flexible Height */}
+                  <CardContent className="p-6 sm:p-8 flex flex-col flex-grow">
+                    {/* Bio Section - Flexible */}
+                    <div className="flex-grow mb-6">
+                      <p className="text-slate-600 leading-relaxed text-sm sm:text-base">{instructor.bio}</p>
+                    </div>
+                    
+                    {/* Quote Section - Fixed at bottom */}
+                    <div className="mt-auto space-y-4">
+                      <blockquote className={`border-l-4 border-${instructor.accentColor}-500 pl-4 py-3 bg-${instructor.accentColor}-50/50 rounded-r-lg`}>
+                        <p className="text-slate-700 italic text-sm sm:text-base font-medium">"{instructor.quote}"</p>
                       </blockquote>
+
+                      {/* LinkedIn Button */}
+                      <div>
+                        <Button
+                          variant="outline"
+                          className="w-full border-2 border-blue-200 bg-white text-blue-600 hover:bg-blue-50 hover:border-blue-300 hover:shadow-lg rounded-xl transition-all duration-300 group/btn font-semibold py-3"
+                          onClick={() => window.open(instructor.linkedin, '_blank')}
+                        >
+                          <Linkedin className="w-4 h-4 mr-2 group-hover/btn:scale-110 group-hover/btn:rotate-12 transition-transform duration-300" />
+                          Connect on LinkedIn
+                          <ArrowRight className="w-4 h-4 ml-2 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                        </Button>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -1079,14 +1108,14 @@ export default function LandingPage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mb-12 sm:mb-16 px-4">
-              <Button
-                size="lg"
+            <Button
+              size="lg"
                 className="w-full sm:w-auto bg-white text-emerald-600 hover:bg-emerald-50 px-6 sm:px-8 lg:px-10 py-4 sm:py-5 lg:py-6 text-lg sm:text-xl font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105"
                 onClick={handleStartJourney}
-              >
+            >
                 Register Now – Only PKR 5,000
                 <ArrowRight className="ml-2 h-5 w-5 sm:h-6 sm:w-6" />
-              </Button>
+            </Button>
               <Button
                 variant="outline"
                 size="lg"
@@ -1129,11 +1158,11 @@ export default function LandingPage() {
                 <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Bank Transfer Details</h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-left text-emerald-50 text-sm sm:text-base">
                   <div>
-                    <strong className="font-medium">Bank:</strong> [Your Bank Name]
+                  <strong className="font-medium">Bank:</strong> [Your Bank Name]
                   </div>
                   <div>
-                    <strong className="font-medium">Account:</strong> [Account Number]
-                  </div>
+                  <strong className="font-medium">Account:</strong> [Account Number]
+              </div>
                   <div className="sm:col-span-2">
                     <strong className="font-medium">Account Title:</strong> [Account Title]
                   </div>
@@ -1143,7 +1172,9 @@ export default function LandingPage() {
               <p className="text-emerald-100 mt-4 sm:mt-6 text-sm sm:text-base">
                 Once payment is complete, fill our{" "}
                 <a
-                  href="#"
+                  href="https://forms.gle/iAkcXkQSi2koJzBN6"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-white underline decoration-2 decoration-white/50 hover:decoration-white transition-all font-semibold"
                 >
                   registration form
@@ -1187,7 +1218,7 @@ export default function LandingPage() {
             onClick={() => scrollToSection("curriculum")}
           >
             <BookOpen className="h-4 w-4" />
-          </Button>
+        </Button>
         </div>
       </div>
     </div>
