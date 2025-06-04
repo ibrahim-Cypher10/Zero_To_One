@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <!-- Rocket Body -->
+  <g transform="translate(50, 80)">
+    <!-- Main rocket body -->
+    <path d="M60 120 L60 40 Q60 20 80 20 L120 20 Q140 20 140 40 L140 120 Q140 130 130 140 L70 140 Q60 130 60 120 Z" 
+          fill="#4ade80" stroke="#065f46" stroke-width="3"/>
+    
+    <!-- Rocket nose cone -->
+    <path d="M80 20 L100 0 L120 20 Z" fill="#10b981" stroke="#065f46" stroke-width="3"/>
+    
+    <!-- Window -->
+    <circle cx="100" cy="60" r="15" fill="#1e293b" stroke="#065f46" stroke-width="2"/>
+    <circle cx="100" cy="60" r="10" fill="#334155"/>
+    
+    <!-- Rocket fins -->
+    <path d="M60 120 L40 140 L60 140 Z" fill="#059669" stroke="#065f46" stroke-width="2"/>
+    <path d="M140 120 L160 140 L140 140 Z" fill="#059669" stroke="#065f46" stroke-width="2"/>
+    
+    <!-- Flame -->
+    <g>
+      <path d="M70 140 L80 160 L90 150 L100 170 L110 150 L120 160 L130 140" 
+            fill="#f97316" stroke="#ea580c" stroke-width="2"/>
+      <path d="M80 140 L85 155 L95 145 L100 165 L105 145 L115 155 L120 140" 
+            fill="#fbbf24"/>
+    </g>
+  </g>
+  
+  <!-- Text -->
+  <text x="200" y="100" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#065f46">Zero</text>
+  <text x="200" y="150" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#065f46">to One</text>
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="16" fill="#4b5563">Edvance x CodeKids</text>
+</svg> 

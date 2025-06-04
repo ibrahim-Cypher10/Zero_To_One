@@ -14,12 +14,14 @@ import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { motion, AnimatePresence } from "framer-motion"
+import RocketAnimation from "@/components/RocketAnimation"
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const [activeTab, setActiveTab] = useState("week1-2")
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
+  const [triggerRocket, setTriggerRocket] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,6 +42,17 @@ export default function LandingPage() {
   const scrollToSection = (sectionId: string) => {
     document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth" })
     setIsMenuOpen(false)
+  }
+
+  const handleStartJourney = () => {
+    setTriggerRocket(true)
+    setTimeout(() => {
+      scrollToSection("register")
+    }, 1000) // Delay scroll so user can see rocket launch
+  }
+
+  const handleRocketComplete = () => {
+    setTriggerRocket(false)
   }
 
   const handleDownload = () => {
@@ -143,23 +156,29 @@ export default function LandingPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Rocket Animation */}
+      <RocketAnimation trigger={triggerRocket} onComplete={handleRocketComplete} />
+      
       {/* Enhanced Navigation */}
       <nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
           scrolled ? "bg-white/95 backdrop-blur-lg shadow-lg border-b border-emerald-100" : "bg-transparent"
         }`}
       >
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div className="container mx-auto px-4 lg:px-6 py-3 lg:py-4 flex justify-between items-center">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-bold bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 bg-clip-text text-transparent"
+            className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 bg-clip-text text-transparent"
           >
-            Zero to One
+            <div className="flex flex-col leading-tight">
+              <span className="text-xs sm:text-sm font-medium text-slate-600">Edvance x CodeKids</span>
+              <span>Zero to One</span>
+            </div>
           </motion.div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-6 xl:space-x-8">
             <button
               onClick={() => scrollToSection("curriculum")}
               className="text-slate-600 hover:text-emerald-600 transition-colors text-sm font-medium relative group"
@@ -189,17 +208,17 @@ export default function LandingPage() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 transition-all group-hover:w-full"></span>
             </button>
             <Button
-              onClick={() => scrollToSection("register")}
-              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white rounded-full px-6 py-2 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+              onClick={handleStartJourney}
+              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white rounded-full px-4 lg:px-6 py-2 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
               size="sm"
             >
-              Register Now
+              Start Your Journey <ChevronRight className="ml-2 h-4 w-4 lg:h-5 lg:w-5" />
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className="text-slate-700" /> : <Menu className="text-slate-700" />}
+          <button className="lg:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X className="text-slate-700 w-5 h-5" /> : <Menu className="text-slate-700 w-5 h-5" />}
           </button>
         </div>
 
@@ -210,21 +229,21 @@ export default function LandingPage() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white/98 backdrop-blur-lg border-t border-slate-100 shadow-lg"
+              className="lg:hidden bg-white/98 backdrop-blur-lg border-t border-slate-100 shadow-lg"
             >
-              <div className="px-4 py-3 space-y-2">
+              <div className="px-4 py-3 space-y-1">
                 {["curriculum", "instructors", "testimonials", "faq"].map((section) => (
                   <button
                     key={section}
                     onClick={() => scrollToSection(section)}
-                    className="block w-full text-left py-3 px-3 text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-all capitalize"
+                    className="block w-full text-left py-3 px-3 text-slate-600 hover:bg-emerald-50 hover:text-emerald-600 rounded-lg transition-all capitalize text-sm"
                   >
                     {section}
                   </button>
                 ))}
                 <Button
                   onClick={() => scrollToSection("register")}
-                  className="w-full mt-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white rounded-full"
+                  className="w-full mt-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white rounded-full py-3"
                 >
                   Register Now
                 </Button>
@@ -235,12 +254,12 @@ export default function LandingPage() {
       </nav>
 
       {/* Enhanced Hero Section */}
-      <section className="pt-32 pb-20 px-4 bg-gradient-to-br from-white via-emerald-50/30 to-blue-50/20 relative overflow-hidden">
+      <section className="pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 px-4 lg:px-6 bg-gradient-to-br from-white via-emerald-50/30 to-blue-50/20 relative overflow-hidden">
         {/* Background Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-20 h-20 bg-emerald-200/20 rounded-full blur-xl"></div>
-          <div className="absolute top-40 right-20 w-32 h-32 bg-blue-200/20 rounded-full blur-xl"></div>
-          <div className="absolute bottom-20 left-1/4 w-16 h-16 bg-purple-200/20 rounded-full blur-xl"></div>
+          <div className="absolute top-20 left-10 w-16 h-16 sm:w-20 sm:h-20 bg-emerald-200/20 rounded-full blur-xl"></div>
+          <div className="absolute top-40 right-20 w-24 h-24 sm:w-32 sm:h-32 bg-blue-200/20 rounded-full blur-xl"></div>
+          <div className="absolute bottom-20 left-1/4 w-12 h-12 sm:w-16 sm:h-16 bg-purple-200/20 rounded-full blur-xl"></div>
         </div>
 
         <div className="container mx-auto relative">
@@ -249,61 +268,66 @@ export default function LandingPage() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+              className="text-center mb-12 lg:mb-16"
             >
-              <div className="inline-flex items-center bg-emerald-100 text-emerald-700 px-4 py-2 rounded-full text-sm font-medium mb-6">
-                <Calendar className="w-4 h-4 mr-2" />
-                First Cohort starts July 1 • Early bird ends June 15
+              <div className="inline-flex items-center bg-emerald-100 text-emerald-700 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+                <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+                <span className="hidden sm:inline">First Cohort starts July 1 • Early bird ends June 15</span>
+                <span className="sm:hidden">July 1 Start • Early Bird ends June 15</span>
               </div>
               
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+              <div className="text-base sm:text-lg font-medium text-slate-600 mb-3 sm:mb-4">
+                <span className="text-emerald-600 font-semibold">Edvance x CodeKids</span> presents
+              </div>
+              
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight px-2">
                 No CS Background?{" "}
                 <span className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 bg-clip-text text-transparent">
                   No Problem.
                 </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-slate-600 mb-4 leading-relaxed">
+              <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 mb-3 sm:mb-4 leading-relaxed px-2">
                 Launch Your Computer Science Journey with Confidence
               </p>
               
-              <p className="text-lg text-slate-500 mb-10 max-w-3xl mx-auto">
+              <p className="text-sm sm:text-base lg:text-lg text-slate-500 mb-8 sm:mb-10 max-w-3xl mx-auto px-4 leading-relaxed">
                 A comprehensive 16-session course designed for absolute beginners. 
                 Master <span className="font-semibold text-emerald-600">Scratch → Python → C++</span> and 
                 build <span className="font-semibold text-emerald-600">4+ real projects</span> while preparing for university CS success.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 px-4">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
-                  onClick={() => scrollToSection("register")}
+                  className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white px-6 lg:px-8 py-4 lg:py-6 text-base lg:text-lg rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                  onClick={handleStartJourney}
                 >
-                  Start Your Journey <ChevronRight className="ml-2 h-5 w-5" />
+                  Start Your Journey <ChevronRight className="ml-2 h-4 w-4 lg:h-5 lg:w-5" />
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
-                  className="border-2 border-emerald-200 bg-white/80 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 px-8 py-6 text-lg rounded-full shadow-sm backdrop-blur-sm transition-all"
+                  className="w-full sm:w-auto border-2 border-emerald-200 bg-white/80 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 px-6 lg:px-8 py-4 lg:py-6 text-base lg:text-lg rounded-full shadow-sm backdrop-blur-sm transition-all"
                   onClick={() => scrollToSection("curriculum")}
                 >
-                  <Play className="mr-2 h-5 w-5" />
+                  <Play className="mr-2 h-4 w-4 lg:h-5 lg:w-5" />
                   View Curriculum
                 </Button>
               </div>
 
               {/* Trust Indicators */}
-              <div className="flex flex-wrap justify-center gap-6 text-sm text-slate-600">
-                <div className="flex items-center">
-                  <Shield className="w-4 h-4 mr-2 text-emerald-600" />
+              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-slate-600 px-4">
+                <div className="flex items-center justify-center">
+                  <Shield className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-emerald-600" />
                   100% Money-back Guarantee
                 </div>
-                <div className="flex items-center">
-                  <Users className="w-4 h-4 mr-2 text-emerald-600" />
+                <div className="flex items-center justify-center">
+                  <Users className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-emerald-600" />
                   Expert Instructors
                 </div>
-                <div className="flex items-center">
-                  <Award className="w-4 h-4 mr-2 text-emerald-600" />
+                <div className="flex items-center justify-center">
+                  <Award className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-emerald-600" />
                   Certificate Included
                 </div>
               </div>
@@ -316,23 +340,24 @@ export default function LandingPage() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative"
             >
-              <div className="bg-gradient-to-r from-white to-emerald-50 rounded-3xl p-8 shadow-2xl border border-emerald-100/50 backdrop-blur-sm">
-                <div className="grid md:grid-cols-3 gap-8 items-center">
+              <div className="bg-gradient-to-r from-white to-emerald-50 rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-2xl border border-emerald-100/50 backdrop-blur-sm">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center">
                   {/* Before */}
                   <motion.div 
                     whileHover={{ scale: 1.05 }}
-                    className="text-center bg-white p-6 rounded-2xl shadow-lg border border-red-100"
+                    className="text-center bg-white p-4 sm:p-6 rounded-xl lg:rounded-2xl shadow-lg border border-red-100"
                   >
-                    <div className="text-6xl mb-4">😰</div>
-                    <Badge variant="destructive" className="mb-3">Before</Badge>
-                    <h3 className="font-semibold text-slate-800 mb-2">Confused Student</h3>
-                    <p className="text-sm text-slate-600">Overwhelmed by CS courses, struggling with syntax, afraid to ask questions</p>
+                    <div className="text-4xl sm:text-5xl lg:text-6xl mb-3 sm:mb-4">😰</div>
+                    <Badge variant="destructive" className="mb-2 sm:mb-3 text-xs sm:text-sm">Before</Badge>
+                    <h3 className="font-semibold text-slate-800 mb-2 text-sm sm:text-base">Confused Student</h3>
+                    <p className="text-xs sm:text-sm text-slate-600">Overwhelmed by CS courses, struggling with syntax, afraid to ask questions</p>
                   </motion.div>
 
                   {/* Arrow */}
-                  <div className="flex flex-col items-center">
-                    <div className="w-full h-1 bg-gradient-to-r from-emerald-300 to-emerald-500 rounded mb-2"></div>
-                    <div className="bg-emerald-100 text-emerald-600 px-4 py-2 rounded-full text-sm font-medium">
+                  <div className="flex flex-col items-center order-last md:order-none">
+                    <div className="w-full h-1 bg-gradient-to-r from-emerald-300 to-emerald-500 rounded mb-2 md:hidden"></div>
+                    <div className="hidden md:block w-full h-1 bg-gradient-to-r from-emerald-300 to-emerald-500 rounded mb-2"></div>
+                    <div className="bg-emerald-100 text-emerald-600 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium">
                       Our Course
                     </div>
                     <div className="w-full h-1 bg-gradient-to-r from-emerald-300 to-emerald-500 rounded mt-2"></div>
@@ -341,17 +366,17 @@ export default function LandingPage() {
                   {/* After */}
                   <motion.div 
                     whileHover={{ scale: 1.05 }}
-                    className="text-center bg-white p-6 rounded-2xl shadow-lg border border-emerald-100"
+                    className="text-center bg-white p-4 sm:p-6 rounded-xl lg:rounded-2xl shadow-lg border border-emerald-100"
                   >
-                    <div className="text-6xl mb-4">💻</div>
-                    <Badge className="mb-3 bg-emerald-100 text-emerald-700">After</Badge>
-                    <h3 className="font-semibold text-slate-800 mb-2">Confident Coder</h3>
-                    <p className="text-sm text-slate-600">Building projects, debugging like a pro, ready for university CS</p>
+                    <div className="text-4xl sm:text-5xl lg:text-6xl mb-3 sm:mb-4">💻</div>
+                    <Badge className="mb-2 sm:mb-3 bg-emerald-100 text-emerald-700 text-xs sm:text-sm">After</Badge>
+                    <h3 className="font-semibold text-slate-800 mb-2 text-sm sm:text-base">Confident Coder</h3>
+                    <p className="text-xs sm:text-sm text-slate-600">Building projects, debugging like a pro, ready for university CS</p>
                   </motion.div>
-                </div>
+                  </div>
 
                 {/* Stats Bar */}
-                <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="mt-6 lg:mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                   {stats.slice(0, 4).map((stat, index) => (
                     <motion.div
                       key={index}
@@ -360,9 +385,9 @@ export default function LandingPage() {
                       transition={{ delay: 0.5 + index * 0.1 }}
                       className="text-center"
                     >
-                      <div className="text-emerald-600 mb-1">{stat.icon}</div>
-                      <div className="text-2xl font-bold text-slate-800">{stat.number}</div>
-                      <div className="text-xs text-slate-600">{stat.label}</div>
+                      <div className="text-emerald-600 mb-1 flex justify-center">{stat.icon}</div>
+                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-800">{stat.number}</div>
+                      <div className="text-xs text-slate-600 px-1">{stat.label}</div>
                     </motion.div>
                   ))}
                 </div>
@@ -373,7 +398,7 @@ export default function LandingPage() {
       </section>
 
       {/* Enhanced Problem Section */}
-      <section className="py-20 px-4 bg-slate-50">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-slate-50">
         <div className="container mx-auto text-center">
           <div className="max-w-4xl mx-auto">
             <motion.div
@@ -382,22 +407,22 @@ export default function LandingPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-8">The Problem is Real</h2>
-              <div className="relative mb-12">
-                <div className="bg-white rounded-3xl p-8 shadow-xl border border-slate-100">
-                  <blockquote className="text-xl md:text-2xl text-slate-700 italic leading-relaxed mb-6">
-                    "University CS courses are fast-paced. Most students from non-CS backgrounds fall behind, lose
-                    interest, or struggle silently."
-                  </blockquote>
-                  <div className="flex justify-center items-center space-x-4 text-slate-600">
-                    <AlertCircle className="w-5 h-5 text-amber-500" />
-                    <span className="text-sm">Real student feedback from major universities</span>
-                  </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-6 sm:mb-8 px-2">The Problem is Real</h2>
+              <div className="relative mb-8 sm:mb-12">
+                <div className="bg-white rounded-2xl lg:rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-100">
+                  <blockquote className="text-lg sm:text-xl lg:text-2xl text-slate-700 italic leading-relaxed mb-4 sm:mb-6 px-2">
+                  "University CS courses are fast-paced. Most students from non-CS backgrounds fall behind, lose
+                  interest, or struggle silently."
+                </blockquote>
+                  <div className="flex justify-center items-center space-x-3 sm:space-x-4 text-slate-600">
+                    <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500" />
+                    <span className="text-xs sm:text-sm">Real student feedback from major universities</span>
+              </div>
                 </div>
               </div>
 
               {/* Problem Statistics */}
-              <div className="grid md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
                 {[
                   { stat: "60%", desc: "Students struggle with first CS course", icon: "📊" },
                   { stat: "40%", desc: "Switch majors due to difficulty", icon: "📉" }, 
@@ -409,12 +434,12 @@ export default function LandingPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.2 }}
-                    className="bg-white p-6 rounded-2xl shadow-lg"
+                    className="bg-white p-4 sm:p-6 rounded-xl lg:rounded-2xl shadow-lg"
                   >
-                    <div className="text-4xl mb-3">{item.icon}</div>
-                    <div className="text-3xl font-bold text-red-500 mb-2">{item.stat}</div>
-                    <p className="text-slate-600">{item.desc}</p>
-                  </motion.div>
+                    <div className="text-3xl sm:text-4xl mb-3">{item.icon}</div>
+                    <div className="text-2xl sm:text-3xl font-bold text-red-500 mb-2">{item.stat}</div>
+                    <p className="text-slate-600 text-sm sm:text-base">{item.desc}</p>
+            </motion.div>
                 ))}
               </div>
             </motion.div>
@@ -423,46 +448,46 @@ export default function LandingPage() {
       </section>
 
       {/* Enhanced Solution Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-emerald-50 via-white to-blue-50">
+      <section className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-gradient-to-br from-emerald-50 via-white to-blue-50">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 lg:mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">From Overwhelmed to Ready</h2>
-              <p className="text-xl text-slate-600 mb-8">Our proven 4-pillar approach to CS success</p>
-              <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 sm:mb-6 px-2">From Overwhelmed to Ready</h2>
+              <p className="text-lg sm:text-xl text-slate-600 mb-6 sm:mb-8 px-4">Our proven 4-pillar approach to CS success</p>
+              <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
             </motion.div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 sm:gap-8">
             {[
               {
-                icon: <Target className="w-12 h-12 text-white" />,
+                icon: <Target className="w-10 h-10 sm:w-12 sm:h-12 text-white" />,
                 title: "Personalized Learning Journey",
                 description: "Tailored pace and support for your unique background and learning style",
                 features: ["Individual mentoring", "Flexible scheduling", "Custom support"],
                 color: "from-emerald-400 to-emerald-600",
               },
               {
-                icon: <Layers className="w-12 h-12 text-white" />,
+                icon: <Layers className="w-10 h-10 sm:w-12 sm:h-12 text-white" />,
                 title: "Progressive Language Mastery",
                 description: "Step-by-step progression from visual to text-based coding",
                 features: ["Scratch → Python → C++", "Visual first approach", "Syntax confidence"],
                 color: "from-blue-400 to-blue-600",
               },
               {
-                icon: <MessageCircle className="w-12 h-12 text-white" />,
+                icon: <MessageCircle className="w-10 h-10 sm:w-12 sm:h-12 text-white" />,
                 title: "Office Hours & Mentorship",
                 description: "One-on-one support when you need it most",
                 features: ["Weekly office hours", "Expert guidance", "Peer community"],
                 color: "from-purple-400 to-purple-600",
               },
               {
-                icon: <Trophy className="w-12 h-12 text-white" />,
+                icon: <Trophy className="w-10 h-10 sm:w-12 sm:h-12 text-white" />,
                 title: "Portfolio-Ready Projects",
                 description: "Build real applications to showcase your new skills",
                 features: ["4+ complete projects", "GitHub portfolio", "Interview ready"],
@@ -476,21 +501,22 @@ export default function LandingPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -10, transition: { duration: 0.2 } }}
+                className="sm:col-span-1 xl:col-span-1"
               >
                 <Card className="overflow-hidden border-0 shadow-xl hover:shadow-2xl transition-all duration-300 h-full bg-white/80 backdrop-blur-sm">
-                  <div className={`bg-gradient-to-r ${item.color} p-6 flex justify-center relative overflow-hidden`}>
+                  <div className={`bg-gradient-to-r ${item.color} p-4 sm:p-6 flex justify-center relative overflow-hidden`}>
                     <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-                    <div className="rounded-full bg-white/20 p-4 relative z-10 backdrop-blur-sm">
+                    <div className="rounded-full bg-white/20 p-3 sm:p-4 relative z-10 backdrop-blur-sm">
                       {item.icon}
                     </div>
                   </div>
-                  <CardContent className="pt-6 pb-8 px-6">
-                    <h3 className="text-xl font-bold mb-3 text-slate-800">{item.title}</h3>
-                    <p className="text-slate-600 mb-4 leading-relaxed">{item.description}</p>
+                  <CardContent className="pt-4 sm:pt-6 pb-6 sm:pb-8 px-4 sm:px-6">
+                    <h3 className="text-lg sm:text-xl font-bold mb-2 sm:mb-3 text-slate-800">{item.title}</h3>
+                    <p className="text-slate-600 mb-3 sm:mb-4 leading-relaxed text-sm sm:text-base">{item.description}</p>
                     <ul className="space-y-2">
                       {item.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-sm text-slate-600">
-                          <Check className="w-4 h-4 mr-2 text-emerald-500" />
+                        <li key={idx} className="flex items-center text-xs sm:text-sm text-slate-600">
+                          <Check className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-emerald-500" />
                           {feature}
                         </li>
                       ))}
@@ -504,35 +530,36 @@ export default function LandingPage() {
       </section>
 
       {/* Interactive Curriculum Showcase */}
-      <section id="curriculum" className="py-20 px-4 bg-white">
+      <section id="curriculum" className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-white">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 lg:mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-800 mb-6">16-Session Curriculum Deep Dive</h2>
-              <p className="text-xl text-slate-600 mb-8">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-800 mb-4 sm:mb-6 px-2">16-Session Curriculum Deep Dive</h2>
+              <p className="text-lg sm:text-xl text-slate-600 mb-6 sm:mb-8 px-4">
                 Progressive learning from absolute zero to university readiness
               </p>
-              <div className="w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
+              <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
             </motion.div>
           </div>
 
           <div className="max-w-6xl mx-auto">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="grid w-full grid-cols-3 lg:grid-cols-6 mb-8 bg-slate-100 p-1 rounded-2xl">
+              <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 mb-6 sm:mb-8 bg-slate-100 p-1 rounded-2xl gap-1">
                 {curriculumData.map((module) => (
                   <TabsTrigger 
                     key={module.id} 
                     value={module.id}
-                    className="data-[state=active]:bg-white data-[state=active]:shadow-md rounded-xl transition-all duration-300 text-xs lg:text-sm py-3"
+                    className="data-[state=active]:bg-white data-[state=active]:shadow-md rounded-xl transition-all duration-300 text-xs sm:text-sm py-2 sm:py-3 px-1 sm:px-2"
                   >
-                    <div className="flex items-center space-x-2">
-                      {module.icon}
-                      <span className="hidden sm:inline">{module.title}</span>
+                    <div className="flex flex-col sm:flex-row items-center space-y-1 sm:space-y-0 sm:space-x-2">
+                      <div className="flex-shrink-0">{module.icon}</div>
+                      <span className="hidden sm:inline text-center sm:text-left leading-tight">{module.title}</span>
+                      <span className="sm:hidden text-xs leading-tight text-center">{module.title.split(' ')[0]}</span>
                     </div>
                   </TabsTrigger>
                 ))}
@@ -546,44 +573,44 @@ export default function LandingPage() {
                     transition={{ duration: 0.5 }}
                   >
                     <Card className="overflow-hidden border-0 shadow-2xl">
-                      <div className={`bg-gradient-to-r ${module.color} p-8 text-white relative overflow-hidden`}>
+                      <div className={`bg-gradient-to-r ${module.color} p-6 sm:p-8 text-white relative overflow-hidden`}>
                         <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
                         <div className="relative z-10">
-                          <div className="flex items-center mb-4">
-                            <div className="p-3 bg-white/20 rounded-2xl mr-4 backdrop-blur-sm">
+                          <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                            <div className="p-3 bg-white/20 rounded-2xl mr-0 sm:mr-4 mb-3 sm:mb-0 self-start backdrop-blur-sm">
                               {module.icon}
                             </div>
                             <div>
-                              <h3 className="text-3xl font-bold mb-2">{module.title}</h3>
-                              <p className="text-white/90 text-lg">{module.subtitle}</p>
+                              <h3 className="text-2xl sm:text-3xl font-bold mb-2">{module.title}</h3>
+                              <p className="text-white/90 text-base sm:text-lg">{module.subtitle}</p>
                             </div>
                           </div>
                         </div>
                       </div>
                       
-                      <CardContent className="p-8">
-                        <div className="grid md:grid-cols-2 gap-8">
+                      <CardContent className="p-6 sm:p-8">
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                           <div>
-                            <h4 className="text-xl font-semibold mb-4 text-slate-800">Sessions Included</h4>
+                            <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-slate-800">Sessions Included</h4>
                             <ul className="space-y-3">
                               {module.sessions.map((session, idx) => (
                                 <li key={idx} className="flex items-start">
-                                  <div className="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
-                                    <span className="text-emerald-600 text-sm font-medium">{idx + 1}</span>
+                                  <div className="w-5 h-5 sm:w-6 sm:h-6 bg-emerald-100 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">
+                                    <span className="text-emerald-600 text-xs sm:text-sm font-medium">{idx + 1}</span>
                                   </div>
-                                  <span className="text-slate-700">{session}</span>
+                                  <span className="text-slate-700 text-sm sm:text-base">{session}</span>
                                 </li>
                               ))}
                             </ul>
                           </div>
                           
                           <div>
-                            <h4 className="text-xl font-semibold mb-4 text-slate-800">Skills You'll Master</h4>
+                            <h4 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 text-slate-800">Skills You'll Master</h4>
                             <ul className="space-y-3">
                               {module.skills.map((skill, idx) => (
                                 <li key={idx} className="flex items-center">
-                                  <Check className="w-5 h-5 text-emerald-500 mr-3 flex-shrink-0" />
-                                  <span className="text-slate-700">{skill}</span>
+                                  <Check className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-500 mr-3 flex-shrink-0" />
+                                  <span className="text-slate-700 text-sm sm:text-base">{skill}</span>
                                 </li>
                               ))}
                             </ul>
@@ -596,13 +623,13 @@ export default function LandingPage() {
               ))}
             </Tabs>
 
-            <div className="text-center mt-12">
+            <div className="text-center mt-8 sm:mt-12">
               <Button
                 variant="outline"
-                className="border-2 border-emerald-200 bg-white text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 rounded-full px-8 py-4 shadow-lg group"
+                className="w-full sm:w-auto border-2 border-emerald-200 bg-white text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 rounded-full px-6 sm:px-8 py-3 sm:py-4 shadow-lg group"
                 onClick={handleDownload}
               >
-                <Download className="mr-2 h-5 w-5 group-hover:animate-bounce" />
+                <Download className="mr-2 h-4 h-4 sm:h-5 sm:w-5 group-hover:animate-bounce" />
                 Download Complete Syllabus PDF
               </Button>
             </div>
@@ -1041,14 +1068,15 @@ export default function LandingPage() {
               From confused beginner to confident programmer in just 8 weeks
             </p>
             <p className="text-lg mb-12 text-emerald-100 max-w-3xl mx-auto">
-              Join hundreds of students who've successfully transitioned to CS. 
+              Join <span className="font-semibold">Edvance x CodeKids</span> and hundreds of students who've successfully transitioned to CS. 
               No jargon, no pressure – just expert guidance from people who've been exactly where you are.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
               <Button
                 size="lg"
-                className="bg-white text-emerald-600 hover:bg-emerald-50 px-10 py-6 text-xl font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105"
+                className="w-full sm:w-auto bg-white text-emerald-600 hover:bg-emerald-50 px-10 py-6 text-xl font-semibold rounded-full shadow-2xl hover:shadow-3xl transition-all transform hover:scale-105"
+                onClick={handleStartJourney}
               >
                 Register Now – Only PKR 5,000
                 <ArrowRight className="ml-2 h-6 w-6" />
@@ -1138,21 +1166,21 @@ export default function LandingPage() {
       </section>
 
       {/* Enhanced Sticky Mobile CTA */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg p-4 md:hidden z-40 shadow-2xl border-t border-emerald-100">
-        <div className="flex gap-3">
-          <Button
-            className="flex-1 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white hover:from-emerald-500 hover:to-emerald-400 rounded-full shadow-lg font-semibold"
-            onClick={() => scrollToSection("register")}
-          >
-            Register Now - PKR 5,000
-          </Button>
+      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-lg p-3 sm:p-4 lg:hidden z-40 shadow-2xl border-t border-emerald-100 safe-bottom">
+        <div className="flex gap-2 sm:gap-3 max-w-sm mx-auto">
+        <Button
+            className="flex-1 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white hover:from-emerald-500 hover:to-emerald-400 rounded-full shadow-lg font-semibold text-sm py-3"
+            onClick={handleStartJourney}
+        >
+          Register Now - PKR 5,000
+        </Button>
           <Button
             variant="outline"
             size="icon"
-            className="border-emerald-200 text-emerald-600 hover:bg-emerald-50 rounded-full"
+            className="border-emerald-200 text-emerald-600 hover:bg-emerald-50 rounded-full w-12 h-12 flex-shrink-0"
             onClick={() => scrollToSection("curriculum")}
           >
-            <BookOpen className="h-5 w-5" />
+            <BookOpen className="h-4 w-4" />
           </Button>
         </div>
       </div>
