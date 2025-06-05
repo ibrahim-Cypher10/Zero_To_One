@@ -217,6 +217,22 @@
             position: relative;
         }
         
+        .module-header.week1 {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        }
+        
+        .module-header.week2 {
+            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+        }
+        
+        .module-header.week3 {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+        }
+        
+        .module-header.week4 {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+        
         .module-header::after {
             content: '';
             position: absolute;
@@ -465,6 +481,49 @@
             padding-top: 20px;
         }
         
+        .projects-showcase {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 25px 0;
+            border: 2px solid #f59e0b;
+        }
+        
+        .projects-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .projects-title::before {
+            content: "🎯";
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .projects-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .projects-list li {
+            padding: 8px 0;
+            color: #92400e;
+            font-weight: 500;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .projects-list li::before {
+            content: "🚀";
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+        
         @media (max-width: 768px) {
             .main-title {
                 font-size: 2.5rem;
@@ -534,7 +593,11 @@
                     <div class="overview-grid">
                         <div class="overview-card">
                             <div class="overview-label">Duration</div>
-                            <div class="overview-value">16 Interactive Sessions (8 Weeks)</div>
+                            <div class="overview-value">16 Interactive Sessions (4 Weeks)</div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="overview-label">Schedule</div>
+                            <div class="overview-value">4 Sessions per Week • 1 Hour Each</div>
                         </div>
                         <div class="overview-card">
                             <div class="overview-label">Format</div>
@@ -546,7 +609,11 @@
                         </div>
                         <div class="overview-card">
                             <div class="overview-label">Goal</div>
-                            <div class="overview-value">University CS Readiness & Programming Confidence</div>
+                            <div class="overview-value">CS Readiness & Programming Confidence</div>
+                        </div>
+                        <div class="overview-card">
+                            <div class="overview-label">Languages</div>
+                            <div class="overview-value">Scratch (Visual) + Python (Text-based)</div>
                         </div>
                     </div>
                 </div>
@@ -560,11 +627,12 @@
                         <p class="objectives-intro">Upon completion of this course, students will be able to:</p>
                         <ul class="objectives-list">
                             <li><strong>Think algorithmically</strong> and break down complex problems into manageable steps</li>
-                            <li><strong>Code confidently</strong> in three programming languages: Scratch, Python, and C++</li>
+                            <li><strong>Code confidently</strong> in Python with solid understanding of programming fundamentals</li>
                             <li><strong>Debug effectively</strong> and troubleshoot programming issues independently</li>
-                            <li><strong>Build complete projects</strong> that demonstrate core computer science concepts</li>
-                            <li><strong>Succeed in university CS101</strong> courses with confidence and reduced anxiety</li>
+                            <li><strong>Build complete projects</strong> from planning to presentation</li>
+                            <li><strong>Handle data</strong> using lists, dictionaries, and file operations</li>
                             <li><strong>Apply problem-solving strategies</strong> to both programming and real-world challenges</li>
+                            <li><strong>Present technical work</strong> professionally with portfolio-ready projects</li>
                         </ul>
                     </div>
                 </div>
@@ -572,172 +640,160 @@
                 <div class="section">
                     <div class="section-header">
                         <div class="section-icon">📋</div>
-                        <h2 class="section-title">Course Structure</h2>
+                        <h2 class="section-title">4-Week Course Structure</h2>
                     </div>
-                    <p style="font-size: 1.2rem; margin-bottom: 40px; color: #4a5568;">The course is divided into <strong>6 progressive modules</strong>, each building upon the previous to ensure solid foundation:</p>
+                    <p style="font-size: 1.2rem; margin-bottom: 40px; color: #4a5568;">The course is divided into <strong>4 intensive weeks</strong>, with 4 sessions per week building from visual programming to Python mastery:</p>
                     
-                    <!-- Module 1 -->
+                    <!-- Week 1 -->
                     <div class="module-card">
-                        <div class="module-header">
-                            <h3 class="module-title">🔹 Module 1: Introduction to Computer Science & Problem Solving</h3>
-                            <p class="module-subtitle">Sessions 1-2 | Foundation Week</p>
+                        <div class="module-header week1">
+                            <h3 class="module-title">🧠 Week 1: CS Foundations & Visual Programming</h3>
+                            <p class="module-subtitle">Sessions 1-4 | Introduction to Computer Science & Scratch</p>
                         </div>
                         <div class="module-content">
                             <div class="module-grid">
                                 <div class="sessions-box">
                                     <h4 class="box-title">Sessions Included</h4>
                                     <ul class="module-list">
-                                        <li>Why Computer Science? Career paths and opportunities</li>
-                                        <li>Thinking Like a Computer Scientist</li>
+                                        <li>Session 1: What is Computer Science? Career paths & opportunities</li>
+                                        <li>Session 2: Computational thinking & problem-solving fundamentals</li>
+                                        <li>Session 3: Introduction to Scratch - sprites, blocks, and basic logic</li>
+                                        <li>Session 4: Building your first interactive Scratch project</li>
                                     </ul>
                                 </div>
                                 <div class="skills-box">
                                     <h4 class="box-title">Skills You'll Master</h4>
                                     <ul class="module-list">
-                                        <li>Problem Decomposition</li>
-                                        <li>Logical Thinking Patterns</li>
-                                        <li>CS Career Awareness</li>
+                                        <li>Logical thinking</li>
+                                        <li>Problem decomposition</li>
+                                        <li>Visual programming</li>
+                                        <li>CS career awareness</li>
                                     </ul>
                                 </div>
+                            </div>
+                            <div class="projects-showcase">
+                                <h4 class="projects-title">What You'll Build</h4>
+                                <ul class="projects-list">
+                                    <li>Create your first algorithm (daily routine flowchart)</li>
+                                    <li>Interactive storytelling game in Scratch</li>
+                                    <li>Animated character with movement controls</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Module 2 -->
+                    <!-- Week 2 -->
                     <div class="module-card">
-                        <div class="module-header">
-                            <h3 class="module-title">🔹 Module 2: Scratch Programming (Visual Problem Solving)</h3>
-                            <p class="module-subtitle">Sessions 3-4 | Visual Logic Week</p>
+                        <div class="module-header week2">
+                            <h3 class="module-title">🐍 Week 2: Python Fundamentals</h3>
+                            <p class="module-subtitle">Sessions 5-8 | Real Programming Begins</p>
                         </div>
                         <div class="module-content">
                             <div class="module-grid">
                                 <div class="sessions-box">
                                     <h4 class="box-title">Sessions Included</h4>
                                     <ul class="module-list">
-                                        <li>Introduction to Scratch Programming Environment</li>
-                                        <li>Logic Building with Interactive Scratch Projects</li>
+                                        <li>Session 5: Python basics - variables, data types, input/output</li>
+                                        <li>Session 6: Control structures - if/else statements and decision making</li>
+                                        <li>Session 7: Loops - for and while loops, repetition in programming</li>
+                                        <li>Session 8: Functions - organizing code and reusable components</li>
                                     </ul>
                                 </div>
                                 <div class="skills-box">
                                     <h4 class="box-title">Skills You'll Master</h4>
                                     <ul class="module-list">
-                                        <li>Visual Programming Concepts</li>
-                                        <li>Game Logic Development</li>
-                                        <li>Interactive Project Creation</li>
+                                        <li>Python syntax</li>
+                                        <li>Variables & data types</li>
+                                        <li>Control flow</li>
+                                        <li>Functions</li>
                                     </ul>
                                 </div>
+                            </div>
+                            <div class="projects-showcase">
+                                <h4 class="projects-title">What You'll Build</h4>
+                                <ul class="projects-list">
+                                    <li>Simple calculator with multiple operations</li>
+                                    <li>Number guessing game with user feedback</li>
+                                    <li>Basic quiz application with scoring</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Module 3 -->
+                    <!-- Week 3 -->
                     <div class="module-card">
-                        <div class="module-header">
-                            <h3 class="module-title">🔹 Module 3: Python Basics</h3>
-                            <p class="module-subtitle">Sessions 5-8 | Text-Based Programming</p>
+                        <div class="module-header week3">
+                            <h3 class="module-title">🐍 Week 3: Advanced Python & Data</h3>
+                            <p class="module-subtitle">Sessions 9-12 | Working with Data Structures</p>
                         </div>
                         <div class="module-content">
                             <div class="module-grid">
                                 <div class="sessions-box">
                                     <h4 class="box-title">Sessions Included</h4>
                                     <ul class="module-list">
-                                        <li>Python Essentials I: Syntax and Basic Operations</li>
-                                        <li>Python Essentials II: Control Structures</li>
-                                        <li>Functions & Lists: Building Blocks</li>
-                                        <li>Final Python Project: Real-World Application</li>
+                                        <li>Session 9: Lists - storing and manipulating collections of data</li>
+                                        <li>Session 10: Dictionaries - key-value pairs and data organization</li>
+                                        <li>Session 11: File handling - reading from and writing to files</li>
+                                        <li>Session 12: Putting it together - combining concepts for real applications</li>
                                     </ul>
                                 </div>
                                 <div class="skills-box">
                                     <h4 class="box-title">Skills You'll Master</h4>
                                     <ul class="module-list">
-                                        <li>Python Syntax Mastery</li>
-                                        <li>Data Structures Understanding</li>
-                                        <li>Real Application Development</li>
+                                        <li>Data structures</li>
+                                        <li>File operations</li>
+                                        <li>Data manipulation</li>
+                                        <li>Problem solving</li>
                                     </ul>
                                 </div>
+                            </div>
+                            <div class="projects-showcase">
+                                <h4 class="projects-title">What You'll Build</h4>
+                                <ul class="projects-list">
+                                    <li>Todo list manager with file storage</li>
+                                    <li>Personal expense tracker with data analysis</li>
+                                    <li>Simple contact book with search functionality</li>
+                                    <li>Mini text-based adventure game</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Module 4 -->
+                    <!-- Week 4 -->
                     <div class="module-card">
-                        <div class="module-header">
-                            <h3 class="module-title">🔹 Module 4: Introduction to C++ (University Prep Focus)</h3>
-                            <p class="module-subtitle">Sessions 9-12 | Systems Programming</p>
+                        <div class="module-header week4">
+                            <h3 class="module-title">🚀 Week 4: Capstone Project Week</h3>
+                            <p class="module-subtitle">Sessions 13-16 | Build Your Showcase Project</p>
                         </div>
                         <div class="module-content">
                             <div class="module-grid">
                                 <div class="sessions-box">
                                     <h4 class="box-title">Sessions Included</h4>
                                     <ul class="module-list">
-                                        <li>C++ Essentials: Syntax and Compilation</li>
-                                        <li>Control Flow: Loops and Conditionals</li>
-                                        <li>Functions & Arrays: Memory Management</li>
-                                        <li>C++ Capstone Project</li>
+                                        <li>Session 13: Project planning & design - choosing and scoping your capstone</li>
+                                        <li>Session 14: Development session 1 - building core functionality</li>
+                                        <li>Session 15: Development session 2 - adding features and debugging</li>
+                                        <li>Session 16: Project presentation & portfolio showcase</li>
                                     </ul>
                                 </div>
                                 <div class="skills-box">
                                     <h4 class="box-title">Skills You'll Master</h4>
                                     <ul class="module-list">
-                                        <li>Memory Management Basics</li>
-                                        <li>Compilation Process Understanding</li>
-                                        <li>University CS Course Readiness</li>
+                                        <li>Project planning</li>
+                                        <li>Independent coding</li>
+                                        <li>Debugging</li>
+                                        <li>Presentation skills</li>
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
-                    <!-- Module 5 -->
-                    <div class="module-card">
-                        <div class="module-header">
-                            <h3 class="module-title">🔹 Module 5: Bridging Logic & Problem Solving</h3>
-                            <p class="module-subtitle">Sessions 13-14 | Advanced Concepts</p>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-grid">
-                                <div class="sessions-box">
-                                    <h4 class="box-title">Sessions Included</h4>
-                                    <ul class="module-list">
-                                        <li>Algorithms 101: Introduction to Algorithmic Thinking</li>
-                                        <li>Debugging & Learning Strategies for CS Success</li>
-                                    </ul>
-                                </div>
-                                <div class="skills-box">
-                                    <h4 class="box-title">Skills You'll Master</h4>
-                                    <ul class="module-list">
-                                        <li>Algorithm Design Principles</li>
-                                        <li>Advanced Debugging Skills</li>
-                                        <li>Independent Learning Strategies</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Module 6 -->
-                    <div class="module-card">
-                        <div class="module-header">
-                            <h3 class="module-title">🔹 Module 6: Capstone & Career Prep</h3>
-                            <p class="module-subtitle">Sessions 15-16 | Project Showcase & Next Steps</p>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-grid">
-                                <div class="sessions-box">
-                                    <h4 class="box-title">Sessions Included</h4>
-                                    <ul class="module-list">
-                                        <li>Final Project Showcase: Present Your Work</li>
-                                        <li>University CS Survival Guide & Next Steps</li>
-                                    </ul>
-                                </div>
-                                <div class="skills-box">
-                                    <h4 class="box-title">Skills You'll Master</h4>
-                                    <ul class="module-list">
-                                        <li>Technical Presentation Skills</li>
-                                        <li>Portfolio Building Strategies</li>
-                                        <li>CS Career Planning</li>
-                                    </ul>
-                                </div>
+                            <div class="projects-showcase">
+                                <h4 class="projects-title">Choose Your Capstone Project</h4>
+                                <ul class="projects-list">
+                                    <li>🏦 Personal finance manager with budgeting</li>
+                                    <li>🎮 Text-based RPG game with character progression</li>
+                                    <li>📊 Data analysis tool for a topic you care about</li>
+                                    <li>🤖 Simple chatbot with personality</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -760,7 +816,7 @@
                         <div class="feature-card">
                             <h4 class="feature-title" data-icon="📝">Progress Assessments</h4>
                             <ul class="module-list">
-                                <li>After every 2 sessions (8 total)</li>
+                                <li>After every week (4 total)</li>
                                 <li>Short quizzes and practical exercises</li>
                                 <li>Track progress and identify support needs</li>
                             </ul>
@@ -825,12 +881,12 @@
                             <p>Latest Python version with IDLE or VS Code. Step-by-step installation guide provided.</p>
                         </div>
                         <div class="feature-card">
-                            <h4 class="feature-title" data-icon="⚙️">C++</h4>
-                            <p>Code::Blocks or similar beginner-friendly IDE. Complete setup assistance included.</p>
-                        </div>
-                        <div class="feature-card">
                             <h4 class="feature-title" data-icon="💬">Communication</h4>
                             <p>Zoom for live sessions, Discord for community chat and quick questions.</p>
+                        </div>
+                        <div class="feature-card">
+                            <h4 class="feature-title" data-icon="📁">File Management</h4>
+                            <p>GitHub account for portfolio building and project sharing.</p>
                         </div>
                     </div>
 
@@ -853,12 +909,12 @@
                     <div class="objectives-box">
                         <h3 style="margin-top: 0; color: #047857; font-size: 1.4rem;">By Course Completion, You Will Have:</h3>
                         <ul class="objectives-list">
-                            <li><strong>Built 4+ Complete Projects</strong> ready for your GitHub portfolio</li>
-                            <li><strong>Mastered 3 Programming Languages</strong> (Scratch, Python, C++)</li>
+                            <li><strong>Built 8+ Complete Projects</strong> ready for your GitHub portfolio</li>
+                            <li><strong>Mastered Python Programming</strong> from basics to data manipulation</li>
                             <li><strong>Developed Algorithmic Thinking</strong> to approach problems systematically</li>
                             <li><strong>Gained Debugging Confidence</strong> using proven troubleshooting strategies</li>
-                            <li><strong>Achieved University CS Readiness</strong> with reduced anxiety about CS101 courses</li>
-                            <li><strong>Created a Personal Learning Roadmap</strong> for continued CS growth</li>
+                            <li><strong>Created a Capstone Project</strong> showcasing your programming skills</li>
+                            <li><strong>Learned Professional Presentation</strong> skills for technical projects</li>
                             <li><strong>Joined a Supportive Community</strong> of fellow CS learners and mentors</li>
                         </ul>
                     </div>
@@ -866,24 +922,24 @@
 
                 <div class="stats-showcase">
                     <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Why This Course Works</h2>
-                    <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 0;">Proven results from our evidence-based teaching methodology</p>
+                    <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 0;">Intensive 4-week format designed for rapid skill development</p>
                     
                     <div class="stats-grid">
                         <div class="stat-card">
-                            <span class="stat-number">90%+</span>
-                            <p class="stat-label">Students feel prepared for CS101</p>
+                            <span class="stat-number">16</span>
+                            <p class="stat-label">Live sessions in 4 weeks</p>
                         </div>
                         <div class="stat-card">
-                            <span class="stat-number">100+</span>
-                            <p class="stat-label">Hours of mentorship offered</p>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">4+</span>
+                            <span class="stat-number">8+</span>
                             <p class="stat-label">Complete projects built</p>
                         </div>
                         <div class="stat-card">
                             <span class="stat-number">100%</span>
-                            <p class="stat-label">Built for absolute beginners</p>
+                            <p class="stat-label">Hands-on coding practice</p>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-number">1:1</span>
+                            <p class="stat-label">Individual project mentoring</p>
                         </div>
                     </div>
                 </div>
@@ -903,11 +959,11 @@
                             </ul>
                         </div>
                         <div class="feature-card">
-                            <h4 class="feature-title" data-icon="🏆">Proven Methodology</h4>
+                            <h4 class="feature-title" data-icon="🏆">Project-Based Learning</h4>
                             <ul style="list-style: none; padding: 0;">
-                                <li style="padding: 5px 0;">• Visual-first approach reduces intimidation</li>
-                                <li style="padding: 5px 0;">• Project-based learning ensures practical skills</li>
-                                <li style="padding: 5px 0;">• University preparation based on real CS101 curricula</li>
+                                <li style="padding: 5px 0;">• Build real applications from day one</li>
+                                <li style="padding: 5px 0;">• Portfolio-ready projects every week</li>
+                                <li style="padding: 5px 0;">• Practical skills over theoretical concepts</li>
                             </ul>
                         </div>
                         <div class="feature-card">
@@ -919,11 +975,11 @@
                             </ul>
                         </div>
                         <div class="feature-card">
-                            <h4 class="feature-title" data-icon="🤝">Community-Centered</h4>
+                            <h4 class="feature-title" data-icon="⚡">Intensive Format</h4>
                             <ul style="list-style: none; padding: 0;">
-                                <li style="padding: 5px 0;">• Peer support and collaboration encouraged</li>
-                                <li style="padding: 5px 0;">• Study groups and accountability partners</li>
-                                <li style="padding: 5px 0;">• Alumni network for ongoing support</li>
+                                <li style="padding: 5px 0;">• 4 weeks of focused learning</li>
+                                <li style="padding: 5px 0;">• Daily practice builds momentum</li>
+                                <li style="padding: 5px 0;">• Rapid skill development and confidence building</li>
                             </ul>
                         </div>
                     </div>
@@ -934,14 +990,15 @@
                 <div class="contact-content">
                     <h2 class="contact-title">Ready to Start Your CS Journey?</h2>
                     <p class="contact-description">
-                        <strong>Edvance x CodeKids</strong> transforms absolute beginners into confident programmers ready for university CS success. 
+                        <strong>Edvance x CodeKids</strong> transforms absolute beginners into CS-ready students with strong Python programming skills in just 4 weeks. 
                         Join us and discover that the transition from Zero to One is not just possible – it's exciting!
                     </p>
                     
                     <div class="info-grid">
                         <div class="info-card">
                             <h3 style="margin-bottom: 15px; color: #10b981;">⏰ Course Schedule</h3>
-                            <p><strong>Duration:</strong> 8 Weeks (16 Sessions)</p>
+                            <p><strong>Duration:</strong> 4 Weeks (16 Sessions)</p>
+                            <p><strong>Frequency:</strong> 4 sessions per week, 1 hour each</p>
                             <p><strong>Cohort 1:</strong> July 1, 2024</p>
                             <p><strong>Cohort 2:</strong> August 1, 2024</p>
                         </div>
@@ -950,16 +1007,17 @@
                             <p><strong>Early Bird:</strong> PKR 5,000 (until June 15)</p>
                             <p><strong>Regular:</strong> PKR 12,000</p>
                             <p><strong>Guarantee:</strong> 100% refund if not satisfied</p>
+                            <p><strong>Payment Plans:</strong> Available with financial aid</p>
                         </div>
                     </div>
                     
                     <p class="footer-note">
                         For questions about the curriculum, enrollment, or financial aid options, 
-                        please contact us during office hours or via our enrollment email.
+                        please contact us through our registration form or via email.
                     </p>
                     
                     <div class="document-meta">
-                        <strong>Document Info:</strong> Last Updated June 2024 | Version 1.0 | Status: Production Ready
+                        <strong>Document Info:</strong> Last Updated June 2024 | Version 2.0 | Status: Production Ready
                     </div>
                 </div>
             </div>

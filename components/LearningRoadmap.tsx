@@ -126,7 +126,7 @@ export default function LearningRoadmap() {
               Your Learning Journey
             </h2>
             <p className="text-lg sm:text-xl text-slate-600 mb-6 sm:mb-8 px-2">
-              From zero coding experience to Python mastery in 4 weeks • 16 total sessions
+              From zero coding experience to CS readiness in 4 weeks • 16 total sessions
             </p>
             <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
           </motion.div>

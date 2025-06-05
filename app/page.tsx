@@ -95,9 +95,9 @@ export default function LandingPage() {
 
   const stats = [
     { number: "90%+", label: "Students feel prepared for CS101", icon: <TrendingUp className="w-8 h-8" /> },
-    { number: "100+", label: "Hours of mentorship offered", icon: <Clock className="w-8 h-8" /> },
-    { number: "4+", label: "Complete projects built", icon: <Trophy className="w-8 h-8" /> },
-    { number: "3", label: "Programming languages learned", icon: <Code className="w-8 h-8" /> }
+    { number: "64+", label: "Hours of programming practice", icon: <Clock className="w-8 h-8" /> },
+    { number: "8+", label: "Complete projects built", icon: <Trophy className="w-8 h-8" /> },
+    { number: "2", label: "Programming languages learned", icon: <Code className="w-8 h-8" /> }
   ]
 
   return (
@@ -234,9 +234,9 @@ export default function LandingPage() {
               </p>
               
               <p className="text-sm sm:text-base lg:text-lg text-slate-500 mb-8 sm:mb-10 max-w-3xl mx-auto px-4 leading-relaxed">
-                A comprehensive 16-session course designed for absolute beginners. 
-                Master <span className="font-semibold text-emerald-600">Scratch → Python → C++</span> and 
-                build <span className="font-semibold text-emerald-600">4+ real projects</span> while preparing for university CS success.
+                A comprehensive 4-week intensive course designed for absolute beginners. 
+                Master <span className="font-semibold text-emerald-600">Scratch → Python</span> and 
+                build <span className="font-semibold text-emerald-600">8+ real projects</span> while preparing for CS success.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 px-4">
@@ -418,7 +418,7 @@ export default function LandingPage() {
                 icon: <Layers className="w-10 h-10 sm:w-12 sm:h-12 text-white" />,
                 title: "Progressive Language Mastery",
                 description: "Step-by-step progression from visual to text-based coding",
-                features: ["Scratch → Python → C++", "Visual first approach", "Syntax confidence"],
+                features: ["Scratch → Python", "Visual first approach", "CS foundations"],
                 color: "from-blue-400 to-blue-600",
               },
               {
@@ -432,7 +432,7 @@ export default function LandingPage() {
                 icon: <Trophy className="w-10 h-10 sm:w-12 sm:h-12 text-white" />,
                 title: "Portfolio-Ready Projects",
                 description: "Build real applications to showcase your new skills",
-                features: ["4+ complete projects", "GitHub portfolio", "Interview ready"],
+                features: ["8+ complete projects", "GitHub portfolio", "Interview ready"],
                 color: "from-amber-400 to-amber-600",
               },
             ].map((item, index) => (
@@ -710,22 +710,22 @@ export default function LandingPage() {
                 color: "from-emerald-400 to-emerald-600",
               },
               {
-                number: "100+",
-                text: "Hours of mentorship offered",
+                number: "64+",
+                text: "Hours of programming practice",
                 icon: <Clock className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
                 color: "from-blue-400 to-blue-600",
               },
               {
-                number: "4+",
+                number: "8+",
                 text: "Complete projects in portfolio",
                 icon: <Trophy className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
                 color: "from-purple-400 to-purple-600",
               },
               {
-                number: "100%",
-                text: "Built for absolute beginners",
-                icon: <Target className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
-                color: "from-amber-400 to-amber-600",
+                number: "2",
+                text: "Programming languages learned",
+                icon: <Code className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12" />,
+                color: "from-emerald-400 to-emerald-600",
               },
             ].map((stat, index) => (
               <motion.div
