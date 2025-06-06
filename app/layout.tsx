@@ -2,14 +2,15 @@ import type React from "react"
 import "./globals.css"
 import { Inter } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://zero-to-one-cs.vercel.app'),
   title: "Zero to One: Computer Science Foundations | Edvance x CodeKids",
-  description: "Launch your computer science journey with confidence. A comprehensive 16-session course designed for absolute beginners. Master Scratch → Python → C++ and build real projects while preparing for university CS success.",
-  keywords: ["computer science", "programming", "coding bootcamp", "beginner programming", "CS101", "Python", "C++", "Scratch", "university prep"],
+  description: "Launch your computer science journey with confidence. A comprehensive 4-week intensive course designed for absolute beginners. Master Scratch → Python and build 8+ real projects while preparing for CS success.",
+  keywords: ["computer science", "programming", "coding bootcamp", "beginner programming", "CS101", "Python", "Scratch", "university prep"],
   authors: [{ name: "Edvance x CodeKids" }],
   creator: "Edvance x CodeKids",
   publisher: "Edvance x CodeKids",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Zero to One: Computer Science Foundations",
-    description: "Launch your computer science journey with confidence. From absolute beginner to university-ready in 8 weeks.",
+    description: "Launch your computer science journey with confidence. From absolute beginner to CS-ready in 4 weeks.",
     type: "website",
     siteName: "Zero to One CS Course",
     images: [
@@ -38,15 +39,20 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Zero to One: Computer Science Foundations",
-    description: "Launch your computer science journey with confidence. From absolute beginner to university-ready in 8 weeks.",
+    description: "Launch your computer science journey with confidence. From absolute beginner to CS-ready in 4 weeks.",
     images: ["/rocket-icon.svg"],
   },
   generator: 'Next.js',
   applicationName: 'Zero to One CS Course',
   referrer: 'origin-when-cross-origin',
-  colorScheme: 'light',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
   themeColor: '#10b981',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=5',
+  colorScheme: 'light',
 }
 
 export default function RootLayout({
