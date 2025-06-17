@@ -6,9 +6,8 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { 
-  Lightbulb, Monitor, Code, Cpu, GitBranch, Trophy, 
-  PlayCircle, CheckCircle, Clock, Users, Target, Zap,
-  Rocket, Brain, Gamepad2, Calculator, Globe, Award, Database
+  Brain, Gamepad2, Code, Cpu, GitBranch, Trophy, 
+  Clock, CheckCircle
 } from "lucide-react"
 
 export default function LearningRoadmap() {
@@ -16,30 +15,47 @@ export default function LearningRoadmap() {
 
   const roadmapPhases = [
     {
-      phase: "Week 1",
-      title: "🧠 CS Foundations & Visual Programming",
-      subtitle: "4 Sessions • Introduction to Computer Science & Scratch",
+      phase: "Module 1",
+      title: "🧠 CS Foundations & Problem Solving",
+      subtitle: "2 Sessions • Understanding the Core of CS",
       icon: <Brain className="w-8 h-8" />,
       color: "from-purple-400 to-purple-600",
       bgColor: "bg-purple-50",
       borderColor: "border-purple-200",
       sessions: [
         "Session 1: What is Computer Science? Career paths & opportunities",
-        "Session 2: Computational thinking & problem-solving fundamentals", 
-        "Session 3: Introduction to Scratch - sprites, blocks, and basic logic",
-        "Session 4: Building your first interactive Scratch project"
+        "Session 2: Computational thinking & problem-solving frameworks", 
       ],
       projects: [
         "💡 Create your first algorithm (daily routine flowchart)",
-        "🎮 Interactive storytelling game in Scratch",
-        "🏃 Animated character with movement controls"
+        "🤔 Deconstruct real-world problems into logical steps",
       ],
-      skills: ["Logical thinking", "Problem decomposition", "Visual programming", "CS career awareness"],
-      milestone: "You'll understand what programming is and create your first interactive programs",
-      deliverable: "Personal CS roadmap + 2 working Scratch games"
+      skills: ["Algorithmic Thinking", "Problem Decomposition", "Abstraction", "Pattern Recognition"],
+      milestone: "You'll learn to think like a computer scientist before writing a single line of code.",
+      deliverable: "A solid mental framework for solving any logical problem."
     },
     {
-      phase: "Week 2", 
+      phase: "Module 2", 
+      title: "🎮 Visual Programming with Scratch",
+      subtitle: "2 Sessions • Building Logic without Syntax",
+      icon: <Gamepad2 className="w-8 h-8" />,
+      color: "from-sky-400 to-sky-600",
+      bgColor: "bg-sky-50",
+      borderColor: "border-sky-200",
+      sessions: [
+        "Session 3: Introduction to Scratch - sprites, blocks, and events",
+        "Session 4: Building game logic with loops, conditionals, and variables",
+      ],
+      projects: [
+        "🏃 Animated character with interactive controls",
+        "🕹️ Complete interactive game with a scoring system",
+      ],
+      skills: ["Visual Programming", "Event-Driven Logic", "Game Design Basics", "Rapid Prototyping"],
+      milestone: "You'll build fun, interactive games and see programming concepts come to life.",
+      deliverable: "2 working Scratch games to share with friends and family."
+    },
+    {
+      phase: "Module 3",
       title: "🐍 Python Fundamentals",
       subtitle: "4 Sessions • Real Programming Begins",
       icon: <Code className="w-8 h-8" />,
@@ -47,68 +63,81 @@ export default function LearningRoadmap() {
       bgColor: "bg-emerald-50",
       borderColor: "border-emerald-200",
       sessions: [
-        "Session 1: Python basics - variables, data types, input/output",
-        "Session 2: Control structures - if/else statements and decision making",
-        "Session 3: Loops - for and while loops, repetition in programming",
-        "Session 4: Functions - organizing code and reusable components"
+        "Session 5: Python basics - variables, data types, I/O",
+        "Session 6: Control structures - if/else statements and loops",
+        "Session 7: Functions and lists for code organization and data storage",
+        "Session 8: Final Python Project - putting it all together"
       ],
       projects: [
         "🧮 Simple calculator with multiple operations",
         "🎲 Number guessing game with user feedback",
-        "📊 Basic quiz application with scoring"
+        "📝 A complete project like a Quiz Game or To-Do Manager"
       ],
-      skills: ["Python syntax", "Variables & data types", "Control flow", "Functions"],
-      milestone: "You'll write real Python code and understand programming fundamentals",
-      deliverable: "3 Python applications demonstrating core concepts"
+      skills: ["Python Syntax", "Variables & Data Types", "Control Flow", "Functions & Lists"],
+      milestone: "You'll write real, text-based code to build useful applications.",
+      deliverable: "A portfolio of Python applications demonstrating core concepts."
     },
     {
-      phase: "Week 3",
-      title: "🐍 Advanced Python & Data",
-      subtitle: "4 Sessions • Working with Data Structures",
-      icon: <Database className="w-8 h-8" />,
+      phase: "Module 4",
+      title: "⚙️ Introduction to C++",
+      subtitle: "4 Sessions • University Prep Focus",
+      icon: <Cpu className="w-8 h-8" />,
+      color: "from-rose-400 to-rose-600",
+      bgColor: "bg-rose-50",
+      borderColor: "border-rose-200",
+      sessions: [
+        "Session 9: Why C++? Syntax essentials vs. Python",
+        "Session 10: Pointers, memory, and performance concepts",
+        "Session 11: Object-Oriented Programming (OOP) basics",
+        "Session 12: Mini-project to solidify C++ skills"
+      ],
+      projects: [
+        "🔢 Basic calculator in C++",
+        "🏦 Simple banking system using OOP concepts"
+      ],
+      skills: ["C++ Syntax", "Memory Management", "Compilation", "Object-Oriented Programming"],
+      milestone: "You'll tackle a language used in university and high-performance applications.",
+      deliverable: "Confidence and foundational knowledge to excel in CS101 courses."
+    },
+    {
+      phase: "Module 5",
+      title: "🌉 Bridging Logic & Problem Solving",
+      subtitle: "2 Sessions • Advanced Concepts",
+      icon: <GitBranch className="w-8 h-8" />,
       color: "from-blue-400 to-blue-600", 
       bgColor: "bg-blue-50",
       borderColor: "border-blue-200",
       sessions: [
-        "Session 1: Lists - storing and manipulating collections of data",
-        "Session 2: Dictionaries - key-value pairs and data organization",
-        "Session 3: File handling - reading from and writing to files",
-        "Session 4: Putting it together - combining concepts for real applications"
+        "Session 13: Advanced problem-solving strategies",
+        "Session 14: Introduction to basic data structures (Arrays, Stacks)",
       ],
       projects: [
-        "📝 Todo list manager with file storage",
-        "📊 Personal expense tracker with data analysis", 
-        "📚 Simple contact book with search functionality",
-        "🎯 Mini text-based adventure game"
+        "🧩 Solving classic programming puzzles",
+        "⚙️ Implementing a simple data structure from scratch",
       ],
-      skills: ["Data structures", "File operations", "Data manipulation", "Problem solving"],
-      milestone: "You'll handle real data and build applications that persist information",
-      deliverable: "Portfolio of 4 data-driven Python applications"
+      skills: ["Data Structures", "Advanced Algorithms", "Debugging Techniques", "Efficiency"],
+      milestone: "You'll connect all the dots and learn how to approach complex challenges.",
+      deliverable: "A toolkit of problem-solving patterns for technical interviews."
     },
     {
-      phase: "Week 4",
-      title: "🚀 Capstone Project Week", 
-      subtitle: "4 Sessions • Build Your Showcase Project",
-      icon: <Rocket className="w-8 h-8" />,
+      phase: "Module 6",
+      title: "🚀 Capstone & Career Prep", 
+      subtitle: "2 Sessions • Showcase & Next Steps",
+      icon: <Trophy className="w-8 h-8" />,
       color: "from-amber-400 to-amber-600",
       bgColor: "bg-amber-50", 
       borderColor: "border-amber-200",
       sessions: [
-        "Session 1: Project planning & design - choosing and scoping your capstone",
-        "Session 2: Development session 1 - building core functionality",
-        "Session 3: Development session 2 - adding features and debugging",
-        "Session 4: Project presentation & portfolio showcase"
+        "Session 15: Capstone project development and showcase",
+        "Session 16: Career prep - building a portfolio and next steps",
       ],
       projects: [
-        "🎨 Choose your own capstone project:",
-        "• 🏦 Personal finance manager with budgeting",
-        "• 🎮 Text-based RPG game with character progression", 
-        "• 📊 Data analysis tool for a topic you care about",
-        "• 🤖 Simple chatbot with personality"
+        "🏆 A capstone project of your choice to showcase all your skills",
+        "📝 A polished resume and portfolio ready for applications",
       ],
-      skills: ["Project planning", "Independent coding", "Debugging", "Presentation skills"],
-      milestone: "You'll complete a substantial project and present it professionally",
-      deliverable: "Complete capstone project + professional portfolio + presentation"
+      skills: ["Project Management", "Independent Development", "Presentation", "Career Strategy"],
+      milestone: "You'll complete a substantial project and be ready for your next step.",
+      deliverable: "A complete capstone project and a clear plan for your future in tech."
     }
   ]
 
@@ -123,25 +152,25 @@ export default function LearningRoadmap() {
             transition={{ duration: 0.6 }}
           >
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 mb-4 sm:mb-6 px-2">
-              Your Learning Journey
+              A Journey in 6 Modules
             </h2>
             <p className="text-lg sm:text-xl text-slate-600 mb-6 sm:mb-8 px-2">
-              From zero coding experience to CS readiness in 4 weeks • 16 total sessions
+              From zero coding experience to CS readiness with 16 comprehensive sessions.
             </p>
             <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
           </motion.div>
         </div>
 
         {/* Phase Selector */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
+        <div className="max-w-5xl mx-auto mb-12">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
             {roadmapPhases.map((phase, index) => (
               <motion.button
                 key={index}
                 onClick={() => setActivePhase(index)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`p-3 sm:p-4 rounded-xl border-2 transition-all duration-300 ${
+                className={`p-3 sm:p-4 rounded-xl border-2 transition-all duration-300 h-full ${
                   activePhase === index
                     ? `${phase.bgColor} ${phase.borderColor} shadow-lg`
                     : "bg-white border-slate-200 hover:border-slate-300"
@@ -191,59 +220,55 @@ export default function LearningRoadmap() {
                 <div>
                   <h4 className="text-xl font-bold mb-4 text-slate-800 flex items-center">
                     <Clock className="w-5 h-5 mr-2 text-emerald-600" />
-                    Live Sessions
+                    What You'll Learn
                   </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {roadmapPhases[activePhase].sessions.map((session, idx) => (
                       <div key={idx} className="flex items-start space-x-3 p-4 bg-slate-50 rounded-lg">
-                        <div className="w-6 h-6 bg-emerald-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
-                          <span className="text-emerald-600 text-xs font-bold">{idx + 1}</span>
-                        </div>
+                        <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0 mt-0.5" />
                         <span className="text-slate-700">{session}</span>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Projects */}
+                {/* Skills */}
                 <div>
                   <h4 className="text-xl font-bold mb-4 text-slate-800 flex items-center">
-                    <Target className="w-5 h-5 mr-2 text-emerald-600" />
-                    What You'll Build
+                    <Trophy className="w-5 h-5 mr-2 text-amber-500" />
+                    Skills Gained
                   </h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    {roadmapPhases[activePhase].projects.map((project, idx) => (
-                      <div key={idx} className="flex items-center space-x-3 p-4 bg-emerald-50 rounded-lg border border-emerald-100">
-                        <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                        <span className="text-slate-700">{project}</span>
-                      </div>
+                  <div className="flex flex-wrap gap-2">
+                    {roadmapPhases[activePhase].skills.map((skill, idx) => (
+                      <Badge key={idx} variant="secondary" className="bg-slate-200 text-slate-700 font-medium">
+                        {skill}
+                      </Badge>
                     ))}
                   </div>
                 </div>
-
-                {/* Skills & Deliverable */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                  {/* Projects */}
                   <div>
-                    <h4 className="text-xl font-bold mb-4 text-slate-800 flex items-center">
-                      <Zap className="w-5 h-5 mr-2 text-emerald-600" />
-                      Skills You'll Master
+                    <h4 className="text-xl font-bold mb-4 text-slate-800">
+                      Key Projects
                     </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {roadmapPhases[activePhase].skills.map((skill, idx) => (
-                        <Badge key={idx} className="bg-emerald-100 text-emerald-700 hover:bg-emerald-200">
-                          {skill}
-                        </Badge>
+                    <div className="space-y-3">
+                      {roadmapPhases[activePhase].projects.map((project, idx) => (
+                        <div key={idx} className="flex items-start text-sm">
+                          <span className="mr-2 mt-0.5">🔹</span>
+                          <span className="text-slate-600">{project}</span>
+                        </div>
                       ))}
                     </div>
                   </div>
-
+                  {/* Deliverable */}
                   <div>
-                    <h4 className="text-xl font-bold mb-4 text-slate-800 flex items-center">
-                      <Award className="w-5 h-5 mr-2 text-emerald-600" />
-                      What You'll Have
+                    <h4 className="text-xl font-bold mb-4 text-slate-800">
+                      Module Deliverable
                     </h4>
-                    <div className="p-4 bg-amber-50 rounded-lg border border-amber-200">
-                      <p className="text-slate-700 font-medium">{roadmapPhases[activePhase].deliverable}</p>
+                    <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-lg text-sm">
+                      <p className="text-emerald-800 font-semibold">{roadmapPhases[activePhase].deliverable}</p>
                     </div>
                   </div>
                 </div>
@@ -260,14 +285,14 @@ export default function LearningRoadmap() {
             disabled={activePhase === 0}
             className="px-6"
           >
-            Previous Phase
+            Previous Module
           </Button>
           <Button
             onClick={() => setActivePhase(Math.min(roadmapPhases.length - 1, activePhase + 1))}
             disabled={activePhase === roadmapPhases.length - 1}
             className="bg-emerald-600 hover:bg-emerald-700 px-6"
           >
-            Next Phase
+            Next Module
           </Button>
         </div>
 
@@ -277,23 +302,33 @@ export default function LearningRoadmap() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             <div className="p-6 bg-white rounded-xl shadow-lg border border-slate-100">
               <div className="text-3xl mb-3">🧠</div>
-              <h4 className="font-bold text-slate-800 mb-2">Week 1: CS & Scratch</h4>
-              <p className="text-slate-600 text-sm">Foundation + visual programming</p>
+              <h4 className="font-bold text-slate-800 mb-2">Module 1: CS Foundations</h4>
+              <p className="text-slate-600 text-sm">Understanding the core of CS</p>
+            </div>
+            <div className="p-6 bg-white rounded-xl shadow-lg border border-slate-100">
+              <div className="text-3xl mb-3">🎮</div>
+              <h4 className="font-bold text-slate-800 mb-2">Module 2: Visual Programming</h4>
+              <p className="text-slate-600 text-sm">Building logic without syntax</p>
             </div>
             <div className="p-6 bg-white rounded-xl shadow-lg border border-slate-100">
               <div className="text-3xl mb-3">🐍</div>
-              <h4 className="font-bold text-slate-800 mb-2">Week 2: Python Basics</h4>
+              <h4 className="font-bold text-slate-800 mb-2">Module 3: Python Fundamentals</h4>
               <p className="text-slate-600 text-sm">Real programming fundamentals</p>
             </div>
             <div className="p-6 bg-white rounded-xl shadow-lg border border-slate-100">
-              <div className="text-3xl mb-3">📊</div>
-              <h4 className="font-bold text-slate-800 mb-2">Week 3: Data & Files</h4>
-              <p className="text-slate-600 text-sm">Advanced Python concepts</p>
+              <div className="text-3xl mb-3">⚙️</div>
+              <h4 className="font-bold text-slate-800 mb-2">Module 4: Introduction to C++</h4>
+              <p className="text-slate-600 text-sm">University prep focus</p>
             </div>
             <div className="p-6 bg-white rounded-xl shadow-lg border border-slate-100">
-              <div className="text-3xl mb-3">🚀</div>
-              <h4 className="font-bold text-slate-800 mb-2">Week 4: Capstone</h4>
-              <p className="text-slate-600 text-sm">Build your showcase project</p>
+              <div className="text-3xl mb-3">🌉</div>
+              <h4 className="font-bold text-slate-800 mb-2">Module 5: Bridging Logic</h4>
+              <p className="text-slate-600 text-sm">Advanced concepts</p>
+            </div>
+            <div className="p-6 bg-white rounded-xl shadow-lg border border-slate-100">
+              <div className="text-3xl mb-3">🏆</div>
+              <h4 className="font-bold text-slate-800 mb-2">Module 6: Capstone & Career Prep</h4>
+              <p className="text-slate-600 text-sm">Showcase & next steps</p>
             </div>
           </div>
         </div>

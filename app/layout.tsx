@@ -9,8 +9,8 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   metadataBase: new URL('https://zero-to-one-cs.vercel.app'),
   title: "Zero to One: Computer Science Foundations | Edvance x CodeKids",
-  description: "Launch your computer science journey with confidence. A comprehensive 4-week intensive course designed for absolute beginners. Master Scratch → Python and build 8+ real projects while preparing for CS success.",
-  keywords: ["computer science", "programming", "coding bootcamp", "beginner programming", "CS101", "Python", "Scratch", "university prep"],
+  description: "Launch your computer science journey with confidence. A comprehensive intensive course designed for absolute beginners. Master Scratch, Python, and C++ and build real projects while preparing for CS success.",
+  keywords: ["computer science", "programming", "coding bootcamp", "beginner programming", "CS101", "Python", "Scratch", "university prep", "C++"],
   authors: [{ name: "Edvance x CodeKids" }],
   creator: "Edvance x CodeKids",
   publisher: "Edvance x CodeKids",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Zero to One: Computer Science Foundations",
-    description: "Launch your computer science journey with confidence. From absolute beginner to CS-ready in 4 weeks.",
+    description: "Launch your computer science journey with confidence. From absolute beginner to CS-ready.",
     type: "website",
     siteName: "Zero to One CS Course",
     images: [
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary",
     title: "Zero to One: Computer Science Foundations",
-    description: "Launch your computer science journey with confidence. From absolute beginner to CS-ready in 4 weeks.",
+    description: "Launch your computer science journey with confidence. From absolute beginner to CS-ready.",
     images: ["/rocket-icon.svg"],
   },
   generator: 'Next.js',

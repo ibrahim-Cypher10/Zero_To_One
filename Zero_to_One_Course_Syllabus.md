@@ -5,7 +5,7 @@
 
 ### 📚 **Course Overview**
 
-**Duration:** 16 Interactive Sessions (8 Weeks)  
+**Duration:** 16 Interactive Sessions
 **Format:** Live Online Sessions + Office Hours  
 **Target:** Absolute Beginners with No CS Background  
 **Goal:** University CS Readiness & Programming Confidence  
