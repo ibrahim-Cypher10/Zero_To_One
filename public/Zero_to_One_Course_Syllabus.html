@@ -12,1016 +12,188 @@
         }
         
         body {
-            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.7;
-            color: #2d3748;
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1000px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            max-width: 800px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
         
-        .document {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            margin: 40px 0;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
-            color: white;
+        header {
             text-align: center;
-            padding: 60px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="white" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="20" fill="url(%23grid)"/></svg>') repeat;
-            opacity: 0.1;
-        }
-        
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .presenter {
-            font-size: 1rem;
-            font-weight: 500;
-            opacity: 0.9;
-            margin-bottom: 15px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-        
-        .main-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            line-height: 1.2;
-        }
-        
-        .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-        
-        .content {
-            padding: 50px 40px;
-        }
-        
-        .section {
-            margin-bottom: 60px;
-        }
-        
-        .section-header {
-            display: flex;
-            align-items: center;
+            border-bottom: 2px solid #059669;
+            padding-bottom: 20px;
             margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #e2e8f0;
         }
         
-        .section-icon {
-            font-size: 2rem;
-            margin-right: 15px;
-            color: #10b981;
-        }
-        
-        .section-title {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #1a202c;
+        h1 {
+            color: #065f46;
+            font-size: 2.5em;
             margin: 0;
         }
         
-        .overview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin: 30px 0;
+        h2 {
+            color: #059669;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 10px;
+            margin-top: 40px;
         }
         
-        .overview-card {
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 5px solid #10b981;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s ease;
-        }
-        
-        .overview-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .overview-label {
-            font-weight: 700;
-            color: #10b981;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-        }
-        
-        .overview-value {
-            font-size: 1.1rem;
-            color: #2d3748;
-            font-weight: 600;
-        }
-        
-        .objectives-box {
-            background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%);
-            padding: 40px;
-            border-radius: 20px;
-            border: 2px solid #10b981;
-            margin: 30px 0;
-            position: relative;
-        }
-        
-        .objectives-box::before {
-            content: '🎯';
-            position: absolute;
-            top: -15px;
-            left: 30px;
-            background: white;
-            padding: 8px 12px;
-            border-radius: 50%;
-            font-size: 1.5rem;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
-        }
-        
-        .objectives-intro {
-            font-size: 1.2rem;
-            margin-bottom: 25px;
+        h3 {
             color: #047857;
-            font-weight: 600;
+            margin-top: 30px;
         }
         
-        .objectives-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .objectives-list li {
-            padding: 12px 0;
-            padding-left: 40px;
-            position: relative;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        
-        .objectives-list li::before {
-            content: "✅";
-            position: absolute;
-            left: 0;
-            top: 12px;
-            font-size: 1.2rem;
-        }
-        
-        .module-card {
-            background: white;
-            border: 2px solid #e2e8f0;
-            border-radius: 20px;
-            margin: 30px 0;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .module-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        .module {
+            background-color: #ffffff;
+            border: 1px solid #e9ecef;
+            border-left: 5px solid #10b981;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
         
         .module-header {
-            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
-            color: white;
-            padding: 30px;
-            position: relative;
-        }
-        
-        .module-header.week1 {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-        }
-        
-        .module-header.week2 {
-            background: linear-gradient(135deg, #10b981 0%, #047857 100%);
-        }
-        
-        .module-header.week3 {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-        }
-        
-        .module-header.week4 {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-        }
-        
-        .module-header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #34d399, #10b981, #047857);
-        }
-        
-        .module-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 1.4em;
+            color: #065f46;
         }
         
         .module-subtitle {
-            font-size: 1rem;
-            opacity: 0.9;
             font-style: italic;
-        }
-        
-        .module-content {
-            padding: 35px;
-        }
-        
-        .module-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-        
-        .sessions-box, .skills-box {
-            padding: 25px;
-            border-radius: 15px;
-            border: 2px solid transparent;
-        }
-        
-        .sessions-box {
-            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
-            border-color: #cbd5e0;
-        }
-        
-        .skills-box {
-            background: linear-gradient(135deg, #f0fff4 0%, #dcfce7 100%);
-            border-color: #10b981;
-        }
-        
-        .box-title {
-            font-size: 1.2rem;
-            font-weight: 700;
+            color: #555;
             margin-bottom: 15px;
-            color: #1a202c;
         }
         
-        .sessions-box .box-title {
-            color: #4a5568;
+        ul {
+            list-style-type: '✓ ';
+            padding-left: 20px;
         }
         
-        .skills-box .box-title {
-            color: #047857;
-        }
-        
-        .module-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .module-list li {
-            padding: 8px 0;
-            padding-left: 25px;
-            position: relative;
-            color: #4a5568;
-            font-weight: 500;
-        }
-        
-        .sessions-box .module-list li::before {
-            content: "📚";
-            position: absolute;
-            left: 0;
-            top: 8px;
-        }
-        
-        .skills-box .module-list li::before {
-            content: "⚡";
-            position: absolute;
-            left: 0;
-            top: 8px;
-        }
-        
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .feature-card {
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            border: 2px solid #e2e8f0;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .feature-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #1a202c;
-            display: flex;
-            align-items: center;
-        }
-        
-        .feature-title::before {
-            content: attr(data-icon);
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .stats-showcase {
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-            color: white;
-            padding: 50px;
-            border-radius: 20px;
-            margin: 50px 0;
-            text-align: center;
-        }
-        
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-        
-        .stat-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 30px;
-            border-radius: 15px;
-            border: 2px solid rgba(16, 185, 129, 0.3);
-            backdrop-filter: blur(10px);
-        }
-        
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: #10b981;
-            display: block;
+        li {
             margin-bottom: 10px;
         }
         
-        .stat-label {
-            font-size: 1rem;
-            opacity: 0.9;
+        strong {
+            color: #047857;
+        }
+        
+        .objective-list li {
             font-weight: 500;
         }
         
-        .highlight-banner {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            border: 2px solid #f59e0b;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 30px 0;
-            position: relative;
-        }
-        
-        .highlight-banner::before {
-            content: '⚠️';
-            position: absolute;
-            top: -15px;
-            left: 30px;
-            background: white;
-            padding: 8px 12px;
-            border-radius: 50%;
-            font-size: 1.3rem;
-        }
-        
-        .contact-footer {
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-            color: white;
-            padding: 60px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .contact-footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 50%), 
-                        radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
-        }
-        
-        .contact-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .contact-title {
-            font-size: 2.5rem;
-            font-weight: 800;
+        .overview-box {
+            background: #e6f9f2;
+            border: 1px solid #d1fae5;
+            padding: 15px;
+            border-radius: 8px;
             margin-bottom: 20px;
-            color: white;
         }
         
-        .contact-description {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            line-height: 1.6;
+        .overview-box p {
+            margin: 5px 0;
         }
         
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin: 40px 0;
-            text-align: left;
-        }
-        
-        .info-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-        }
-        
-        .footer-note {
+        footer {
+            text-align: center;
             margin-top: 40px;
-            font-style: italic;
-            opacity: 0.8;
-            font-size: 1rem;
-        }
-        
-        .document-meta {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding-top: 20px;
-        }
-        
-        .projects-showcase {
-            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-            padding: 30px;
-            border-radius: 15px;
-            margin: 25px 0;
-            border: 2px solid #f59e0b;
-        }
-        
-        .projects-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #92400e;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .projects-title::before {
-            content: "🎯";
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .projects-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .projects-list li {
-            padding: 8px 0;
-            color: #92400e;
-            font-weight: 500;
-            padding-left: 25px;
-            position: relative;
-        }
-        
-        .projects-list li::before {
-            content: "🚀";
-            position: absolute;
-            left: 0;
-            top: 8px;
-        }
-        
-        @media (max-width: 768px) {
-            .main-title {
-                font-size: 2.5rem;
-            }
-            
-            .module-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .content {
-                padding: 30px 20px;
-            }
-            
-            .header {
-                padding: 40px 20px;
-            }
-            
-            .contact-footer {
-                padding: 40px 20px;
-            }
-        }
-        
-        @media print {
-            body {
-                background: white;
-            }
-            
-            .document {
-                box-shadow: none;
-                margin: 0;
-            }
-            
-            .module-card {
-                page-break-inside: avoid;
-                box-shadow: none;
-                border: 1px solid #e2e8f0;
-            }
-            
-            .section {
-                page-break-inside: avoid;
-            }
-            
-            .contact-footer {
-                background: #f7fafc !important;
-                color: #2d3748 !important;
-            }
+            font-size: 0.9em;
+            color: #6c757d;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="document">
-            <div class="header">
-                <div class="header-content">
-                    <div class="presenter">Edvance x CodeKids presents</div>
-                    <h1 class="main-title">Zero to One: CS Foundations</h1>
-                    <h2 class="subtitle">Complete Course Syllabus</h2>
-                </div>
-            </div>
 
-            <div class="content">
-                <div class="section">
-                    <div class="section-header">
-                        <div class="section-icon">📚</div>
-                        <h2 class="section-title">Course Overview</h2>
-                    </div>
-                    <div class="overview-grid">
-                        <div class="overview-card">
-                            <div class="overview-label">Duration</div>
-                            <div class="overview-value">16 Interactive Sessions (4 Weeks)</div>
-                        </div>
-                        <div class="overview-card">
-                            <div class="overview-label">Schedule</div>
-                            <div class="overview-value">4 Sessions per Week • 1 Hour Each</div>
-                        </div>
-                        <div class="overview-card">
-                            <div class="overview-label">Format</div>
-                            <div class="overview-value">Live Online Sessions + Office Hours</div>
-                        </div>
-                        <div class="overview-card">
-                            <div class="overview-label">Target</div>
-                            <div class="overview-value">Absolute Beginners with No CS Background</div>
-                        </div>
-                        <div class="overview-card">
-                            <div class="overview-label">Goal</div>
-                            <div class="overview-value">CS Readiness & Programming Confidence</div>
-                        </div>
-                        <div class="overview-card">
-                            <div class="overview-label">Languages</div>
-                            <div class="overview-value">Scratch (Visual) + Python (Text-based)</div>
-                        </div>
-                    </div>
-                </div>
+    <header>
+        <h1>Zero to One: CS Foundations</h1>
+        <p>Complete Course Syllabus</p>
+    </header>
 
-                <div class="section">
-                    <div class="section-header">
-                        <div class="section-icon">🎯</div>
-                        <h2 class="section-title">Learning Objectives</h2>
-                    </div>
-                    <div class="objectives-box">
-                        <p class="objectives-intro">Upon completion of this course, students will be able to:</p>
-                        <ul class="objectives-list">
-                            <li><strong>Think algorithmically</strong> and break down complex problems into manageable steps</li>
-                            <li><strong>Code confidently</strong> in Python with solid understanding of programming fundamentals</li>
-                            <li><strong>Debug effectively</strong> and troubleshoot programming issues independently</li>
-                            <li><strong>Build complete projects</strong> from planning to presentation</li>
-                            <li><strong>Handle data</strong> using lists, dictionaries, and file operations</li>
-                            <li><strong>Apply problem-solving strategies</strong> to both programming and real-world challenges</li>
-                            <li><strong>Present technical work</strong> professionally with portfolio-ready projects</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-header">
-                        <div class="section-icon">📋</div>
-                        <h2 class="section-title">4-Week Course Structure</h2>
-                    </div>
-                    <p style="font-size: 1.2rem; margin-bottom: 40px; color: #4a5568;">The course is divided into <strong>4 intensive weeks</strong>, with 4 sessions per week building from visual programming to Python mastery:</p>
-                    
-                    <!-- Week 1 -->
-                    <div class="module-card">
-                        <div class="module-header week1">
-                            <h3 class="module-title">🧠 Week 1: CS Foundations & Visual Programming</h3>
-                            <p class="module-subtitle">Sessions 1-4 | Introduction to Computer Science & Scratch</p>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-grid">
-                                <div class="sessions-box">
-                                    <h4 class="box-title">Sessions Included</h4>
-                                    <ul class="module-list">
-                                        <li>Session 1: What is Computer Science? Career paths & opportunities</li>
-                                        <li>Session 2: Computational thinking & problem-solving fundamentals</li>
-                                        <li>Session 3: Introduction to Scratch - sprites, blocks, and basic logic</li>
-                                        <li>Session 4: Building your first interactive Scratch project</li>
-                                    </ul>
-                                </div>
-                                <div class="skills-box">
-                                    <h4 class="box-title">Skills You'll Master</h4>
-                                    <ul class="module-list">
-                                        <li>Logical thinking</li>
-                                        <li>Problem decomposition</li>
-                                        <li>Visual programming</li>
-                                        <li>CS career awareness</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="projects-showcase">
-                                <h4 class="projects-title">What You'll Build</h4>
-                                <ul class="projects-list">
-                                    <li>Create your first algorithm (daily routine flowchart)</li>
-                                    <li>Interactive storytelling game in Scratch</li>
-                                    <li>Animated character with movement controls</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Week 2 -->
-                    <div class="module-card">
-                        <div class="module-header week2">
-                            <h3 class="module-title">🐍 Week 2: Python Fundamentals</h3>
-                            <p class="module-subtitle">Sessions 5-8 | Real Programming Begins</p>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-grid">
-                                <div class="sessions-box">
-                                    <h4 class="box-title">Sessions Included</h4>
-                                    <ul class="module-list">
-                                        <li>Session 5: Python basics - variables, data types, input/output</li>
-                                        <li>Session 6: Control structures - if/else statements and decision making</li>
-                                        <li>Session 7: Loops - for and while loops, repetition in programming</li>
-                                        <li>Session 8: Functions - organizing code and reusable components</li>
-                                    </ul>
-                                </div>
-                                <div class="skills-box">
-                                    <h4 class="box-title">Skills You'll Master</h4>
-                                    <ul class="module-list">
-                                        <li>Python syntax</li>
-                                        <li>Variables & data types</li>
-                                        <li>Control flow</li>
-                                        <li>Functions</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="projects-showcase">
-                                <h4 class="projects-title">What You'll Build</h4>
-                                <ul class="projects-list">
-                                    <li>Simple calculator with multiple operations</li>
-                                    <li>Number guessing game with user feedback</li>
-                                    <li>Basic quiz application with scoring</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Week 3 -->
-                    <div class="module-card">
-                        <div class="module-header week3">
-                            <h3 class="module-title">🐍 Week 3: Advanced Python & Data</h3>
-                            <p class="module-subtitle">Sessions 9-12 | Working with Data Structures</p>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-grid">
-                                <div class="sessions-box">
-                                    <h4 class="box-title">Sessions Included</h4>
-                                    <ul class="module-list">
-                                        <li>Session 9: Lists - storing and manipulating collections of data</li>
-                                        <li>Session 10: Dictionaries - key-value pairs and data organization</li>
-                                        <li>Session 11: File handling - reading from and writing to files</li>
-                                        <li>Session 12: Putting it together - combining concepts for real applications</li>
-                                    </ul>
-                                </div>
-                                <div class="skills-box">
-                                    <h4 class="box-title">Skills You'll Master</h4>
-                                    <ul class="module-list">
-                                        <li>Data structures</li>
-                                        <li>File operations</li>
-                                        <li>Data manipulation</li>
-                                        <li>Problem solving</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="projects-showcase">
-                                <h4 class="projects-title">What You'll Build</h4>
-                                <ul class="projects-list">
-                                    <li>Todo list manager with file storage</li>
-                                    <li>Personal expense tracker with data analysis</li>
-                                    <li>Simple contact book with search functionality</li>
-                                    <li>Mini text-based adventure game</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Week 4 -->
-                    <div class="module-card">
-                        <div class="module-header week4">
-                            <h3 class="module-title">🚀 Week 4: Capstone Project Week</h3>
-                            <p class="module-subtitle">Sessions 13-16 | Build Your Showcase Project</p>
-                        </div>
-                        <div class="module-content">
-                            <div class="module-grid">
-                                <div class="sessions-box">
-                                    <h4 class="box-title">Sessions Included</h4>
-                                    <ul class="module-list">
-                                        <li>Session 13: Project planning & design - choosing and scoping your capstone</li>
-                                        <li>Session 14: Development session 1 - building core functionality</li>
-                                        <li>Session 15: Development session 2 - adding features and debugging</li>
-                                        <li>Session 16: Project presentation & portfolio showcase</li>
-                                    </ul>
-                                </div>
-                                <div class="skills-box">
-                                    <h4 class="box-title">Skills You'll Master</h4>
-                                    <ul class="module-list">
-                                        <li>Project planning</li>
-                                        <li>Independent coding</li>
-                                        <li>Debugging</li>
-                                        <li>Presentation skills</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="projects-showcase">
-                                <h4 class="projects-title">Choose Your Capstone Project</h4>
-                                <ul class="projects-list">
-                                    <li>🏦 Personal finance manager with budgeting</li>
-                                    <li>🎮 Text-based RPG game with character progression</li>
-                                    <li>📊 Data analysis tool for a topic you care about</li>
-                                    <li>🤖 Simple chatbot with personality</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-header">
-                        <div class="section-icon">🎁</div>
-                        <h2 class="section-title">Bonus Features Throughout</h2>
-                    </div>
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="📞">Weekly Office Hours</h4>
-                            <ul class="module-list">
-                                <li>Every week, 1 hour per session</li>
-                                <li>Instructor-led Q&A and individual help</li>
-                                <li>First-come, first-served slots</li>
-                            </ul>
-                        </div>
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="📝">Progress Assessments</h4>
-                            <ul class="module-list">
-                                <li>After every week (4 total)</li>
-                                <li>Short quizzes and practical exercises</li>
-                                <li>Track progress and identify support needs</li>
-                            </ul>
-                        </div>
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="⚡">Live Coding Sprints</h4>
-                            <ul class="module-list">
-                                <li>15-minute focused coding challenges</li>
-                                <li>Interactive coding environment</li>
-                                <li>Build speed and confidence</li>
-                            </ul>
-                        </div>
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="🎮">Learning Games</h4>
-                            <ul class="module-list">
-                                <li>Kahoot Sessions: Concept review games</li>
-                                <li>Code Golf: Shortest solution challenges</li>
-                                <li>Debug Races: Find and fix errors quickly</li>
-                            </ul>
-                        </div>
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="👥">Peer Study Groups</h4>
-                            <ul class="module-list">
-                                <li>Self-organized study pods (3-4 students)</li>
-                                <li>Instructor guidance for group formation</li>
-                                <li>Accountability and collaborative learning</li>
-                            </ul>
-                        </div>
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="🏆">Portfolio Building</h4>
-                            <ul class="module-list">
-                                <li>GitHub repository setup and management</li>
-                                <li>Project documentation guidance</li>
-                                <li>Interview-ready portfolio creation</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-header">
-                        <div class="section-icon">🛠️</div>
-                        <h2 class="section-title">Technical Requirements</h2>
-                    </div>
-                    <div class="highlight-banner">
-                        <h4 style="margin-bottom: 15px; color: #92400e; font-size: 1.3rem; margin-top: 10px;">Hardware Requirements</h4>
-                        <ul style="color: #92400e;">
-                            <li style="margin: 8px 0;"><strong>Essential:</strong> Computer with stable internet connection</li>
-                            <li style="margin: 8px 0;"><strong>Minimum:</strong> 4GB RAM, modern web browser (Chrome, Firefox, Safari)</li>
-                            <li style="margin: 8px 0;"><strong>Recommended:</strong> 8GB RAM for optimal experience with multiple programs</li>
-                        </ul>
-                    </div>
-
-                    <h4 style="font-size: 1.3rem; margin: 25px 0 15px 0; color: #1a202c;">Software (We'll Help You Install Everything)</h4>
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="🎨">Scratch</h4>
-                            <p>Web-based visual programming - no installation needed. Works in any modern browser.</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="🐍">Python</h4>
-                            <p>Latest Python version with IDLE or VS Code. Step-by-step installation guide provided.</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="💬">Communication</h4>
-                            <p>Zoom for live sessions, Discord for community chat and quick questions.</p>
-                        </div>
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="📁">File Management</h4>
-                            <p>GitHub account for portfolio building and project sharing.</p>
-                        </div>
-                    </div>
-
-                    <div style="background: #f0fff4; padding: 25px; border-radius: 15px; margin: 25px 0; border-left: 5px solid #10b981;">
-                        <h4 style="color: #047857; margin-bottom: 15px;">✅ No Prior Experience Required</h4>
-                        <ul style="color: #065f46;">
-                            <li style="margin: 8px 0;">All software installation guided in Session 1</li>
-                            <li style="margin: 8px 0;">Step-by-step setup documentation provided</li>
-                            <li style="margin: 8px 0;">Technical support available during office hours</li>
-                            <li style="margin: 8px 0;">Backup online coding environments for any technical issues</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-header">
-                        <div class="section-icon">🎯</div>
-                        <h2 class="section-title">Expected Outcomes</h2>
-                    </div>
-                    <div class="objectives-box">
-                        <h3 style="margin-top: 0; color: #047857; font-size: 1.4rem;">By Course Completion, You Will Have:</h3>
-                        <ul class="objectives-list">
-                            <li><strong>Built 8+ Complete Projects</strong> ready for your GitHub portfolio</li>
-                            <li><strong>Mastered Python Programming</strong> from basics to data manipulation</li>
-                            <li><strong>Developed Algorithmic Thinking</strong> to approach problems systematically</li>
-                            <li><strong>Gained Debugging Confidence</strong> using proven troubleshooting strategies</li>
-                            <li><strong>Created a Capstone Project</strong> showcasing your programming skills</li>
-                            <li><strong>Learned Professional Presentation</strong> skills for technical projects</li>
-                            <li><strong>Joined a Supportive Community</strong> of fellow CS learners and mentors</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="stats-showcase">
-                    <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Why This Course Works</h2>
-                    <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 0;">Intensive 4-week format designed for rapid skill development</p>
-                    
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <span class="stat-number">16</span>
-                            <p class="stat-label">Live sessions in 4 weeks</p>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">8+</span>
-                            <p class="stat-label">Complete projects built</p>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">100%</span>
-                            <p class="stat-label">Hands-on coding practice</p>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number">1:1</span>
-                            <p class="stat-label">Individual project mentoring</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <div class="section-header">
-                        <div class="section-icon">💡</div>
-                        <h2 class="section-title">Our Teaching Philosophy</h2>
-                    </div>
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="🎯">Beginner-First Design</h4>
-                            <ul style="list-style: none; padding: 0;">
-                                <li style="padding: 5px 0;">• No assumptions about prior knowledge</li>
-                                <li style="padding: 5px 0;">• Gentle progression from visual to text-based coding</li>
-                                <li style="padding: 5px 0;">• Multiple learning styles accommodated</li>
-                            </ul>
-                        </div>
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="🏆">Project-Based Learning</h4>
-                            <ul style="list-style: none; padding: 0;">
-                                <li style="padding: 5px 0;">• Build real applications from day one</li>
-                                <li style="padding: 5px 0;">• Portfolio-ready projects every week</li>
-                                <li style="padding: 5px 0;">• Practical skills over theoretical concepts</li>
-                            </ul>
-                        </div>
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="👨‍🏫">Expert Instruction</h4>
-                            <ul style="list-style: none; padding: 0;">
-                                <li style="padding: 5px 0;">• Instructors who made the transition themselves</li>
-                                <li style="padding: 5px 0;">• Industry experience + teaching passion</li>
-                                <li style="padding: 5px 0;">• Deep understanding of beginner challenges</li>
-                            </ul>
-                        </div>
-                        <div class="feature-card">
-                            <h4 class="feature-title" data-icon="⚡">Intensive Format</h4>
-                            <ul style="list-style: none; padding: 0;">
-                                <li style="padding: 5px 0;">• 4 weeks of focused learning</li>
-                                <li style="padding: 5px 0;">• Daily practice builds momentum</li>
-                                <li style="padding: 5px 0;">• Rapid skill development and confidence building</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="contact-footer">
-                <div class="contact-content">
-                    <h2 class="contact-title">Ready to Start Your CS Journey?</h2>
-                    <p class="contact-description">
-                        <strong>Edvance x CodeKids</strong> transforms absolute beginners into CS-ready students with strong Python programming skills in just 4 weeks. 
-                        Join us and discover that the transition from Zero to One is not just possible – it's exciting!
-                    </p>
-                    
-                    <div class="info-grid">
-                        <div class="info-card">
-                            <h3 style="margin-bottom: 15px; color: #10b981;">⏰ Course Schedule</h3>
-                            <p><strong>Duration:</strong> 4 Weeks (16 Sessions)</p>
-                            <p><strong>Frequency:</strong> 4 sessions per week, 1 hour each</p>
-                            <p><strong>Cohort 1:</strong> July 1, 2024</p>
-                            <p><strong>Cohort 2:</strong> August 1, 2024</p>
-                        </div>
-                        <div class="info-card">
-                            <h3 style="margin-bottom: 15px; color: #10b981;">💰 Investment</h3>
-                            <p><strong>Early Bird:</strong> PKR 5,000 (until June 15)</p>
-                            <p><strong>Regular:</strong> PKR 12,000</p>
-                            <p><strong>Guarantee:</strong> 100% refund if not satisfied</p>
-                            <p><strong>Payment Plans:</strong> Available with financial aid</p>
-                        </div>
-                    </div>
-                    
-                    <p class="footer-note">
-                        For questions about the curriculum, enrollment, or financial aid options, 
-                        please contact us through our registration form or via email.
-                    </p>
-                    
-                    <div class="document-meta">
-                        <strong>Document Info:</strong> Last Updated June 2024 | Version 2.0 | Status: Production Ready
-                    </div>
-                </div>
-            </div>
+    <main>
+        <div class="overview-box">
+            <h2>Course Overview</h2>
+            <p><strong>Duration:</strong> 12 Interactive Sessions</p>
+            <p><strong>Format:</strong> Live Online Sessions + Office Hours</p>
+            <p><strong>Target:</strong> Absolute Beginners with No CS Background</p>
+            <p><strong>Goal:</strong> Full-Stack Programming Confidence & Real-World Project Experience</p>
         </div>
-    </div>
+
+        <h2>Learning Objectives</h2>
+        <ul class="objective-list">
+            <li><strong>Think algorithmically</strong> and break down complex problems</li>
+            <li><strong>Code confidently</strong> in Scratch and Python</li>
+            <li><strong>Build projects</strong> that demonstrate core CS concepts</li>
+            <li><strong>Develop and deploy a full-stack application</strong> using Vibecoding</li>
+            <li><strong>Succeed in university CS101</strong> courses with confidence</li>
+        </ul>
+
+        <h2>Course Structure</h2>
+        <div class="module">
+            <p class="module-header">Module 1: CS Foundations & Visual Programming (3 Sessions)</p>
+            <p class="module-subtitle">Master logic and computational thinking with Scratch.</p>
+        </div>
+        <div class="module">
+            <p class="module-header">Module 2: Introduction to Python (3 Sessions)</p>
+            <p class="module-subtitle">Write your first real, text-based code.</p>
+        </div>
+        <div class="module">
+            <p class="module-header">Module 3: Digging Deeper with Python (3 Sessions)</p>
+            <p class="module-subtitle">Work with data structures and build more complex applications.</p>
+        </div>
+        <div class="module">
+            <p class="module-header">Module 4: Project Week: Intro to Vibecoding (3 Sessions)</p>
+            <p class="module-subtitle">Build and deploy a full-stack application from scratch.</p>
+        </div>
+
+        <h2>Detailed Session Breakdown</h2>
+
+        <div class="module">
+            <h3>Module 1: CS Foundations & Visual Programming (Sessions 1-3)</h3>
+            <p><strong>Objective:</strong> Build a strong foundation in computational thinking and create your first interactive games using Scratch.</p>
+            <ul>
+                <li><strong>Lesson 1: Thinking Like a Computer Scientist (Session 1)</strong><br>Learn problem decomposition, pattern recognition, and abstraction.</li>
+                <li><strong>Lesson 2: Visual Problem Solving with Scratch (Session 2)</strong><br>Master Scratch to build interactive stories and games.</li>
+                <li><strong>Lesson 3: Project Workshop (Session 3)</strong><br>Complete an interactive game with a scoring system.</li>
+            </ul>
+        </div>
+
+        <div class="module">
+            <h3>Module 2: Introduction to Python (Sessions 4-6)</h3>
+            <p><strong>Objective:</strong> Transition to a powerful, text-based language and build foundational applications.</p>
+            <ul>
+                <li><strong>Lesson 1: Python Essentials (Session 4)</strong><br>Master variables, data types, and user input.</li>
+                <li><strong>Lesson 2: Control Flow & Functions (Session 5)</strong><br>Implement if/else statements, loops, and write reusable functions.</li>
+                <li><strong>Lesson 3: Project Workshop (Session 6)</strong><br>Build a number-guessing game and a simple calculator.</li>
+            </ul>
+        </div>
+
+        <div class="module">
+            <h3>Module 3: Digging Deeper with Python (Sessions 7-9)</h3>
+            <p><strong>Objective:</strong> Learn to work with complex data and build applications that can store information.</p>
+            <ul>
+                <li><strong>Lesson 1: Data Structures (Session 7)</strong><br>Work with lists and dictionaries to organize and manage complex data.</li>
+                <li><strong>Lesson 2: File I/O & Project Building (Session 8)</strong><br>Read from and write to files to make your data persist.</li>
+                <li><strong>Lesson 3: Project Workshop (Session 9)</strong><br>Create a To-Do list manager that saves and loads tasks.</li>
+            </ul>
+        </div>
+
+        <div class="module">
+            <h3>Module 4: Project Week: Intro to Vibecoding (Sessions 10-12)</h3>
+            <p><strong>Objective:</strong> Build and deploy a complete full-stack web application from scratch.</p>
+            <ul>
+                <li><strong>Lesson 1: What is Full-Stack? Introduction to Vibecoding (Session 10)</strong><br>Understand the roles of frontend and backend.</li>
+                <li><strong>Lesson 2: Building Your Application (Session 11)</strong><br>Develop the core features of your web app.</li>
+                <li><strong>Lesson 3: Deployment & Showcase (Session 12)</strong><br>Deploy your application and present your finished project.</li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Edvance x CodeKids. All rights reserved.</p>
+    </footer>
+
 </body>
 </html> 

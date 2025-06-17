@@ -61,7 +61,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/rocket-icon.svg" type="image/svg+xml" />
         <link rel="alternate icon" href="/favicon.ico" />

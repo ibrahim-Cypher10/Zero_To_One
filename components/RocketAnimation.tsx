@@ -10,31 +10,16 @@ interface RocketAnimationProps {
 
 export default function RocketAnimation({ trigger, onComplete }: RocketAnimationProps) {
   const [showRockets, setShowRockets] = useState(false)
-  const [screenDimensions, setScreenDimensions] = useState({ width: 1200, height: 800 })
-  const [isMobile, setIsMobile] = useState(false)
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    // Update screen dimensions on client
-    const updateDimensions = () => {
-      const width = window.innerWidth
-      const height = window.innerHeight
-      setScreenDimensions({ width, height })
-      setIsMobile(width < 768) // md breakpoint
-    }
-    
-    updateDimensions()
-    window.addEventListener('resize', updateDimensions)
-    
-    return () => {
-      window.removeEventListener('resize', updateDimensions)
-    }
+    setIsClient(true)
   }, [])
 
   useEffect(() => {
     if (trigger) {
       setShowRockets(true)
       
-      // Hide the rockets after the animation completes
       const hideTimer = setTimeout(() => {
         setShowRockets(false)
         onComplete?.()
@@ -45,9 +30,13 @@ export default function RocketAnimation({ trigger, onComplete }: RocketAnimation
       }
     }
   }, [trigger, onComplete])
-
-  // Responsive rocket size
-  const rocketScale = isMobile ? 0.6 : 1
+  
+  if (!isClient) {
+    return null
+  }
+  
+  const screenDimensions = { width: window.innerWidth, height: window.innerHeight }
+  const isMobile = screenDimensions.width < 768
   const rocketSize = isMobile ? { width: 72, height: 54 } : { width: 120, height: 90 }
 
   const RocketSVG = ({ direction = "left" }: { direction?: "left" | "right" }) => (

@@ -17,14 +17,15 @@ export default function LearningRoadmap() {
     {
       phase: "Module 1",
       title: "🧠 CS Foundations & Visual Programming",
-      subtitle: "4 Sessions • From Zero to First Game",
+      subtitle: "3 Sessions • From Zero to First Game",
       icon: <Brain className="w-8 h-8" />,
       color: "from-purple-400 to-purple-600",
       bgColor: "bg-purple-50",
       borderColor: "border-purple-200",
       sessions: [
-        "Session 1-2: Computational thinking & problem-solving",
-        "Session 3-4: Scratch basics & building an interactive game", 
+        "Session 1: Computational thinking & problem-solving",
+        "Session 2: Introduction to Scratch & core logic blocks", 
+        "Session 3: Building your first interactive game",
       ],
       projects: [
         "💡 Create your first algorithm (daily routine flowchart)",
@@ -37,14 +38,15 @@ export default function LearningRoadmap() {
     {
       phase: "Module 2", 
       title: "🐍 Introduction to Python",
-      subtitle: "4 Sessions • Writing Your First Real Code",
+      subtitle: "3 Sessions • Writing Your First Real Code",
       icon: <Code className="w-8 h-8" />,
       color: "from-emerald-400 to-emerald-600",
       bgColor: "bg-emerald-50",
       borderColor: "border-emerald-200",
       sessions: [
-        "Session 5-6: Python basics, variables, and data types",
-        "Session 7-8: Control flow (if/else, loops) and functions"
+        "Session 4: Python basics, variables, and data types",
+        "Session 5: Control flow (if/else, loops)",
+        "Session 6: Functions and simple scripting",
       ],
       projects: [
         "🧮 Simple calculator with multiple operations",
@@ -57,14 +59,15 @@ export default function LearningRoadmap() {
     {
       phase: "Module 3",
       title: "🧩 Digging Deeper with Python",
-      subtitle: "4 Sessions • Advanced Concepts & Data",
+      subtitle: "3 Sessions • Advanced Concepts & Data",
       icon: <Layers className="w-8 h-8" />,
       color: "from-blue-400 to-blue-600",
       bgColor: "bg-blue-50",
       borderColor: "border-blue-200",
       sessions: [
-        "Session 9-10: Data structures (lists, dictionaries)",
-        "Session 11-12: File I/O and working with external data"
+        "Session 7: Data structures (lists, dictionaries)",
+        "Session 8: File I/O for data persistence",
+        "Session 9: Building a larger application",
       ],
       projects: [
         "📝 Todo list manager that saves and loads tasks",
@@ -77,16 +80,15 @@ export default function LearningRoadmap() {
     {
       phase: "Module 4",
       title: "🚀 Project Week: Intro to Vibecoding",
-      subtitle: "4 Sessions • Building a Full-Stack App",
+      subtitle: "3 Sessions • Building a Full-Stack App",
       icon: <Rocket className="w-8 h-8" />,
       color: "from-amber-400 to-amber-600",
       bgColor: "bg-amber-50",
       borderColor: "border-amber-200",
       sessions: [
-        "Session 13: What is Full-Stack? Intro to Vibecoding",
-        "Session 14: Building your frontend and backend",
-        "Session 15: Connecting the pieces and deploying",
-        "Session 16: Final presentations and career prep"
+        "Session 10: What is Full-Stack? Intro to Vibecoding",
+        "Session 11: Building your app's frontend and backend",
+        "Session 12: Deployment and final presentations",
       ],
       projects: [
         "🏆 A full-stack web application built with Vibecoding",
@@ -112,7 +114,7 @@ export default function LearningRoadmap() {
               A Journey in 4 Modules
             </h2>
             <p className="text-lg sm:text-xl text-slate-600 mb-6 sm:mb-8 px-2">
-              From zero coding experience to full-stack readiness with 16 comprehensive sessions.
+              From zero coding experience to full-stack readiness with 12 comprehensive sessions.
             </p>
             <div className="w-16 sm:w-24 h-1 bg-gradient-to-r from-emerald-400 to-emerald-600 mx-auto rounded-full"></div>
           </motion.div>
@@ -237,21 +239,31 @@ export default function LearningRoadmap() {
         {/* Navigation */}
         <div className="flex justify-center mt-8 space-x-4">
           <Button
+            onClick={() => setActivePhase((prev) => (prev > 0 ? prev - 1 : roadmapPhases.length - 1))}
             variant="outline"
-            onClick={() => setActivePhase(Math.max(0, activePhase - 1))}
-            disabled={activePhase === 0}
             className="px-6"
           >
             Previous Module
           </Button>
           <Button
-            onClick={() => setActivePhase(Math.min(roadmapPhases.length - 1, activePhase + 1))}
-            disabled={activePhase === roadmapPhases.length - 1}
+            onClick={() => setActivePhase((prev) => (prev < roadmapPhases.length - 1 ? prev + 1 : 0))}
             className="bg-emerald-600 hover:bg-emerald-700 px-6"
           >
             Next Module
           </Button>
         </div>
+
+        <div className="text-center mt-8">
+            <a
+              href="/Zero_to_One_Course_Syllabus.html"
+              download="Zero_to_One_Course_Syllabus.html"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-full text-white bg-slate-700 hover:bg-slate-800"
+            >
+              Download Full Syllabus
+            </a>
+          </div>
 
         {/* Quick Overview */}
         <div className="mt-16 text-center">

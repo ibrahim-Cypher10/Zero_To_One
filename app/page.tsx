@@ -6,7 +6,8 @@ import {
   Code, Users, BookOpen, Award, Clock, DollarSign, CheckCircle, Menu, X, ChevronRight, 
   Star, Play, Download, Calendar, MapPin, Globe, Monitor, Smartphone, Zap, Target,
   GraduationCap, Heart, MessageCircle, ArrowRight, Check, AlertCircle, ChevronDown,
-  Lightbulb, Trophy, Shield, TrendingUp, GitBranch, Database, Cpu, Layers, Linkedin
+  Lightbulb, Trophy, Shield, TrendingUp, GitBranch, Database, Cpu, Layers, Linkedin,
+  ShieldCheck
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -115,15 +116,14 @@ export default function LandingPage() {
         }`}
       >
         <div className="container mx-auto px-4 lg:px-6 py-3 lg:py-4 flex justify-between items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-lg sm:text-xl lg:text-2xl font-bold bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 bg-clip-text text-transparent"
           >
             <div className="flex flex-col leading-tight">
               <span className="text-xs sm:text-sm font-medium text-slate-600">Edvance x CodeKids</span>
-              <span>Zero to One</span>
-          </div>
+              <span className="text-lg sm:text-xl lg:text-2xl font-bold text-emerald-500">Zero to One</span>
+            </div>
           </motion.div>
 
           {/* Desktop Menu */}
@@ -150,8 +150,8 @@ export default function LandingPage() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-emerald-600 transition-all group-hover:w-full"></span>
             </button>
             <Button
-              onClick={handleStartJourney}
-              className="bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white rounded-full px-4 lg:px-6 py-2 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+              onClick={() => scrollToSection("register")}
+              className="bg-emerald-500 hover:bg-emerald-600 text-white rounded-full px-4 lg:px-6 py-2 shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
               size="sm"
             >
               Start Your Journey <ChevronRight className="ml-2 h-4 w-4 lg:h-5 lg:w-5" />
@@ -185,7 +185,7 @@ export default function LandingPage() {
                 ))}
               <Button
                 onClick={() => scrollToSection("register")}
-                  className="w-full mt-3 bg-gradient-to-r from-emerald-600 to-emerald-500 text-white rounded-full py-3"
+                  className="w-full mt-3 bg-emerald-500 text-white rounded-full py-3"
               >
                 Register Now
               </Button>
@@ -196,146 +196,77 @@ export default function LandingPage() {
       </nav>
 
       {/* Enhanced Hero Section */}
-      <section className="pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-16 lg:pb-20 px-4 lg:px-6 bg-gradient-to-br from-white via-emerald-50/30 to-blue-50/20 relative overflow-hidden">
+      <section className="min-h-screen flex items-center pt-24 pb-12 px-4 lg:px-6 bg-white relative overflow-hidden">
         {/* Background Elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-16 h-16 sm:w-20 sm:h-20 bg-emerald-200/20 rounded-full blur-xl"></div>
-          <div className="absolute top-40 right-20 w-24 h-24 sm:w-32 sm:h-32 bg-blue-200/20 rounded-full blur-xl"></div>
-          <div className="absolute bottom-20 left-1/4 w-12 h-12 sm:w-16 sm:h-16 bg-purple-200/20 rounded-full blur-xl"></div>
+        <div className="absolute inset-0 opacity-15">
+          <div className="absolute top-0 left-0 w-64 h-64 bg-emerald-200 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob"></div>
+          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-2000"></div>
+          <div className="absolute bottom-20 left-20 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-2xl opacity-50 animate-blob animation-delay-4000"></div>
         </div>
 
-        <div className="container mx-auto relative">
-          <div className="max-w-6xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12 lg:mb-16"
-            >
-              <div className="inline-flex items-center bg-emerald-100 text-emerald-700 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6">
-                <Calendar className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
-                <span className="hidden sm:inline">First Cohort starts July 1 • Early bird ends June 15</span>
-                <span className="sm:hidden">July 1 Start • Early Bird ends June 15</span>
+        <div className="container mx-auto relative z-10 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <Badge variant="outline" className="mb-6 py-2 px-4 border-emerald-300 bg-emerald-50 text-emerald-800 font-medium">
+              <Calendar className="w-4 h-4 mr-2" />
+              First Cohort starts July 2nd • Early bird ends June 23rd
+            </Badge>
+
+            <p className="text-emerald-600 font-semibold mb-2 text-sm sm:text-base">Edvance x CodeKids presents</p>
+            
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold mb-4 sm:mb-6 px-2 text-slate-800">
+              No CS Background?
+              <br className="md:hidden" />
+              <span className="text-emerald-500"> No Problem.</span>
+            </h1>
+            
+            <p className="text-lg sm:text-xl text-slate-600 mb-4 px-2 max-w-2xl mx-auto font-medium">
+              Launch Your Computer Science Journey with Confidence
+            </p>
+
+            <p className="text-base sm:text-lg text-slate-500 mb-8 px-2 max-w-3xl mx-auto">
+              A comprehensive intensive course designed for absolute beginners. Master <span className="font-bold text-emerald-600">Scratch → Python</span> and build <span className="font-bold text-emerald-600">real projects</span> while preparing for CS success.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Button
+                size="lg"
+                className="w-full sm:w-auto bg-emerald-500 hover:bg-emerald-600 text-white px-8 lg:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
+                onClick={() => scrollToSection("register")}
+              >
+                Start Your Journey
+                <ChevronRight className="ml-2 h-5 w-5" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="w-full sm:w-auto border-2 border-slate-300 bg-white/80 backdrop-blur-sm text-slate-700 hover:bg-slate-50 hover:border-slate-400 hover:shadow-lg px-8 lg:px-10 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-full transition-all"
+                onClick={() => scrollToSection("curriculum")}
+              >
+                <Play className="mr-2 h-4 w-4" />
+                View Curriculum
+              </Button>
+            </div>
+            
+            <div className="mt-12 flex flex-wrap justify-center items-center gap-x-8 gap-y-4 text-slate-500">
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-emerald-500" />
+                <span className="font-medium text-sm">100% Money-back Guarantee</span>
               </div>
-              
-              <div className="text-base sm:text-lg font-medium text-slate-600 mb-3 sm:mb-4">
-                <span className="text-emerald-600 font-semibold">Edvance x CodeKids</span> presents
+              <div className="flex items-center gap-2">
+                <Users className="w-5 h-5 text-emerald-500" />
+                <span className="font-medium text-sm">Expert Instructors</span>
               </div>
-              
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-4 sm:mb-6 leading-tight px-2">
-                No CS Background?{" "}
-                <span className="bg-gradient-to-r from-emerald-600 via-emerald-500 to-emerald-400 bg-clip-text text-transparent">
-                  No Problem.
-                </span>
-              </h1>
-              
-              <p className="text-lg sm:text-xl lg:text-2xl text-slate-600 mb-3 sm:mb-4 leading-relaxed px-2">
-                Launch Your Computer Science Journey with Confidence
-              </p>
-              
-              <p className="text-sm sm:text-base lg:text-lg text-slate-500 mb-8 sm:mb-10 max-w-3xl mx-auto px-4 leading-relaxed">
-                A comprehensive 4-week intensive course designed for absolute beginners. 
-                Master <span className="font-semibold text-emerald-600">Scratch → Python</span> and 
-                build <span className="font-semibold text-emerald-600">8+ real projects</span> while preparing for CS success.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-8 sm:mb-12 px-4">
-                <Button
-                  size="lg"
-                  className="w-full sm:w-auto bg-gradient-to-r from-emerald-600 to-emerald-500 hover:from-emerald-500 hover:to-emerald-400 text-white px-6 lg:px-8 py-4 lg:py-6 text-base lg:text-lg rounded-full shadow-lg hover:shadow-xl transition-all transform hover:scale-105"
-                  onClick={handleStartJourney}
-                >
-                  Start Your Journey <ChevronRight className="ml-2 h-4 w-4 lg:h-5 lg:w-5" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="w-full sm:w-auto border-2 border-emerald-200 bg-white/80 text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 px-6 lg:px-8 py-4 lg:py-6 text-base lg:text-lg rounded-full shadow-sm backdrop-blur-sm transition-all"
-                  onClick={() => scrollToSection("curriculum")}
-                >
-                  <Play className="mr-2 h-4 w-4 lg:h-5 lg:w-5" />
-                  View Curriculum
-                </Button>
+              <div className="flex items-center gap-2">
+                <Award className="w-5 h-5 text-emerald-500" />
+                <span className="font-medium text-sm">Certificate Included</span>
               </div>
+            </div>
 
-              {/* Trust Indicators */}
-              <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 sm:gap-6 text-xs sm:text-sm text-slate-600 px-4">
-                <div className="flex items-center justify-center">
-                  <Shield className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-emerald-600" />
-                  100% Money-back Guarantee
-                </div>
-                <div className="flex items-center justify-center">
-                  <Users className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-emerald-600" />
-                  Expert Instructors
-                </div>
-                <div className="flex items-center justify-center">
-                  <Award className="w-3 h-3 sm:w-4 sm:h-4 mr-2 text-emerald-600" />
-                  Certificate Included
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Enhanced Hero Visual */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="relative"
-            >
-              <div className="bg-gradient-to-r from-white to-emerald-50 rounded-2xl lg:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-2xl border border-emerald-100/50 backdrop-blur-sm">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-center">
-                  {/* Before */}
-                  <motion.div 
-                    whileHover={{ scale: 1.05 }}
-                    className="text-center bg-white p-4 sm:p-6 rounded-xl lg:rounded-2xl shadow-lg border border-red-100"
-                  >
-                    <div className="text-4xl sm:text-5xl lg:text-6xl mb-3 sm:mb-4">😰</div>
-                    <Badge variant="destructive" className="mb-2 sm:mb-3 text-xs sm:text-sm">Before</Badge>
-                    <h3 className="font-semibold text-slate-800 mb-2 text-sm sm:text-base">Confused Student</h3>
-                    <p className="text-xs sm:text-sm text-slate-600">Overwhelmed by CS courses, struggling with syntax, afraid to ask questions</p>
-                  </motion.div>
-
-                  {/* Arrow */}
-                  <div className="flex flex-col items-center order-last md:order-none">
-                    <div className="w-full h-1 bg-gradient-to-r from-emerald-300 to-emerald-500 rounded mb-2 md:hidden"></div>
-                    <div className="hidden md:block w-full h-1 bg-gradient-to-r from-emerald-300 to-emerald-500 rounded mb-2"></div>
-                    <div className="bg-emerald-100 text-emerald-600 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium">
-                      Our Course
-                    </div>
-                    <div className="w-full h-1 bg-gradient-to-r from-emerald-300 to-emerald-500 rounded mt-2"></div>
-                  </div>
-
-                  {/* After */}
-                  <motion.div 
-                    whileHover={{ scale: 1.05 }}
-                    className="text-center bg-white p-4 sm:p-6 rounded-xl lg:rounded-2xl shadow-lg border border-emerald-100"
-                  >
-                    <div className="text-4xl sm:text-5xl lg:text-6xl mb-3 sm:mb-4">💻</div>
-                    <Badge className="mb-2 sm:mb-3 bg-emerald-100 text-emerald-700 text-xs sm:text-sm">After</Badge>
-                    <h3 className="font-semibold text-slate-800 mb-2 text-sm sm:text-base">Confident Coder</h3>
-                    <p className="text-xs sm:text-sm text-slate-600">Building projects, debugging like a pro, ready for university CS</p>
-                  </motion.div>
-                  </div>
-
-                {/* Stats Bar */}
-                <div className="mt-6 lg:mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-                  {stats.slice(0, 4).map((stat, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.5 + index * 0.1 }}
-                      className="text-center"
-                    >
-                      <div className="text-emerald-600 mb-1 flex justify-center">{stat.icon}</div>
-                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-slate-800">{stat.number}</div>
-                      <div className="text-xs text-slate-600 px-1">{stat.label}</div>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-          </div>
+          </motion.div>
         </div>
       </section>
 
@@ -537,9 +468,72 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Instructor Section */}
+      <section id="instructors" className="py-12 sm:py-16 lg:py-20 bg-white">
+        <div className="container mx-auto px-4 lg:px-6">
+          <div className="text-center mb-12 lg:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-slate-800 mb-4 sm:mb-6">Meet Your Instructors</h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto">Learn from passionate educators who have been in your shoes and are dedicated to your success.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-4xl mx-auto">
+            {[
+              {
+                image: "/Zammad.jpeg",
+                name: "Zammad",
+                title: "Co-Founder, CodeKids PK",
+                company: "CS Graduate from LUMS",
+                bio: "An experienced educator with a Bachelors in CS from LUMS, Zammad has taught over 500 students from age 7 to 21, specializing in making technology accessible and exciting.",
+                linkedin: "https://www.linkedin.com/in/iamzammad/",
+              },
+              {
+                image: "/Ibrahim.jpeg",
+                name: "Ibrahim Ahmed Khan",
+                title: "Co-founder, Edvance",
+                company: "Computer Science Graduate from LUMS",
+                bio: "A CS graduate from LUMS who began coding in 8th grade. Ibrahim has built products, launched startups, and is on a mission to make Computer Science understandable for everyone.",
+                linkedin: "https://www.linkedin.com/in/ibrahim-ahmed-khan-752100233/",
+              }
+            ].map((instructor, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="group"
+              >
+                <Card className="text-center border-0 shadow-lg hover:shadow-2xl transition-shadow duration-300">
+                  <CardContent className="pt-8">
+                    <Image
+                      src={instructor.image}
+                      alt={instructor.name}
+                      width={120}
+                      height={120}
+                      className="rounded-full mx-auto mb-4 border-4 border-slate-100 group-hover:border-emerald-200 transition-colors"
+                    />
+                    <h3 className="text-xl font-bold text-slate-800">{instructor.name}</h3>
+                    <p className="text-emerald-600 font-semibold">{instructor.title}</p>
+                    <p className="text-sm text-slate-500 mb-4">{instructor.company}</p>
+                    <p className="text-slate-600 text-sm mb-6">{instructor.bio}</p>
+                    <Button
+                      variant="outline"
+                      onClick={() => window.open(instructor.linkedin, '_blank')}
+                      className="w-full"
+                    >
+                      <Linkedin className="w-4 h-4 mr-2" />
+                      Connect on LinkedIn
+                    </Button>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Enhanced FAQ */}
-      <section id="faq" className="py-12 sm:py-16 lg:py-20 px-4 lg:px-6 bg-slate-50">
-        <div className="container mx-auto">
+      <section id="faq" className="py-12 sm:py-16 lg:py-20 bg-slate-50">
+        <div className="container mx-auto px-4 lg:px-6 max-w-4xl">
           <div className="text-center mb-8 sm:mb-12 lg:mb-16">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -613,7 +607,7 @@ export default function LandingPage() {
             <div className="text-center mt-8 sm:mt-12">
               <p className="text-slate-600 mb-4 sm:mb-6 text-sm sm:text-base">Still have questions? We're here to help!</p>
               <p className="text-base sm:text-lg text-slate-700">
-                Contact our instructor directly: <a href="mailto:zammad@codekids.pk" className="font-semibold text-emerald-600 hover:underline">iak.ibrahimkhan@gmail.com</a>
+                Contact our instructor directly: <a href="mailto:zammad@codekids.pk" className="font-semibold text-emerald-600 hover:underline">zammad@codekids.pk</a>
               </p>
             </div>
           </div>
@@ -643,7 +637,7 @@ export default function LandingPage() {
                 <li className="flex items-center"><ChevronRight className="w-5 h-5 mr-2 text-emerald-400" /> <strong>Starts:</strong> July 2nd, 2024</li>
                 <li className="flex items-center"><ChevronRight className="w-5 h-5 mr-2 text-emerald-400" /> <strong>Classes:</strong> Mon, Wed, Fri</li>
                 <li className="flex items-center"><ChevronRight className="w-5 h-5 mr-2 text-emerald-400" /> <strong>Time:</strong> 1hr 15min per session</li>
-                <li className="flex items-center"><ChevronRight className="w-5 h-5 mr-2 text-emerald-400" /> <strong>Total:</strong> 16 Sessions</li>
+                <li className="flex items-center"><ChevronRight className="w-5 h-5 mr-2 text-emerald-400" /> <strong>Total:</strong> 12 Sessions</li>
               </ul>
             </div>
 
@@ -653,7 +647,7 @@ export default function LandingPage() {
                 <CardHeader>
                   <Badge variant="secondary" className="bg-amber-400 text-amber-900 font-bold w-fit mb-2">Early Bird Discount</Badge>
                   <CardTitle className="text-4xl font-bold text-white">PKR 7,000</CardTitle>
-                  <p className="text-emerald-200">Enroll by July 23rd</p>
+                  <p className="text-emerald-200">Enroll by June 23rd</p>
                 </CardHeader>
                 <CardContent>
                   <Button
@@ -663,13 +657,14 @@ export default function LandingPage() {
                   >
                     Register & Save <ArrowRight className="ml-2" />
                   </Button>
+                  <p className="text-xs text-emerald-200 mt-3 text-center">Fill out the form, and our team will reach out ASAP!</p>
                 </CardContent>
               </Card>
 
               <Card className="bg-slate-700/80 border-slate-600 flex flex-col justify-center p-6">
                   <Badge variant="secondary" className="bg-slate-500 text-slate-100 font-bold w-fit mb-2">Regular Price</Badge>
                   <h4 className="text-3xl font-bold text-white line-through opacity-70">PKR 10,000</h4>
-                  <p className="text-slate-400 mt-1">After July 23rd</p>
+                  <p className="text-slate-400 mt-1">After June 23rd</p>
               </Card>
             </div>
           </div>

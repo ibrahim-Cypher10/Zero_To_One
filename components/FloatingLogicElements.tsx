@@ -4,13 +4,10 @@ import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 
 export default function FloatingLogicElements() {
-  const [mounted, setMounted] = useState(false)
   const [elements, setElements] = useState<any[]>([])
   const [circuitPaths, setCircuitPaths] = useState<string[]>([])
   const [binaryStrings, setBinaryStrings] = useState<string[]>([])
-  const [screenDimensions, setScreenDimensions] = useState({ width: 1200, height: 800 })
-  const [isMobile, setIsMobile] = useState(false)
-  const [isTablet, setIsTablet] = useState(false)
+  const [isClient, setIsClient] = useState(false)
 
   const codeElements = [
     "{ }", "[ ]", "( )", "&&", "||", "!=", "==", "++", "--", "=>",
@@ -26,26 +23,18 @@ export default function FloatingLogicElements() {
   ]
 
   useEffect(() => {
-    // Only run on client side after mounting
-    setMounted(true)
-    
-    // Get actual screen dimensions
-    const updateDimensions = () => {
+    setIsClient(true)
+
+    const setupAndGenerate = () => {
       const width = window.innerWidth
-      const height = window.innerHeight
-      setScreenDimensions({ width, height })
-      setIsMobile(width < 768) // md breakpoint
-      setIsTablet(width >= 768 && width < 1024) // md to lg
-    }
-    
-    updateDimensions()
-    window.addEventListener('resize', updateDimensions)
-    
-    // Generate elements with client-side random values - responsive counts
-    const generateElements = () => {
+      const isMobile = width < 768
+      const isTablet = width >= 768 && width < 1024
+
+      // Generate elements with client-side random values
       const newElements = []
-      // Responsive element counts
       const totalElements = isMobile ? 15 : isTablet ? 20 : 25
+      const moveRange = isMobile ? 200 : isTablet ? 300 : 400
+      const baseSize = isMobile ? 0.4 : isTablet ? 0.5 : 0.6
 
       for (let i = 0; i < totalElements; i++) {
         const isCode = Math.random() > 0.4
@@ -53,15 +42,11 @@ export default function FloatingLogicElements() {
           ? codeElements[Math.floor(Math.random() * codeElements.length)]
           : logicSymbols[Math.floor(Math.random() * logicSymbols.length)]
         
-        // Responsive movement ranges
-        const moveRange = isMobile ? 200 : isTablet ? 300 : 400
-        const baseSize = isMobile ? 0.4 : isTablet ? 0.5 : 0.6
-        
         newElements.push({
           id: i,
           content,
           isCode,
-          startX: Math.random() * window.innerWidth,
+          startX: Math.random() * width,
           startY: Math.random() * window.innerHeight,
           delay: Math.random() * 5,
           duration: isMobile ? 6 + Math.random() * 8 : 8 + Math.random() * 12,
@@ -71,11 +56,9 @@ export default function FloatingLogicElements() {
           moveX3: (Math.random() - 0.5) * moveRange * 0.75
         })
       }
-      return newElements
-    }
-    
-    // Generate circuit paths - responsive counts
-    const generateCircuitPaths = () => {
+      setElements(newElements)
+      
+      // Generate circuit paths
       const paths = []
       const pathCount = isMobile ? 4 : isTablet ? 6 : 8
       for (let i = 0; i < pathCount; i++) {
@@ -87,31 +70,31 @@ export default function FloatingLogicElements() {
         const y2 = Math.random() * 100
         paths.push(`M${x1}% ${y1}% Q${cx}% ${cy}% ${x2}% ${y2}%`)
       }
-      return paths
-    }
-    
-    // Generate binary strings - responsive counts
-    const generateBinaryStrings = () => {
+      setCircuitPaths(paths)
+      
+      // Generate binary strings
       const strings = []
       const stringCount = isMobile ? 8 : isTablet ? 10 : 15
       const stringLength = isMobile ? 12 : isTablet ? 16 : 20
       for (let i = 0; i < stringCount; i++) {
         strings.push(Array.from({ length: stringLength }, () => Math.round(Math.random())).join(''))
       }
-      return strings
+      setBinaryStrings(strings)
     }
-    
-    setElements(generateElements())
-    setCircuitPaths(generateCircuitPaths())
-    setBinaryStrings(generateBinaryStrings())
+
+    setupAndGenerate()
+    window.addEventListener('resize', setupAndGenerate)
     
     return () => {
-      window.removeEventListener('resize', updateDimensions)
+      window.removeEventListener('resize', setupAndGenerate)
     }
-  }, [isMobile, isTablet])
+  }, [])
 
-  // Don't render anything until mounted on client
-  if (!mounted) return null
+  if (!isClient) {
+    return null
+  }
+  
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
 
   // Responsive logic gate configs
   const logicGates = [
@@ -157,8 +140,8 @@ export default function FloatingLogicElements() {
           }}
           className={`absolute select-none ${
             element.isCode 
-              ? `text-emerald-400/30 font-semibold ${isMobile ? 'text-base' : isTablet ? 'text-lg' : 'text-lg'}` 
-              : `text-blue-400/40 font-bold ${isMobile ? 'text-lg' : isTablet ? 'text-xl' : 'text-xl'}`
+              ? `text-emerald-400/30 font-semibold ${isMobile ? 'text-base' : 'text-lg'}` 
+              : `text-blue-400/40 font-bold ${isMobile ? 'text-lg' : 'text-xl'}`
           } font-mono`}
           style={{
             textShadow: element.isCode 
@@ -171,7 +154,7 @@ export default function FloatingLogicElements() {
       ))}
 
       {/* Floating Circuit Lines - responsive opacity and stroke width */}
-      <svg className={`absolute inset-0 w-full h-full ${isMobile ? 'opacity-10' : isTablet ? 'opacity-15' : 'opacity-20'}`}>
+      <svg className={`absolute inset-0 w-full h-full ${isMobile ? 'opacity-10' : 'opacity-15'}`}>
         <defs>
           <linearGradient id="circuitGradient" x1="0%" y1="0%" x2="100%" y2="100%">
             <stop offset="0%" stopColor="#10b981" stopOpacity="0.3" />
@@ -185,7 +168,7 @@ export default function FloatingLogicElements() {
             key={i}
             d={path}
             stroke="url(#circuitGradient)"
-            strokeWidth={isMobile ? "0.5" : isTablet ? "0.8" : "1"}
+            strokeWidth={isMobile ? "0.5" : "0.8"}
             fill="none"
             initial={{ pathLength: 0, opacity: 0 }}
             animate={{ 
@@ -208,12 +191,12 @@ export default function FloatingLogicElements() {
           <motion.div
             key={`binary-${i}`}
             initial={{ 
-              x: (i * (isMobile ? 40 : isTablet ? 60 : 80)) % screenDimensions.width,
+              x: (i * (isMobile ? 40 : 60)) % window.innerWidth,
               y: -50,
               opacity: 0
             }}
             animate={{
-              y: screenDimensions.height + 50,
+              y: window.innerHeight + 50,
               opacity: [0, 0.4, 0.6, 0.4, 0]
             }}
             transition={{
@@ -223,7 +206,7 @@ export default function FloatingLogicElements() {
               ease: "linear"
             }}
             className={`absolute font-mono font-bold text-green-400/20 select-none ${
-              isMobile ? 'text-xs' : isTablet ? 'text-sm' : 'text-sm'
+              isMobile ? 'text-xs' : 'text-sm'
             }`}
             style={{
               textShadow: "0 0 10px rgba(34, 197, 94, 0.3)",
@@ -250,7 +233,7 @@ export default function FloatingLogicElements() {
             animate={{
               y: [`${gate.y}%`, `${gate.y - 10}%`, `${gate.y + 5}%`, `${gate.y}%`],
               opacity: [0, 0.3, 0.2, 0.3],
-              scale: [0, isMobile ? 0.6 : isTablet ? 0.8 : 1, isMobile ? 0.8 : isTablet ? 1.0 : 1.2, isMobile ? 0.6 : isTablet ? 0.8 : 1],
+              scale: [0, isMobile ? 0.6 : 0.8, isMobile ? 0.8 : 1.0, isMobile ? 0.6 : 0.8],
               rotate: [0, 5, -5, 0]
             }}
             transition={{
@@ -260,11 +243,11 @@ export default function FloatingLogicElements() {
               ease: "easeInOut"
             }}
             className={`absolute pointer-events-none ${
-              isMobile ? 'text-xs' : isTablet ? 'text-sm' : 'text-sm'
+              isMobile ? 'text-xs' : 'text-sm'
             }`}
           >
             <div className={`${
-              isMobile ? 'w-8 h-6' : isTablet ? 'w-10 h-8' : 'w-12 h-10'
+              isMobile ? 'w-8 h-6' : 'w-10 h-8'
             } bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded border border-purple-300/30 flex items-center justify-center font-mono font-bold text-purple-400/60 backdrop-blur-sm`}>
               {gate.type}
             </div>
@@ -274,19 +257,19 @@ export default function FloatingLogicElements() {
 
       {/* Geometric patterns - responsive */}
       <div className="absolute inset-0">
-        {[...Array(isMobile ? 2 : isTablet ? 3 : 4)].map((_, i) => (
+        {[...Array(isMobile ? 2 : 3)].map((_, i) => (
           <motion.div
             key={`pattern-${i}`}
             initial={{
-              x: `${20 + (i * (isMobile ? 25 : isTablet ? 20 : 15))}%`,
-              y: `${30 + (i * (isMobile ? 20 : isTablet ? 15 : 10))}%`,
+              x: `${20 + (i * (isMobile ? 25 : 20))}%`,
+              y: `${30 + (i * (isMobile ? 20 : 15))}%`,
               opacity: 0,
               scale: 0
             }}
             animate={{
               rotate: [0, 360],
               opacity: [0, 0.2, 0.1, 0.2],
-              scale: [0, isMobile ? 0.5 : isTablet ? 0.7 : 1, isMobile ? 0.3 : isTablet ? 0.5 : 0.8, isMobile ? 0.5 : isTablet ? 0.7 : 1]
+              scale: [0, isMobile ? 0.5 : 0.7, isMobile ? 0.3 : 0.5, isMobile ? 0.5 : 0.7]
             }}
             transition={{
               duration: 20 + (i * 5),
@@ -297,7 +280,7 @@ export default function FloatingLogicElements() {
             className="absolute pointer-events-none"
           >
             <div className={`${
-              isMobile ? 'w-12 h-12' : isTablet ? 'w-16 h-16' : 'w-20 h-20'
+              isMobile ? 'w-12 h-12' : 'w-16 h-16'
             } border border-cyan-300/20 ${
               i % 2 === 0 ? 'rounded-full' : 'rounded-lg rotate-45'
             } bg-gradient-to-r from-cyan-400/5 to-blue-400/5`}></div>
