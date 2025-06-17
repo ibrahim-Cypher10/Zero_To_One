@@ -612,13 +612,9 @@ export default function LandingPage() {
 
             <div className="text-center mt-8 sm:mt-12">
               <p className="text-slate-600 mb-4 sm:mb-6 text-sm sm:text-base">Still have questions? We're here to help!</p>
-              <Button
-                variant="outline"
-                className="w-full sm:w-auto border-2 border-emerald-200 bg-white text-emerald-600 hover:bg-emerald-50 hover:border-emerald-300 rounded-full px-6 sm:px-8 py-3 sm:py-4 text-sm sm:text-base"
-              >
-                <MessageCircle className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                Contact Us Directly
-              </Button>
+              <p className="text-base sm:text-lg text-slate-700">
+                Contact our instructor directly: <a href="mailto:zammad@codekids.pk" className="font-semibold text-emerald-600 hover:underline">iak.ibrahimkhan@gmail.com</a>
+              </p>
             </div>
           </div>
         </div>

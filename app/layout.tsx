@@ -9,8 +9,8 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   metadataBase: new URL('https://zero-to-one-cs.vercel.app'),
   title: "Zero to One: Computer Science Foundations | Edvance x CodeKids",
-  description: "Launch your computer science journey with confidence. A comprehensive intensive course designed for absolute beginners. Master Scratch, Python, and C++ and build real projects while preparing for CS success.",
-  keywords: ["computer science", "programming", "coding bootcamp", "beginner programming", "CS101", "Python", "Scratch", "university prep", "C++"],
+  description: "Launch your computer science journey with confidence. A comprehensive intensive course designed for absolute beginners. Master Scratch, Python, and build full-stack apps with Vibecoding.",
+  keywords: ["computer science", "programming", "coding bootcamp", "beginner programming", "CS101", "Python", "Scratch", "full-stack", "Vibecoding", "university prep"],
   authors: [{ name: "Edvance x CodeKids" }],
   creator: "Edvance x CodeKids",
   publisher: "Edvance x CodeKids",

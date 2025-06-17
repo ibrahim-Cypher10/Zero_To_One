@@ -8,7 +8,7 @@
 **Duration:** 16 Interactive Sessions
 **Format:** Live Online Sessions + Office Hours  
 **Target:** Absolute Beginners with No CS Background  
-**Goal:** University CS Readiness & Programming Confidence  
+**Goal:** Full-Stack Programming Confidence & Real-World Project Experience
 
 ---
 
@@ -17,311 +17,77 @@
 Upon completion of this course, students will be able to:
 
 ✅ **Think algorithmically** and break down complex problems  
-✅ **Code confidently** in Scratch, Python, and C++  
-✅ **Debug effectively** and troubleshoot programming issues  
+✅ **Code confidently** in Scratch and Python
 ✅ **Build projects** that demonstrate core CS concepts  
+✅ **Develop and deploy a full-stack application** using Vibecoding
 ✅ **Succeed in university CS101** courses with confidence  
 
 ---
 
 ## 📋 **Course Structure**
 
-The course is divided into **6 progressive modules**, each building upon the previous:
+The course is divided into **4 progressive modules**, each building upon the previous:
 
-### **🔹 Module 1: Introduction to Computer Science & Problem Solving**
-*Sessions 1-2 | Foundation Week*
+### **🔹 Module 1: CS Foundations & Visual Programming (4 Sessions)**
+*Master logic and computational thinking with Scratch.*
 
-### **🔹 Module 2: Scratch Programming (Visual Problem Solving)**  
-*Sessions 3-4 | Visual Logic Week*
+### **🔹 Module 2: Introduction to Python (4 Sessions)**  
+*Write your first real, text-based code.*
 
-### **🔹 Module 3: Python Basics**
-*Sessions 5-8 | Text-Based Programming*
+### **🔹 Module 3: Digging Deeper with Python (4 Sessions)**
+*Work with data structures and build more complex applications.*
 
-### **🔹 Module 4: Introduction to C++ (University Prep Focus)**
-*Sessions 9-12 | Systems Programming*
-
-### **🔹 Module 5: Bridging Logic & Problem Solving**
-*Sessions 13-14 | Advanced Concepts*
-
-### **🔹 Module 6: Capstone & Career Prep**
-*Sessions 15-16 | Project Showcase & Next Steps*
+### **🔹 Module 4: Project Week: Intro to Vibecoding (4 Sessions)**
+*Build and deploy a full-stack application from scratch.*
 
 ---
 
 ## 📖 **Detailed Session Breakdown**
 
-### **🔹 Module 1: Introduction to Computer Science & Problem Solving**
-> *Objective: Break myths, set expectations, and introduce logical thinking.*
+### **🔹 Module 1: CS Foundations & Visual Programming (Sessions 1-4)**
+> *Objective: Build a strong foundation in computational thinking and create your first interactive games using Scratch.*
 
-#### **Session 1 – Why Computer Science?**
-**Learning Goals:**
-- Understand what CS actually is (beyond just coding)
-- Explore real-world impact: apps, AI, automation
-- Discover how CS changes your thinking patterns
-
-**Activities:**
-- Interactive CS career exploration
-- Problem-solving warm-up exercises
-- Course expectations and community building
-
-**Homework:** Reflection on personal CS goals
+- **Sessions 1-2: Thinking Like a Computer Scientist**
+  - Learn problem decomposition, pattern recognition, and abstraction.
+- **Sessions 3-4: Visual Problem Solving with Scratch**
+  - Master Scratch to build interactive stories and games.
+  - **Project:** Complete interactive game with a scoring system.
 
 ---
 
-#### **Session 2 – Thinking Like a Computer Scientist**
-**Learning Goals:**
-- Master decomposition, patterns, and abstraction
-- Understand how computers "think"
-- Apply problem-solving frameworks in CS
+### **🔹 Module 2: Introduction to Python (Sessions 5-8)**
+> *Objective: Transition to a powerful, text-based language and build foundational applications.*
 
-**Activities:**
-- Step-by-step problem breakdown exercises
-- Pattern recognition games
-- Real-world algorithm examples
-
-**Homework:** Practice decomposition on daily life problems
+- **Sessions 5-6: Python Essentials**
+  - Master variables, data types, and user input.
+- **Sessions 7-8: Control Flow & Functions**
+  - Implement if/else statements, loops, and write reusable functions.
+  - **Project:** Build a number-guessing game and a simple calculator.
 
 ---
 
-### **🔹 Module 2: Scratch Programming (Visual Problem Solving)**
-> *Objective: Build logic without syntax stress. Ideal for visual thinkers.*
+### **🔹 Module 3: Digging Deeper with Python (Sessions 9-12)**
+> *Objective: Learn to work with complex data and build applications that can store information.*
 
-#### **Session 3 – Introduction to Scratch**
-**Learning Goals:**
-- Navigate Scratch interface confidently
-- Understand events, motion, and looks
-- Create first interactive program
-
-**Activities:**
-- Guided Scratch walkthrough
-- Character animation creation
-- First mini-project: interactive story
-
-**Project:** Animated character with basic interactions
+- **Sessions 9-10: Data Structures**
+  - Work with lists and dictionaries to organize and manage complex data.
+- **Sessions 11-12: File I/O & Project Building**
+  - Read from and write to files to make your data persist.
+  - **Project:** Create a To-Do list manager that saves and loads tasks.
 
 ---
 
-#### **Session 4 – Logic Building with Scratch**  
-**Learning Goals:**
-- Implement loops, conditionals, and variables
-- Design game logic systems
-- Create interactive experiences
+### **🔹 Module 4: Project Week: Intro to Vibecoding (Sessions 13-16)**
+> *Objective: Build and deploy a complete full-stack web application from scratch.*
 
-**Activities:**
-- Rock-paper-scissors game development
-- Logic challenge puzzles
-- Peer code review session
-
-**Project:** Complete interactive game with scoring system
-
----
-
-### **🔹 Module 3: Python Basics**
-> *Objective: Introduce syntax-based coding using one of the friendliest languages.*
-
-#### **Session 5 – Python Essentials I**
-**Learning Goals:**
-- Master variables, input/output, and data types  
-- Write and run first Python programs
-- Debug basic syntax errors
-
-**Activities:**
-- Interactive Python shell exploration
-- Name/age calculator creation
-- Error troubleshooting practice
-
-**Homework:** 5 practice problems on variables and I/O
-
----
-
-#### **Session 6 – Python Essentials II**
-**Learning Goals:**
-- Implement conditionals and loops effectively
-- Solve basic math and logic problems
-- Develop debugging strategies
-
-**Activities:**
-- Grade calculator with conditionals
-- Number guessing game with loops
-- Live debugging session
-
-**Homework:** Complete 3 logic problems
-
----
-
-#### **Session 7 – Python Functions & Lists**
-**Learning Goals:**
-- Create reusable functions with proper scope
-- Manipulate lists for data storage
-- Automate real-world tasks
-
-**Activities:**
-- Function library creation
-- Shopping cart simulator development
-- Task automation examples
-
-**Project Prep:** Choose final Python project
-
----
-
-#### **Session 8 – Python Final Project**
-**Learning Goals:**
-- Apply all Python concepts in a complete project
-- Experience full development cycle
-- Present and demonstrate work
-
-**Project Options:**
-- **Quiz Game:** Multiple choice with scoring
-- **Calculator:** Scientific calculator with history
-- **To-Do Manager:** Task management with persistence
-
-**Activities:**
-- Live build session with instructor mentorship
-- Peer collaboration and support
-- Project demonstration and feedback
-
----
-
-### **🔹 Module 4: Introduction to C++ (University Prep Focus)**
-> *Objective: De-risk the "shock" of university-level CS101 in C++.*
-
-#### **Session 9 – Why Learn C++? + Syntax Essentials**
-**Learning Goals:**
-- Understand C++ vs Python differences
-- Master basic data types and I/O
-- Write first C++ programs
-
-**Activities:**
-- Language comparison discussion
-- "Hello World" to basic calculator
-- Compilation process understanding
-
-**Homework:** 3 basic C++ programs
-
----
-
-#### **Session 10 – Control Flow in C++**
-**Learning Goals:**
-- Implement if-else statements and loops in C++
-- Solve problems using C++ syntax
-- Handle user input validation
-
-**Activities:**
-- Grade classifier program
-- Multiplication table generator
-- Input validation exercises
-
-**Homework:** Control flow practice problems
-
----
-
-#### **Session 11 – Functions & Arrays**
-**Learning Goals:**
-- Create functions with parameters and return values
-- Work with arrays and understand memory concepts
-- Pass data between functions effectively
-
-**Activities:**
-- Function library creation
-- Array manipulation exercises
-- Memory concept visualization
-
-**Project Prep:** C++ mini-project planning
-
----
-
-#### **Session 12 – C++ Mini Project**
-**Learning Goals:**
-- Integrate all C++ concepts learned
-- Build a complete working program
-- Prepare for university-level C++ work
-
-**Project Options:**
-- **Number Guessing Game:** With attempts tracking
-- **Pattern Printer:** Various ASCII art patterns  
-- **Student Record Manager:** Basic data management
-
-**Activities:**
-- Project development with guidance
-- Code review and optimization
-- University CS101 preparation tips
-
----
-
-### **🔹 Module 5: Bridging Logic & Problem Solving**
-> *Objective: Apply core thinking skills in language-neutral ways.*
-
-#### **Session 13 – Algorithms 101**
-**Learning Goals:**
-- Understand what algorithms are and why they matter
-- Explore classic algorithms (searching, sorting)
-- Think in algorithmic steps
-
-**Activities:**
-- Algorithm visualization exercises
-- Binary search implementation
-- Sorting algorithm comparison
-- Real-world algorithm examples
-
-**Homework:** Design algorithm for daily life problem
-
----
-
-#### **Session 14 – Debugging & Learning Strategies**
-**Learning Goals:**
-- Master systematic debugging approaches
-- Develop independent learning skills
-- Build sustainable coding practices
-
-**Activities:**
-- Debug broken code exercises
-- Learning resource exploration
-- Study strategy development
-- Community building tips
-
-**Resources Provided:**
-- Curated learning websites and books
-- YouTube channel recommendations
-- Practice problem platforms
-- CS community forums
-
----
-
-### **🔹 Module 6: Capstone & Career Prep**
-> *Objective: Build confidence, polish project, and explore next steps.*
-
-#### **Session 15 – Final Project Showcase + Peer Review**
-**Learning Goals:**
-- Present technical work effectively
-- Give and receive constructive feedback
-- Iterate based on peer input
-
-**Activities:**
-- Individual project presentations (5 min each)
-- Structured peer feedback sessions
-- Live improvement implementation
-- Portfolio preparation guidance
-
-**Outcome:** Polished project ready for portfolio
-
----
-
-#### **Session 16 – What's Next? (University Survival + Roadmap)**
-**Learning Goals:**
-- Prepare for university CS101 success
-- Create personalized learning roadmap
-- Build ongoing support network
-
-**Activities:**
-- University CS course preparation strategies
-- Side project ideation workshop
-- Resource and roadmap creation
-- Final Q&A and celebration
-
-**Deliverables:**
-- Personalized learning roadmap
-- Course completion certificate
-- Alumni network access
+- **Session 13: What is Full-Stack? Introduction to Vibecoding**
+  - Understand the roles of frontend and backend.
+- **Session 14: Building Your Application**
+  - Develop the core features of your web app.
+- **Session 15: Deployment & Showcase Prep**
+  - Deploy your application to the web so anyone can use it.
+- **Session 16: Final Presentations & Career Prep**
+  - Present your finished project and discuss next steps for your career.
 
 ---
 
