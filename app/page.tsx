@@ -481,7 +481,7 @@ export default function LandingPage() {
                 image: "/Zammad.jpeg",
                 name: "Zammad",
                 title: "Co-Founder, CodeKids PK",
-                company: "CS Graduate from LUMS",
+                company: "Computer Science Graduate from LUMS",
                 bio: "An experienced educator with a Bachelors in CS from LUMS, Zammad has taught over 500 students from age 7 to 21, specializing in making technology accessible and exciting.",
                 linkedin: "https://www.linkedin.com/in/iamzammad/",
               },
