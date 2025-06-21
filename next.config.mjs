@@ -9,6 +9,14 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  async rewrites() {
+    return [
+      {
+        source: '/googleb2da5ed9c85a7ac6.html',
+        destination: '/googleb2da5ed9c85a7ac6.html',
+      },
+    ];
+  },
 }
 
 export default nextConfig
